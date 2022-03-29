@@ -1,0 +1,68 @@
+
+<div class="container">
+    <div class="row">
+      <div class="col">
+        
+      </div>
+      <div class="col" style="margin-top: 8%;margin-bottom: 10%;">
+      <form [formGroup]="profileForm">
+          <div class="mb-3">
+              <label for="exampleFormControlInput1" class="form-label" >Email </label>
+              <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com" formControlName='email'>
+            </div>
+            
+            <div class="mb-3 pt-3">
+              <label for="exampleFormControlInput1" class="form-label" >Password</label>
+              <input type="password" class="form-control" id="exampleFormControlInput1" formControlName='password'>
+            </div>
+           
+  
+            <div class="mb-3 pt-3">
+              <label for="exampleFormControlInput1" class="form-label">ชื่อ-นามสกุล</label>
+              <input class="form-control" type="text" formControlName='name' placeholder="firstname lastname">
+            </div>
+          </form>
+            <hr style="margin-top: 30px;">
+            
+
+            <div style="margin-top: 10%;">
+              <label for="exampleFormControlInput1" class="form-label" style="margin-right: 3%;" >postcode</label>
+              <input type="text" name="" id="" [(ngModel)]="postcode" (change)="onChangeImg($event)" placeholder="ใส่รหัสไปษณีย์ 5 ตัว">
+            </div>
+
+
+            <form [formGroup]="location">  
+              <div style="margin-top: 5%;">
+                <label for="exampleFormControlInput1" class="form-label"  >เขตอาศัย <span style="color: crimson;">*โปรดกรอก postcode ก่อนทำการเลือก</span></label>
+                <select class="form-select" aria-label="Default select example"   formControlName='province'>
+                  
+                  <option *ngFor="let item of provinces;" >{{item.name}}</option>
+                </select>
+                
+                
+              </div>
+              
+              <div class="mb-3 pt-3" style="margin-top: 5%;">
+                <label for="exampleFormControlInput1" class="form-label">ที่อยู่</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="โปรดกรอกให้ครบถ้วน" formControlName='address'></textarea>
+              </div>
+              <div>
+                
+              </div>
+            </form>
+            
+  
+            <div style="float:right;margin-top: 20px;">
+             
+              <button class="btn btn-info" type="submit" (click)="save()">sing up</button>
+            </div>
+            
+          
+        </div>
+
+      
+      <div class="col">
+        
+      </div>
+    </div>
+  </div>

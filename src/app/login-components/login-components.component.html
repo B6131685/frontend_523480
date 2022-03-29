@@ -1,0 +1,32 @@
+
+<div class="container">
+    <div class="row">
+      <div class="col">
+        
+      </div>
+      <div class="col" style="margin-top: 15%;">
+        <form [formGroup]="authForm"> 
+        <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Email </label>
+            <input type="email" class="form-control" placeholder="name@example.com"  formControlName='email'>
+          </div>
+          <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Password</label>
+            <input type="password" class="form-control"   formControlName='password'>
+          </div>
+          
+          <div style="float:right;">
+            <button class="btn btn-primary" type="submit" (click)="login()" style="margin-right: 10px;">login</button>
+            <button class="btn btn-info" (click)="singUp()" type="submit"  style="margin-right: 10px;">sing up</button>
+            
+            <button class="btn btn-info" (click)="checkHeader()" type="submit"  style="margin-right: 10px;">check header</button>
+            <button class="btn btn-info" (click)="logout()" type="submit"  style="margin-right: 10px;">logout</button>
+
+          </div>
+        </form>
+      </div>
+      <div class="col">
+        
+      </div>
+    </div>
+  </div>
