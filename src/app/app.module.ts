@@ -14,6 +14,21 @@ import { ModelProductsComponent } from './products/model-products/model-products
 import { SingupComponent } from './singup/singup.component';
 import { AngularWebStorageModule } from 'angular-web-storage';
 import { AuthInterceptorService } from './services/auth-interceptor.service';
+import { SideNavadminComponent } from './side-navadmin/side-navadmin.component';
+import { NgRouterOutletCommDirective } from 'ng-router-outlet-comm/lib/ng-router-outlet-comm.directive';
+import { AddSpecComponent } from './admin/add-spec/add-spec.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+//mat
+import {MatButtonModule} from '@angular/material/button';
+import {MatNativeDateModule} from '@angular/material/core';
+import { MatSliderModule } from '@angular/material/slider';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatIconModule} from '@angular/material/icon';
+import {MatGridListModule} from '@angular/material/grid-list';
+import {MatExpansionModule} from '@angular/material/expansion';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,13 +39,27 @@ import { AuthInterceptorService } from './services/auth-interceptor.service';
     AddProductComponent,
     ShowProductComponent,
     ModelProductsComponent,
-    SingupComponent
+    SingupComponent,
+    SideNavadminComponent,
+    AddSpecComponent,
+    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule, ReactiveFormsModule,
     HttpClientModule,
+    BrowserAnimationsModule,
+    MatNativeDateModule,
+    MatSliderModule,
+    MatSidenavModule,
+    MatButtonModule,
+    MatToolbarModule,
+    MatIconModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatGridListModule,
+    MatExpansionModule,
   ],
   providers: [
     {

@@ -1,0 +1,57 @@
+<mat-toolbar color="primary">
+  <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" (click)="sidenav.toggle()">
+   <mat-icon>menu</mat-icon>
+ </button>
+ <span>My App</span>
+ <span class="example-spacer"></span>
+ <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+   <mat-icon>favorite</mat-icon>
+ </button>
+ <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+  <mat-icon>share</mat-icon>
+</button>
+</mat-toolbar>
+
+
+<mat-sidenav-container class="example-container">
+      <mat-sidenav #sidenav [mode]="mode.value" opened>
+          <div style="width: 150px;">
+              <div lass="menu-sidenav"><mat-icon  aria-hidden="false" aria-label="Example home icon">home</mat-icon> </div>
+              
+              
+          </div>
+          <mat-accordion>
+
+            <mat-expansion-panel >
+              <mat-expansion-panel-header>
+                
+                <mat-panel-title>
+                  <div >
+                    <mat-icon class="material-icons md-36" >dashboard</mat-icon><span style="margin-left:40px;font-size: 20px;padding-bottom: 30px;">Dashboard</span>
+                  </div>
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+
+              <div class="menu-sidenav"><a routerLink="firstContent"> first content </a></div> 
+            </mat-expansion-panel>
+
+            <mat-expansion-panel (opened)="panelOpenState = true"
+                                 (closed)="panelOpenState = false">
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  product
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+
+              <div class="menu-sidenav"><a routerLink="addSpec">addSpec</a></div>
+              <div class="menu-sidenav"><a routerLink="addProduct">addProduct</a></div>
+            </mat-expansion-panel>
+
+          </mat-accordion>
+          
+      </mat-sidenav>
+      <router-outlet></router-outlet>
+</mat-sidenav-container>   
+  
+      
+  

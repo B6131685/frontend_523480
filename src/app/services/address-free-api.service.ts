@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpContext } from '@angular/common/http';
 import { map } from 'rxjs/operators'
+import { BYPASS_LOG } from './auth-interceptor.service';
 @Injectable({
   providedIn: 'root'
 })
@@ -45,7 +46,7 @@ export class AddressFreeAPIService {
 
   //https://search.longdo.com/mapsearch/json/search?keyword=&area=10&span=100km&limit=20&key=[YOUR-KEY-API]
     longDoMAP(postcode: any){
-    return this.http.get<any>('https://search.longdo.com/mapsearch/json/search?keyword='+postcode+'&tag=__POST'+postcode+'&key=f27ed4fd4ed5ef942bc088bd54f6c0ef')
+    return this.http.get<any>('https://search.longdo.com/mapsearch/json/search?keyword='+postcode+'&tag=__POST'+postcode+'&key=f27ed4fd4ed5ef942bc088bd54f6c0ef', { context: new HttpContext().set(BYPASS_LOG, true) })
     .pipe(map(data => {
       if (data) {
         this.dataFreeAPI = data;

@@ -102,15 +102,20 @@ export class SingupComponent implements OnInit {
       data => {
         console.log(data);
         this.profileForm.value.address.length = 0;
+        this.profileForm.reset();
       },
       err=>{
         console.log(err); 
         //data.splice(0, data.length)
         this.profileForm.value.address.length = 0;
-        alert('Sign Up failure!!!')
+        alert('Sign Up failure!!!');
+        
       }
     )
-  
+  }
+
+  back(){
+    this.router.navigate(['/login']);
   }
 
 }
