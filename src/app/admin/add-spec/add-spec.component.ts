@@ -11,11 +11,12 @@ export class AddSpecComponent implements OnInit {
   model = new FormGroup({
     name: new FormControl(''),
     spec: new FormArray([
-      new FormControl('')
+      
     ])
   });
 
-  constructor(private SpecModelService:SpecModelService) { }
+  constructor(private SpecModelService:SpecModelService) { this.spec.push(new FormControl('Model')); }
+  
 
   ngOnInit(): void {
   }
@@ -45,7 +46,9 @@ export class AddSpecComponent implements OnInit {
         // }
 
         this.model.reset();
-        this.addSpec();
+
+        this.spec.push(new FormControl('Model')); // 0
+        this.spec.push(new FormControl('')); // 1
       },
       err=>{
         console.log(err.error.error.message);

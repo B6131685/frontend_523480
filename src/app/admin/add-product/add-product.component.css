@@ -1,3 +1,19 @@
 .col label {
-    margin-top: 30px;
+  margin-top: 30px;
+}
+
+.mat-stepper-horizontal {
+  margin-top: 8px;
+}
+
+.mat-form-field {
+  margin-top: 16px;
+}
+
+mat-grid-tile {
+    background: lightblue;
+}
+
+.inside {
+    background-color: slategray;
 }

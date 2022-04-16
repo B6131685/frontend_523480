@@ -10,7 +10,8 @@ import { UserNavbarComponent} from './navBavcomponents/user-navbar/user-navbar.c
 import { AdminNavbarComponent } from './navBavcomponents/admin-navbar/admin-navbar.component';
 import { PublicNavbarComponent } from './navBavcomponents/public-navbar/public-navbar.component';
 import { AddSpecComponent } from './admin/add-spec/add-spec.component';
-
+import { StockComponent } from './admin/stock/stock.component';
+import { RefreshComponent } from './refresh/refresh.component';
 
 import { AuthGuard } from './auth.guard';
 
@@ -19,6 +20,7 @@ const routes: Routes = [
   // data: {
   //   role: 'admin'
   // }},
+  { path: 'refresh', component: RefreshComponent},
   {path: 'home', component: PublicNavbarComponent},
   {path: 'login', component: LoginComponentsComponent},
   {path: 'singup', component: SingupComponent},
@@ -28,7 +30,9 @@ const routes: Routes = [
   }
   , children: [
     { path: 'addProduct', component: AddProductComponent},
-    { path: 'addSpec', component: AddSpecComponent}
+    { path: 'addSpec', component: AddSpecComponent},
+    { path: 'stock', component: StockComponent},
+    { path: 'refresh', component: RefreshComponent},
   ] 
   },
   {path: 'user', component: UserNavbarComponent, canActivate: [AuthGuard],

@@ -18,6 +18,9 @@ import { SideNavadminComponent } from './side-navadmin/side-navadmin.component';
 import { NgRouterOutletCommDirective } from 'ng-router-outlet-comm/lib/ng-router-outlet-comm.directive';
 import { AddSpecComponent } from './admin/add-spec/add-spec.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatSelectModule} from '@angular/material/select';
+import { StockComponent, DialogOverviewExampleDialog } from './admin/stock/stock.component';
+import { RefreshComponent } from './refresh/refresh.component';
 
 //mat
 import {MatButtonModule} from '@angular/material/button';
@@ -28,6 +31,15 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatExpansionModule} from '@angular/material/expansion';
+import {MatStepperModule} from '@angular/material/stepper';
+import { MatFormFieldModule } from '@angular/material/form-field'; 
+import { MatInputModule } from '@angular/material/input';
+import {MatCardModule} from '@angular/material/card';
+import {MatTableModule} from '@angular/material/table';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatSortModule} from '@angular/material/sort';
+import {MatDialogModule} from '@angular/material/dialog';
+import { StockButtonComponent } from './admin/stock-button/stock-button.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +54,10 @@ import {MatExpansionModule} from '@angular/material/expansion';
     SingupComponent,
     SideNavadminComponent,
     AddSpecComponent,
-    
+    StockComponent,
+    RefreshComponent,
+    DialogOverviewExampleDialog,
+    StockButtonComponent,
   ],
   imports: [
     BrowserModule,
@@ -60,6 +75,15 @@ import {MatExpansionModule} from '@angular/material/expansion';
     ReactiveFormsModule,
     MatGridListModule,
     MatExpansionModule,
+    MatStepperModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule,
+    MatCardModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatDialogModule,
   ],
   providers: [
     {
