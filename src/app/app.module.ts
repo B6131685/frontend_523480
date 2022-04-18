@@ -39,7 +39,9 @@ import {MatTableModule} from '@angular/material/table';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatSortModule} from '@angular/material/sort';
 import {MatDialogModule} from '@angular/material/dialog';
+import {MatTabsModule} from '@angular/material/tabs';
 import { StockButtonComponent } from './admin/stock-button/stock-button.component';
+import { TabProductComponent } from './admin/tab-product/tab-product.component';
 
 @NgModule({
   declarations: [
@@ -58,6 +60,7 @@ import { StockButtonComponent } from './admin/stock-button/stock-button.componen
     RefreshComponent,
     DialogOverviewExampleDialog,
     StockButtonComponent,
+    TabProductComponent,
   ],
   imports: [
     BrowserModule,
@@ -84,6 +87,7 @@ import { StockButtonComponent } from './admin/stock-button/stock-button.componen
     MatPaginatorModule,
     MatSortModule,
     MatDialogModule,
+    MatTabsModule,
   ],
   providers: [
     {

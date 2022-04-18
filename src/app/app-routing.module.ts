@@ -12,6 +12,7 @@ import { PublicNavbarComponent } from './navBavcomponents/public-navbar/public-n
 import { AddSpecComponent } from './admin/add-spec/add-spec.component';
 import { StockComponent } from './admin/stock/stock.component';
 import { RefreshComponent } from './refresh/refresh.component';
+import { TabProductComponent } from './admin/tab-product/tab-product.component';
 
 import { AuthGuard } from './auth.guard';
 
@@ -33,6 +34,7 @@ const routes: Routes = [
     { path: 'addSpec', component: AddSpecComponent},
     { path: 'stock', component: StockComponent},
     { path: 'refresh', component: RefreshComponent},
+    { path: 'tabProduct', component: TabProductComponent}
   ] 
   },
   {path: 'user', component: UserNavbarComponent, canActivate: [AuthGuard],

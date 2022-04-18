@@ -39,4 +39,16 @@ export class ProductService {
   }));
   }
 
+  updateProductStock(data:any){
+    return  this.http.put<any>('http://localhost:3000/product/updateProductStock',data)
+    .pipe(map(data =>{
+      if(data){
+        console.log("updateProductStock working!!!");
+        console.log(data);
+      
+      }
+      return data;
+  }));
+  }
+
 }

@@ -26,7 +26,7 @@ export interface ProductData {
 export class StockComponent implements OnInit ,AfterViewInit {
   Model = "Model";
   Allproduct : any;
-  
+  panelOpenState = false;
   many = 0;
 
   fromDialog = '';
@@ -42,6 +42,10 @@ export class StockComponent implements OnInit ,AfterViewInit {
     ) { }
 
   ngOnInit(): void {
+    this.getAllProduct();
+  }
+
+  getAllProduct(){
     this.ProductService.getAllProduct().subscribe(
       data =>{
 
@@ -101,16 +105,22 @@ export class StockComponent implements OnInit ,AfterViewInit {
     }
   }
 
-  openDialog(): void {
+  //open Dialog for edit stock
+  openDialogStock(row:ProductData): void {  
     const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
-      width: '250px',
-      data: {name: "kirito", animal: "animal"},
+      width: '500px',
+      data: row,
     });
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
+      this.getAllProduct();
       this.fromDialog = result;
     });
+  }
+
+  setting(row:ProductData){
+    alert("setting: "+row.model)
   }
 }
 
@@ -119,12 +129,18 @@ export class StockComponent implements OnInit ,AfterViewInit {
   templateUrl: 'dialog-overview-example-dialog.html',
 })
 export class DialogOverviewExampleDialog {
+
+
+
   constructor(
     public dialogRef: MatDialogRef<DialogOverviewExampleDialog>,
-    @Inject(MAT_DIALOG_DATA) public data: {name:String, animal:String},
+    @Inject(MAT_DIALOG_DATA) public data:ProductData ,
   ) {}
 
   onNoClick(): void {
     this.dialogRef.close();
   }
 }
+
+
+

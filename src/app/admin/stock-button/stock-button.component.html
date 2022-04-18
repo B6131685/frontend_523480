@@ -1,1 +1,23 @@
-<p>stock-button works!</p>
+<div style="text-align: center;">
+   <h1> <p> สินค้า: {{item.model}} </p></h1>  
+
+
+<br><br>
+<mat-form-field appearance="fill">
+    <mat-label>จำนวน</mat-label>
+    <input matInput type="number" oninput="validity.valid||(value='');" min="0" [(ngModel)]="number">
+</mat-form-field>
+<br><br>
+<h4>select mode</h4>
+<mat-form-field appearance="fill">
+  <mat-label>mode</mat-label>
+  <mat-select [formControl]="mode">
+    <mat-option *ngFor="let func of funcForupdate" [value]="func.value" >
+      {{func.viewValue}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+<div style="margin-top: 60px;">
+    <button mat-raised-button color="primary" (click)="updateStock()">submit</button>
+</div>
+</div>

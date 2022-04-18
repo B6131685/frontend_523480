@@ -10,3 +10,14 @@ table {
   td, th {
     width: 25%;
   }
+
+.setting-edit:hover{
+  background-color: dodgerblue;
+  cursor: pointer;
+}
+
+
+.setting-icon:hover{
+  color: dodgerblue;
+  cursor: pointer;
+}
