@@ -154,7 +154,13 @@ export class AddProductComponent implements OnInit {
         this.myForm.nativeElement.reset();
         this.myFormPriceMat.nativeElement.value = 0;
         this.myFormPrice.nativeElement.value = 0;
-        
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'Your work has been saved',
+          showConfirmButton: false,
+          timer: 1500
+        })
         
       },
       err=>{

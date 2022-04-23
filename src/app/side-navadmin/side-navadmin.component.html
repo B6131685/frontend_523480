@@ -2,14 +2,10 @@
   <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" (click)="sidenav.toggle()">
    <mat-icon>menu</mat-icon>
  </button>
- <span>My App</span>
+ <span>IT Shop</span>  
  <span class="example-spacer"></span>
- <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
-   <mat-icon>favorite</mat-icon>
- </button>
- <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
-  <mat-icon>share</mat-icon>
-</button>
+ <span style="margin-right: 20px;">{{decoded.role}} : <span style="color: yellow;">{{decoded.name}}</span></span> 
+ <button mat-flat-button color="warn" (click)="logout()">log out</button>
 </mat-toolbar>
 
 
@@ -37,7 +33,7 @@
                 </mat-panel-title>
               </mat-expansion-panel-header>
 
-              <div class="menu-sidenav"><a routerLink="addSpec">addSpec</a></div>
+              <div class="menu-sidenav"><a routerLink="addSpec">type of Product</a></div>
               <div class="menu-sidenav"><a routerLink="addProduct">addProduct</a></div>
               <div class="menu-sidenav"><a routerLink="stock">Stock</a></div>
               <!-- <div class="menu-sidenav"><a routerLink="tabProduct">Tab</a></div> -->

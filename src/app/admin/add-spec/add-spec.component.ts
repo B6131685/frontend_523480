@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormControl, FormGroup } from '@angular/forms';
 import { SpecModelService } from 'src/app/services/spec-model.service';
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-add-spec',
   templateUrl: './add-spec.component.html',
@@ -49,6 +50,14 @@ export class AddSpecComponent implements OnInit {
 
         this.spec.push(new FormControl('Model')); // 0
         this.spec.push(new FormControl('')); // 1
+
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'ประเภทสินค้าถุกเพิ่มเรียบร้อย',
+          showConfirmButton: false,
+          timer: 1500
+        })
       },
       err=>{
         console.log(err.error.error.message);
@@ -56,6 +65,12 @@ export class AddSpecComponent implements OnInit {
         //data.splice(0, data.length)
         // this.model.value.spec.length = 0;
         // this.model.reset();
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: ' ไม่สามารถเพิ่มประเภทสินค้า',
+        });
+
       }
     )
 

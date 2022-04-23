@@ -15,14 +15,6 @@ export class ProductService {
     return  this.http.post<any>('http://localhost:3000/product/addProduct',Data)
     .pipe(map(data =>{
 
-      Swal.fire({
-        position: 'center',
-        icon: 'success',
-        title: 'Your work has been saved',
-        showConfirmButton: false,
-        timer: 1500
-      })
-      
       return data;
   }));
   }
