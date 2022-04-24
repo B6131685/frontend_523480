@@ -1,3 +1,4 @@
+import { ThrowStmt } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormControl, FormGroup } from '@angular/forms';
 import { SpecModelService } from 'src/app/services/spec-model.service';
@@ -11,18 +12,67 @@ export class AddSpecComponent implements OnInit {
 
   model = new FormGroup({
     name: new FormControl(''),
-    spec: new FormArray([
-      
-    ])
+    spec: new FormArray([])
   });
 
-  constructor(private SpecModelService:SpecModelService) { this.spec.push(new FormControl('Model')); }
+  buttonmode !: boolean;
+  id_for_update !:'';
+  DBSpecs !: any;
+
+  constructor(private SpecModelService:SpecModelService) {
+    //ข้อกำหนดพื้นฐานของสินค้าที่ต้องมี 
+    this.spec.push(new FormControl('Model')); 
+    this.spec.push(new FormControl('Brand')); 
+  }
   
 
   ngOnInit(): void {
+    this.getSpec();
+    this.buttonmode=true;
   }
 
-  get spec() {
+  async getSpec(){
+      await this.SpecModelService.getSpec().subscribe(
+      data =>{  
+        console.log(data);
+        this.DBSpecs = data.data;
+      },
+      error =>{
+        console.log(error);
+      }
+    )
+  }
+
+  selectEdit(item:any){
+    console.log(item);
+    this.buttonmode = false;
+    this.id_for_update = item._id
+    this.spec.clear();
+    // this.model.setValue({name:item.name,spec:item.spec});
+    this.model.patchValue({name:item.name});
+    // this.model.patchValue({spec:item.spec});
+
+    for (let index = 0; index < item.spec.length; index++) {
+      this.spec.push(new FormControl(''));
+      this.spec.at(index).setValue(item.spec[index]);   
+    }
+
+    // this.model.value.name = item.name;
+    // this.model.valueChanges;
+  }
+
+  new(){
+
+    this.buttonmode = true;
+    console.log('new working!!');
+    this.spec.clear();
+    this.model.reset();
+
+    this.spec.push(new FormControl('Model')); // 0
+    this.spec.push(new FormControl('Brand')); // 1
+  }
+
+  get spec() { //for HTML can list spec Array
     return this.model.get('spec') as FormArray;
   }
 
@@ -32,25 +82,23 @@ export class AddSpecComponent implements OnInit {
 
   deleteSubSpec(i : number){
     // this.model.value.spec.splice(i, 1); //เริ่มที่ i แล้วลบไป 1 ตัวคือ ---> เริ่มที่ i ลบตัวที่ i 
+
+    // console.log(i);
     this.spec.removeAt(i) // ??? why 
-    console.log(this.model.value.spec);
+    // console.log(this.model.value.spec);
   }
 
   submit(){
     this.SpecModelService.registerSpec(this.model.value).subscribe(
       data => {
-        console.log(data);
+        // console.log(data);
+        this.model.reset(); // ไม่สามารถ ลบ ข้อมูลใน array spec ได้ต้อง เลยต้องใช้ this.spec.clear();
         this.spec.clear(); // ทำให้ array ว่างเปล่า 
-        
-        // for (let index = 0; index < this.model.value.spec.length; index++) {
-        //   this.deleteSubSpec(index);
-        // }
-
-        this.model.reset();
-
         this.spec.push(new FormControl('Model')); // 0
-        this.spec.push(new FormControl('')); // 1
-
+        this.spec.push(new FormControl('Brand')); // 1
+        this.spec.push(new FormControl('')); // 2
+        this.getSpec();
+        this.new();
         Swal.fire({
           position: 'center',
           icon: 'success',
@@ -73,7 +121,53 @@ export class AddSpecComponent implements OnInit {
 
       }
     )
+  } // close submit
 
+  update(){
+
+  if(this.id_for_update != '' && this.id_for_update != null){
+    this.SpecModelService.update(this.id_for_update,this.model.value).subscribe(
+      data =>{
+        this.ngOnInit();
+        this.new();
+        console.log(data);  
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'อัพเดรตสำเสร็จ',
+          showConfirmButton: false,
+          timer: 1500
+        })      
+      },
+      error =>{
+        console.log(error);
+      }
+    )
+  }  
+    
   }
 
-}
+  reset(){
+    this.spec.clear();
+    this.model.reset();
+    this.spec.push(new FormControl('Model')); // 0
+    this.spec.push(new FormControl('Brand')); // 1
+  }
+
+  DeleteSpec(item:any){
+    console.log('delete this item');
+    console.log(item);
+
+    this.SpecModelService.delete(item._id).subscribe(
+      data =>{
+        this.ngOnInit();
+        this.new();
+        console.log(data);        
+      },
+      error =>{
+        console.log(error);
+      }
+    )
+  }
+
+} // close coponent AddSpecComponent

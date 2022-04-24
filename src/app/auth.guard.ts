@@ -3,12 +3,13 @@ import { ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot, UrlTree } fro
 import { Observable } from 'rxjs';
 import { AuthServicesService } from './services/auth-services.service'
 import { Router } from '@angular/router';
+import { LocalStorageService } from 'angular-web-storage';
 @Injectable({
   providedIn: 'root'
 })
 export class AuthGuard implements CanActivate {
 
-  constructor(private authService: AuthServicesService, private router: Router) { } 
+  constructor(private authService: AuthServicesService, private router: Router,public localStorage:LocalStorageService) { } 
 
   canActivate(
     next: ActivatedRouteSnapshot,
@@ -20,7 +21,10 @@ export class AuthGuard implements CanActivate {
 
   checkUserLogin(route: ActivatedRouteSnapshot, url: any): boolean {
     if (this.authService.checkLogin()) {
-      const userRole = this.authService.roleAs;
+      const userRole = this.authService.roleAs; 
+      // console.log(userRole);
+      // console.log(route.data.role);
+      // console.log(localStorage.getItem('id_token'));
       if (route.data.role && route.data.role.indexOf(userRole) === -1) {
         alert('คุณไม่มีสิทธิ์เข้าถึง')
         this.router.navigate(['login']);
@@ -28,8 +32,8 @@ export class AuthGuard implements CanActivate {
       }
       return true;
     }
-    alert('คุณยังไม่ได้login')
-    //this.router.navigate(['/home2']);
+    // alert('คุณยังไม่ได้login')
+    this.router.navigate(['login']);
     return false;
   }
   

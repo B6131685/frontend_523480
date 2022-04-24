@@ -6,6 +6,9 @@ import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 
+import { DialogEditSpecAtProductComponent } from '../add-product/add-product.component';
+
+
 export interface ProductData { 
   id:String,
   model: String,
@@ -48,22 +51,19 @@ export class StockComponent implements OnInit ,AfterViewInit {
   getAllProduct(){
     this.ProductService.getAllProduct().subscribe(
       data =>{
-
+        console.log(data);
+        
         let arr : ProductData[] = [];
         // let arr2 : ProductData[] = [];
-        let tod : ProductData = {id:"",
-          model: "",
-          brand: "",
-          price: 0,
-          stock: 0,};
-        
+  
+      
         for (let index = 0; index < data.data.length; index++) {
           const element = data.data[index];
-          tod.id = element.id;
-          tod.model = element.spec[0].value;
-          tod.brand = element.spec[1].value;
-          tod.price = element.price;
-          tod.stock = element.number;
+          // tod.id = element.id;
+          // tod.model = element.spec[0].value;
+          // tod.brand = element.spec[1].value;
+          // tod.price = element.price;
+          // tod.stock = element.number;
           
           // console.log("index = "+index+" element = "+element.spec[0].value);
           // arr2.push(tod);          
@@ -79,7 +79,7 @@ export class StockComponent implements OnInit ,AfterViewInit {
           // console.log(arr2);
         }
         
-        this.dataSource = new MatTableDataSource(arr);
+        this.dataSource = new MatTableDataSource(data.data);
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
       },
@@ -119,8 +119,33 @@ export class StockComponent implements OnInit ,AfterViewInit {
     });
   }
 
-  setting(row:ProductData){
-    alert("setting: "+row.model)
+   //open Dialog for edit Product Detail
+   openDialogEditProductDetail(row:any): void {  
+    const dialogRef = this.dialog.open(DialogSettingProduct, {
+      width: '80%',
+      height: '90%',
+      data: row,
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.getAllProduct();
+      this.fromDialog = result;
+    });
+  }
+
+  //open Dialog for add new Product to DB
+  openDialogAddNewProduct(): void {  
+    const dialogRef = this.dialog.open(DialogNewProduct, {
+      width: '80%',
+      height: '90%',
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.getAllProduct();
+      this.fromDialog = result;
+    });
   }
 }
 
@@ -140,6 +165,50 @@ export class DialogOverviewExampleDialog {
   onNoClick(): void {
     this.dialogRef.close();
   }
+}
+
+@Component({
+  selector: 'dialog-edit-detail-product',
+  templateUrl: 'dialog-edit-detail-product.html',
+})
+export class DialogSettingProduct {
+
+
+
+  constructor(
+    public dialogRef: MatDialogRef<DialogSettingProduct>,
+    @Inject(MAT_DIALOG_DATA) public data:ProductData ,
+  ) {}
+
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
+}
+
+@Component({
+  selector: 'dialog-new-product',
+  templateUrl: 'dialog-new-product.html',
+})
+export class DialogNewProduct {
+
+  constructor(
+    public dialogRef: MatDialogRef<DialogNewProduct>,
+    public DialogEditSpec: MatDialogRef<DialogEditSpecAtProductComponent>,
+    @Inject(MAT_DIALOG_DATA) public data:any ,
+  ) {
+    this.DialogEditSpec.afterClosed().subscribe(()=>{
+      console.log("DialogEditSpec close");
+      
+    })
+  }
+
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
+
+  
+
+
 }
 
 

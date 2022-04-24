@@ -8,7 +8,7 @@ import { PublicNavbarComponent } from './navBavcomponents/public-navbar/public-n
 import { AdminNavbarComponent } from './navBavcomponents/admin-navbar/admin-navbar.component';
 import { UserNavbarComponent } from './navBavcomponents/user-navbar/user-navbar.component';
 import { LoginComponentsComponent } from './login-components/login-components.component';
-import { AddProductComponent } from './admin/add-product/add-product.component';
+import { AddProductComponent,DialogEditSpecAtProductComponent } from './admin/add-product/add-product.component';
 import { ShowProductComponent } from './admin/show-product/show-product.component';
 import { ModelProductsComponent } from './products/model-products/model-products.component';
 import { SingupComponent } from './singup/singup.component';
@@ -19,7 +19,7 @@ import { NgRouterOutletCommDirective } from 'ng-router-outlet-comm/lib/ng-router
 import { AddSpecComponent } from './admin/add-spec/add-spec.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatSelectModule} from '@angular/material/select';
-import { StockComponent, DialogOverviewExampleDialog } from './admin/stock/stock.component';
+import { StockComponent, DialogOverviewExampleDialog,DialogSettingProduct, DialogNewProduct } from './admin/stock/stock.component';
 import { RefreshComponent } from './refresh/refresh.component';
 
 //mat
@@ -42,7 +42,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {MatTabsModule} from '@angular/material/tabs';
 import { StockButtonComponent } from './admin/stock-button/stock-button.component';
 import { TabProductComponent } from './admin/tab-product/tab-product.component';
-
+import {MatListModule} from '@angular/material/list';
 @NgModule({
   declarations: [
     AppComponent,
@@ -50,7 +50,7 @@ import { TabProductComponent } from './admin/tab-product/tab-product.component';
     AdminNavbarComponent,
     UserNavbarComponent,
     LoginComponentsComponent,
-    AddProductComponent,
+    AddProductComponent,DialogEditSpecAtProductComponent,
     ShowProductComponent,
     ModelProductsComponent,
     SingupComponent,
@@ -61,6 +61,8 @@ import { TabProductComponent } from './admin/tab-product/tab-product.component';
     DialogOverviewExampleDialog,
     StockButtonComponent,
     TabProductComponent,
+    DialogSettingProduct,
+    DialogNewProduct,
   ],
   imports: [
     BrowserModule,
@@ -88,6 +90,7 @@ import { TabProductComponent } from './admin/tab-product/tab-product.component';
     MatSortModule,
     MatDialogModule,
     MatTabsModule,
+    MatListModule,
   ],
   providers: [
     {

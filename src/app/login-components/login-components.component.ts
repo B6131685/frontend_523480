@@ -57,7 +57,10 @@ export class LoginComponentsComponent implements OnInit {
     );
   }
 
-  
+  resetPassword(){
+    alert("reset password Not alredy dev")
+  }
+
   logout(){
     this.localStorage.clear();
   }

@@ -11,7 +11,7 @@ import { AuthServicesService } from '../services/auth-services.service';
   styleUrls: ['./side-navadmin.component.css']
 })
 export class SideNavadminComponent implements OnInit {
-  mode = new FormControl('push');
+  mode = new FormControl('over');
   panelOpenState = false;
   panelOrderOpenState = false;
   constructor(public localStorage:LocalStorageService,private router: Router,private AuthServicesService:AuthServicesService) { }

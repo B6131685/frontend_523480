@@ -1,7 +1,9 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col" style="background-color: rgb(255, 255, 255);">
-          
+          <div style="margin-top: 80px;">
+            <button mat-raised-button color="primary" (click)="openDialogAddNewProduct()">New Product</button>
+          </div>
         </div>
 
         <div class="col-10" style="background-color: rgb(255, 255, 255);">
@@ -21,13 +23,13 @@
               <!-- ID Column -->
               <ng-container matColumnDef="model">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header> Model </th>
-                <td mat-cell *matCellDef="let row"> {{row.model}} </td>
+                <td mat-cell *matCellDef="let row"> {{row.spec[0].value}} </td>
               </ng-container>
           
               <!-- Progress Column -->
               <ng-container matColumnDef="brand">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header> Brand </th>
-                <td mat-cell *matCellDef="let row"> {{row.brand}} </td>
+                <td mat-cell *matCellDef="let row"> {{row.spec[1].value}} </td>
               </ng-container>
           
               <!-- Name Column -->
@@ -42,11 +44,11 @@
                 <td mat-cell *matCellDef="let row"> 
                   
                   <div style="display: inline-block; width:50px;margin: 8px 8px 8px 0;">
-                    {{row.stock}} 
+                    {{row.number}} 
                   </div> 
-                  <div style="display: inline-block;">  
+                  <!-- <div style="display: inline-block;">  
                   <button  mat-raised-button class="setting-edit" (click)="openDialogStock(row)" >Edit</button>
-                  </div>
+                  </div> -->
               </td>
             </ng-container>
             
@@ -55,9 +57,9 @@
             <ng-container matColumnDef="edit">
               <th mat-header-cell *matHeaderCellDef mat-sort-header> setting </th>
               <td mat-cell *matCellDef="let row"> 
-                  <mat-icon aria-hidden="false" class="setting-icon" aria-label="Example home icon" (click)="setting(row)">settings</mat-icon>
+                  <mat-icon aria-hidden="false" class="setting-icon" aria-label="Example home icon" (click)="openDialogEditProductDetail(row)">settings</mat-icon>
                   <!-- <button mat-raised-button (click)="openDialog(row)">Edit</button> -->
-                </td>
+              </td>
                 
               </ng-container>
            
@@ -74,7 +76,7 @@
                 <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
               </tr>
             </table>
-          
+            
             <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
           </div>
         </div>

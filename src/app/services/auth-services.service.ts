@@ -4,6 +4,7 @@ import { map } from 'rxjs/operators';
 import { LocalStorageService } from 'angular-web-storage';
 import jwtDecode, { JwtPayload } from "jwt-decode";
 import { AdminNavbarComponent } from '../navBavcomponents/admin-navbar/admin-navbar.component';
+import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
@@ -33,6 +34,7 @@ export class AuthServicesService {
         localStorage.setItem('STATE', 'true');
     
         this.loginMode = true;
+        // this.getMe();
       }
       return data;
   }));
@@ -41,6 +43,20 @@ export class AuthServicesService {
   checkLogin(){
     const loggedIn = localStorage.getItem('STATE');
         if (loggedIn == 'true'){
+
+          const idtoken = localStorage.getItem('id_token');
+          if(idtoken!=null){
+            const decoded = jwtDecode<JwtPayload>(idtoken);
+              
+            this.result = decoded;
+            // console.log(result);
+            
+            this.roleAs = this.result.role;
+          }
+          // console.log("decode in checkLogin =");
+          
+          // console.log(decoded);
+        
           return true;
         }
         else{
@@ -50,13 +66,17 @@ export class AuthServicesService {
         }
   }
 
-  getMe(){
+
+  //getMe() not working!!!!!!!
+  // getMe():Observable<any> {
+  getMe():any {
     // console.log("userid for get me  "+ userid);
+    console.log(" get me working");
     
-    return  this.http.post<any>('http://localhost:3000/users/me',{"id":"6231c03eb6ff5fe1c2a24185"})
+    return  this.http.post<any>('http://localhost:3000/users/me',{id:"6231c03eb6ff5fe1c2a24185"})
     .pipe(map(data =>{
       
-        console.log("getMe working!!!");
+        console.log("data from backend get Me");
         console.log(data);
 
     }));

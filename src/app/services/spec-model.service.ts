@@ -34,4 +34,18 @@ export class SpecModelService {
   }));
   }
 
+  delete(id:String){
+    return  this.http.delete<any>('http://localhost:3000/specs/deleteSpec/'+id)
+    .pipe(map(data =>{
+      return data;
+    }));
+  }
+
+  update(id_for_update:String,Data: any){
+    return  this.http.put<any>('http://localhost:3000/specs/updateSpec/'+id_for_update,Data)
+    .pipe(map(data =>{
+      return data;
+    }));
+  }
+
 }

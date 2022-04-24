@@ -9,9 +9,10 @@
         <label for="inputPassword" class="col-sm-3 col-form-label"
           >ประเภทสินค้า</label
         >
-        <div class="col-sm-5">
+        <div class="col-sm-5" >
           <select
             class="form-select"
+            style="display: inline-block;"
             aria-label="Default select example"
             #model
             [(ngModel)]="select"
@@ -19,7 +20,14 @@
           >
             <option *ngFor="let item of specs">{{ item.name }}</option>
           </select>
-        </div>
+         </div>
+          <div class="col-sm-2">
+            <div style="display: inline-block;margin-left: 3px;margin-top: 5px;">
+                <mat-icon aria-hidden="false" class="setting-icon" aria-label="Example home icon" (click)="openDialogEditTypeProduct()">settings</mat-icon>
+            </div>
+          </div>
+          
+        
       </div>
 
       <br /><br />
@@ -45,14 +53,14 @@
           </div>
         
       </div>
-      <div>
+      <!-- <div>
         <mat-form-field appearance="fill" floatLabel="always">
           <mat-label>Amount</mat-label>
           <input matInput type="number" class="example-right-align" #myFormPriceMat min="0" placeholder="0" oninput="validity.valid||(value='');">
           <span matPrefix>$&nbsp;</span>
           <span matSuffix>.00</span>
         </mat-form-field>
-      </div>
+      </div> -->
 
       <br><br>
       <div>

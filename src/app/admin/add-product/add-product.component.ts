@@ -1,4 +1,4 @@
-import { Component, OnInit, Renderer2, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, Renderer2, ViewChild, ElementRef,Inject,Input } from '@angular/core';
 import {
   FormBuilder,
   FormGroup,
@@ -10,8 +10,8 @@ import { SpecModelService } from 'src/app/services/spec-model.service';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
 import { ProductService } from 'src/app/services/product.service';
-
-
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { ProductData } from '../stock/stock.component';
 @Component({
   selector: 'app-add-product',
   templateUrl: './add-product.component.html',
@@ -27,6 +27,8 @@ export class AddProductComponent implements OnInit {
   select ="";
   techSpec : {name:"",value:""}[] = [];
 
+  @Input() item!: any; // get from component that call add product as modal
+
   testmodel = new FormGroup({
     testproduct: new FormArray([
       new FormControl({
@@ -41,10 +43,11 @@ export class AddProductComponent implements OnInit {
   @ViewChild("myForm2") myForm2 !: ElementRef;
   @ViewChild("div") div !: ElementRef;
   @ViewChild("myFormPrice") myFormPrice !: ElementRef;
-  @ViewChild("myFormPriceMat") myFormPriceMat !: ElementRef;
+ 
 
   product = new FormGroup({
     price: new FormControl(''),
+    typespec: new FormControl(''), //เก็บไอดีแล้วทำ $lookup
     spec: new FormArray([]),
     img: new FormControl(''),
   });
@@ -54,19 +57,25 @@ export class AddProductComponent implements OnInit {
     private SpecModelService: SpecModelService,
     private ProductService: ProductService,
     private router: Router,
-  ) {}
+    public dialog: MatDialog,
+  ) {
+   
+    
+  }
 
   ngOnInit(): void {
     
     this.getSpecs();
+    console.log("item product you want to edit");
+    console.log(this.item);
   }
 
   getSpecs() {
     try {
       this.SpecModelService.getSpec().subscribe((data) => {
         this.specs = data.data;
-        this.select = data.data[0].name;
-        this.list = data.data[0].spec;
+        this.select = data.data[0].name; // select เลือกตัวแรกให้แสดงไว้ก่อน
+        this.list = data.data[0].spec; // นำข้อมูลของ สินค้าประเภทไปสร้าง form
 
         for (let index2 = 0; index2 < this.specs[0].spec.length; index2++) {
            this.techSpec.push({
@@ -118,7 +127,7 @@ export class AddProductComponent implements OnInit {
     //  await this.myForm.nativeElement;
     //  this.myForm.nativeElement.value = "";
     this.myForm.nativeElement.reset();
-    this.myFormPriceMat.nativeElement.value = 0;
+    
     this.myFormPrice.nativeElement.value = 0;
         
     // console.log(this.list);
@@ -139,7 +148,6 @@ export class AddProductComponent implements OnInit {
 
   submitProduct(){
     console.log(this.techSpec);
-    console.log("Submit product working!!!");
     
     
     for (let index = 0; index < this.techSpec.length; index++) {
@@ -152,7 +160,6 @@ export class AddProductComponent implements OnInit {
         this.product.reset();  
         this.getSpecs();
         this.myForm.nativeElement.reset();
-        this.myFormPriceMat.nativeElement.value = 0;
         this.myFormPrice.nativeElement.value = 0;
         Swal.fire({
           position: 'center',
@@ -183,6 +190,8 @@ export class AddProductComponent implements OnInit {
     return this.testmodel.value.testproduct.get('nameTechSpec') as FormControl;
   }
 
+
+  // detect img
   onChangeImg(e:any){
     if(e.target.files.length>0){
       const file = e.target.files[0];
@@ -195,5 +204,32 @@ export class AddProductComponent implements OnInit {
     }
   }
 
-  
+  openDialogEditTypeProduct(){
+    const dialogRef = this.dialog.open(DialogEditSpecAtProductComponent, {
+      width: '80%',
+      height: '90%',
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      this.getSpecs();
+    });
+  }
+
+}//close's class AddProductComponent
+
+
+@Component({
+  selector: 'dialog-edit-spec',
+  templateUrl: 'dialog-edit-spec.html',
+})
+export class DialogEditSpecAtProductComponent {
+
+  constructor(
+    public dialogRef: MatDialogRef<DialogEditSpecAtProductComponent>,
+    // @Inject(MAT_DIALOG_DATA) public data:ProductData ,
+  ) {}
+
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
 }
