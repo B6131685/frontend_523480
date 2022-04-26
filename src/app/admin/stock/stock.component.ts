@@ -36,7 +36,7 @@ export class StockComponent implements OnInit ,AfterViewInit {
 
   fromDialog = '';
 
-  displayedColumns: string[] = ['model', 'brand', 'type','stock','price','date','edit'];
+  displayedColumns: string[] = ['model', 'brand', 'type','stock','price','date','edit','delete'];
   dataSource !: MatTableDataSource<any>;
   @ViewChild(MatPaginator) paginator !: MatPaginator;
   @ViewChild(MatSort) sort !: MatSort;
@@ -166,6 +166,23 @@ export class StockComponent implements OnInit ,AfterViewInit {
       this.fromDialog = result;
     });
   }
+
+  deleteProduct(row:any){
+    console.log('delete');
+    console.log(row);
+
+    this.ProductService.delete(row.id).subscribe(
+      data=>{
+        this.ngOnInit();
+      },
+      err=>{
+
+      }
+
+    )
+
+  }
+
 }
 
 @Component({

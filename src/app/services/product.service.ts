@@ -66,4 +66,11 @@ export class ProductService {
   }));
   }
 
+  delete(id:String){
+    return  this.http.delete<any>('http://localhost:3000/product/deleteProduct/'+id)
+    .pipe(map(data =>{
+      return data;
+    }));
+  }
+
 }

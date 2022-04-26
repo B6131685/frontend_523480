@@ -23,6 +23,10 @@ td, th {
   cursor: pointer;
 }
 
+.delete-icon:hover{
+  color: rgb(250, 1, 1);
+  cursor: pointer;
+}
 
 .setting-icon:hover{
   color: dodgerblue;

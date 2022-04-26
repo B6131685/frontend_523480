@@ -57,10 +57,20 @@
             
              <!-- edit Column -->   
             <ng-container matColumnDef="edit">
-              <th mat-header-cell  style="text-align: center;" *matHeaderCellDef #setting> Edit </th>
-              <td mat-cell style="text-align: center;"  *matCellDef="let row" #setting>
+              <th mat-header-cell  style="text-align: center;width: 5%;" *matHeaderCellDef #setting> Edit </th>
+              <td mat-cell style="text-align: center;width: 5%;"  *matCellDef="let row" #setting>
                 
                   <mat-icon aria-hidden="false" class="setting-icon" aria-label="Example home icon" (click)="openDialogEditProductDetail(row)">settings</mat-icon>
+    
+              </td>
+              <!-- <button mat-raised-button (click)="openDialog(row)">Edit</button> -->
+            </ng-container> 
+
+            <ng-container matColumnDef="delete">
+              <th mat-header-cell  style="text-align: center;background-color: crimson;width: 5%;" *matHeaderCellDef #setting> delete </th>
+              <td mat-cell style="text-align: center;width: 5%;"  *matCellDef="let row" #setting>
+                
+                  <mat-icon aria-hidden="false" class="delete-icon" aria-label="Example home icon" (click)="deleteProduct(row)">delete</mat-icon>
     
               </td>
               <!-- <button mat-raised-button (click)="openDialog(row)">Edit</button> -->
