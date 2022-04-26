@@ -89,6 +89,7 @@ export class StockComponent implements OnInit ,AfterViewInit {
         }
         console.log(arr);
         
+        // ที่ต้องสร้าง arr เพราะว่า data ที่ได้มาจาก backend ไม่สามารถ sort หรือ filter กับ Angular MAt อาจเพราะมีชื่อ feild ซ้ำหรือโครงสร้างซ้อนเกินไปรึปล่าว
         this.dataSource = new MatTableDataSource(arr);
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;

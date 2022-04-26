@@ -31,6 +31,18 @@ export class ProductService {
   }));
   }
 
+  getOneProduct(id:String){
+    return  this.http.get<any>('http://localhost:3000/product/getProductOne/'+id)
+    .pipe(map(data =>{
+      if(data){
+        console.log("getProductOne working!!!");
+        // console.log(data);
+      
+      }
+      return data;
+  }));
+  }
+
   updateProductStock(data:any){
     return  this.http.put<any>('http://localhost:3000/product/updateProductStock',data)
     .pipe(map(data =>{
@@ -38,6 +50,17 @@ export class ProductService {
         console.log("updateProductStock working!!!");
         console.log(data);
       
+      }
+      return data;
+  }));
+  }
+
+  updateProductOne(data:any){
+    return  this.http.put<any>('http://localhost:3000/product/updateProductOne',data)
+    .pipe(map(data =>{
+      if(data){
+        console.log("updateProductOne working!!!");
+        console.log(data);
       }
       return data;
   }));

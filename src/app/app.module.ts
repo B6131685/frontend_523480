@@ -43,6 +43,7 @@ import {MatTabsModule} from '@angular/material/tabs';
 import { StockButtonComponent } from './admin/stock-button/stock-button.component';
 import { TabProductComponent } from './admin/tab-product/tab-product.component';
 import {MatListModule} from '@angular/material/list';
+import { UpdateProductComponent, DialogEditSpecAtUpdateProductComponent } from './admin/update-product/update-product.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -63,6 +64,7 @@ import {MatListModule} from '@angular/material/list';
     TabProductComponent,
     DialogSettingProduct,
     DialogNewProduct,
+    UpdateProductComponent,DialogEditSpecAtUpdateProductComponent
   ],
   imports: [
     BrowserModule,
