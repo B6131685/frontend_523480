@@ -16,9 +16,10 @@
             aria-label="Default select example"
             #model
             [(ngModel)]="select"
-            (change)="onChangeModel()"
+            
+            (change)="onChangeModel(item)"
           >
-            <option *ngFor="let item of specs">{{ item.name }}</option>
+            <option *ngFor="let item of specs"  value="{{item | json}}">{{ item.name }}</option>
           </select>
          </div>
           <div class="col-sm-2">
@@ -64,7 +65,7 @@
 
       <br><br>
       <div>
-        <input type="file" class="form-control-file"  (change)="onChangeImg($event)">
+        <input type="file" #myInputImg class="form-control-file"  (change)="onChangeImg($event)">
       </div>
       <br><br>
     

@@ -13,8 +13,10 @@ export interface ProductData {
   id:String,
   model: String,
   brand: String,
+  type: String,
   price: Number,
   stock: Number,
+  date: Date
 }
 
 
@@ -34,7 +36,7 @@ export class StockComponent implements OnInit ,AfterViewInit {
 
   fromDialog = '';
 
-  displayedColumns: string[] = ['model', 'brand', 'price', 'stock', 'edit'];
+  displayedColumns: string[] = ['model', 'brand', 'type','stock','price','date','edit'];
   dataSource !: MatTableDataSource<any>;
   @ViewChild(MatPaginator) paginator !: MatPaginator;
   @ViewChild(MatSort) sort !: MatSort;
@@ -66,20 +68,28 @@ export class StockComponent implements OnInit ,AfterViewInit {
           // tod.stock = element.number;
           
           // console.log("index = "+index+" element = "+element.spec[0].value);
-          // arr2.push(tod);          
+          // arr2.push(tod);
+        
+            const d = new Date()
+            
+          
+          
           arr[index]= {
-            id: element.id,
+          id: element.id,
           model: element.spec[0].value,
           brand: element.spec[1].value,
+          type: element.type.name,
           price: element.price,
           stock: element.number,
+          date: element.date
           };
           
           // console.log("arr2 after push   at index = "+index);
           // console.log(arr2);
         }
+        console.log(arr);
         
-        this.dataSource = new MatTableDataSource(data.data);
+        this.dataSource = new MatTableDataSource(arr);
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
       },
@@ -98,8 +108,16 @@ export class StockComponent implements OnInit ,AfterViewInit {
     console.log("work applyFilter");
     
     const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
+    
+    for (let index = 0; index < this.dataSource.data.length; index++) {
+      console.log(index+': ');
+      console.log(typeof(this.dataSource.data[index].date));
+      console.log(this.dataSource.data[index].date.toString());
+    }
 
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+    // console.log(this.dataSource.data);
+    
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }

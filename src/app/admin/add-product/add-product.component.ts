@@ -24,7 +24,8 @@ export class AddProductComponent implements OnInit {
   list !: any;
   specs!: any;
   reuse!: any;
-  select ="";
+  // select !: {_id:String,spec:[], name:String};
+  select = "";
   techSpec : {name:"",value:""}[] = [];
 
   @Input() item!: any; // get from component that call add product as modal
@@ -43,9 +44,11 @@ export class AddProductComponent implements OnInit {
   @ViewChild("myForm2") myForm2 !: ElementRef;
   @ViewChild("div") div !: ElementRef;
   @ViewChild("myFormPrice") myFormPrice !: ElementRef;
+  @ViewChild("myInputImg") myInputImg !: ElementRef;
  
 
-  product = new FormGroup({
+  // ตัวส่งเข้าไปที่ API
+  product = new FormGroup({ 
     price: new FormControl(''),
     typespec: new FormControl(''), //เก็บไอดีแล้วทำ $lookup
     spec: new FormArray([]),
@@ -58,31 +61,33 @@ export class AddProductComponent implements OnInit {
     private ProductService: ProductService,
     private router: Router,
     public dialog: MatDialog,
-  ) {
-   
-    
-  }
+  ) {}
 
   ngOnInit(): void {
     
-    this.getSpecs();
     console.log("item product you want to edit");
     console.log(this.item);
+    
+    this.getSpecs();
+    
   }
 
   getSpecs() {
     try {
       this.SpecModelService.getSpec().subscribe((data) => {
+        console.log(data);
+        
         this.specs = data.data;
-        this.select = data.data[0].name; // select เลือกตัวแรกให้แสดงไว้ก่อน
-        this.list = data.data[0].spec; // นำข้อมูลของ สินค้าประเภทไปสร้าง form
+        this.select = data.data[0]; // select เลือกตัวแรกให้แสดงไว้ก่อน
+        // this.list = data.data[0].spec; // นำข้อมูลของ สินค้าประเภทไปสร้าง form
 
-        for (let index2 = 0; index2 < this.specs[0].spec.length; index2++) {
-           this.techSpec.push({
-              name: this.list[index2],
-              value: ""   
-           })
-         }
+        //list = [ 'model', 'Brand', 'Size', ...]
+        // for (let index = 0; index < this.specs[0].spec.length; index++) {
+        //    this.techSpec.push({
+        //       name: this.list[index],
+        //       value: ""   
+        //    })
+        // }
 
         if (!data) {
           Swal.fire({
@@ -90,17 +95,23 @@ export class AddProductComponent implements OnInit {
             title: 'Oops...',
             text: 'cannot get Specs data',
           });
-        }
-      });
-    } catch (error) {}
+        }});
+    } catch (error) {
+
+    }
   }
 
-  onChangeModel(){
+  onChangeModel(item:any){
     console.log("change working");
+    // console.log(item);
+    console.log(JSON.parse(this.select));
+    const obj = JSON.parse(this.select);
+    // console.log(this.select);
+    
     this.techSpec = [];
     this.list = [];
     for (let index = 0; index < this.specs.length; index++) {
-      if(this.specs[index].name === this.select){
+      if(this.specs[index].name === obj.name){
          this.list = this.specs[index].spec
          console.log("in for loop");
          console.log(this.specs[index].spec);
@@ -127,10 +138,12 @@ export class AddProductComponent implements OnInit {
     //  await this.myForm.nativeElement;
     //  this.myForm.nativeElement.value = "";
     this.myForm.nativeElement.reset();
-    
-    this.myFormPrice.nativeElement.value = 0;
-        
+    // this.myFormPrice.nativeElement.value = 0;
+    this.myInputImg.nativeElement.value = ''
+    this.myFormPrice.nativeElement.reset;
+    this.product.reset();    
     // console.log(this.list);
+    this.product.value.typespec = obj._id;
   }
 
   onChangeSubSpec(item:any,Form:any,i:number){
@@ -157,10 +170,14 @@ export class AddProductComponent implements OnInit {
     this.ProductService.addProduct(this.product.value).subscribe(
       data => {
         console.log(data);
-        this.product.reset();  
+        this.product.reset();
+        this.techSpec = [];  
         this.getSpecs();
         this.myForm.nativeElement.reset();
         this.myFormPrice.nativeElement.value = 0;
+        this.myInputImg.nativeElement.value = ''
+
+
         Swal.fire({
           position: 'center',
           icon: 'success',
@@ -177,6 +194,7 @@ export class AddProductComponent implements OnInit {
         // this.model.value.spec.length = 0;
         // this.model.reset();
         this.product.reset();
+        this.myInputImg.nativeElement.value = ''
       }
     )
 
@@ -211,7 +229,13 @@ export class AddProductComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
+      this.techSpec = [];
+      this.myForm.nativeElement.reset();
+      this.myFormPrice.nativeElement.value = 0;
+      this.myInputImg.nativeElement.value = ''
+      this.previewLoaded= false;
       this.getSpecs();
+      this.product.reset();
     });
   }
 
