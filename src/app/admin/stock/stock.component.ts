@@ -242,9 +242,6 @@ export class DialogNewProduct {
     this.dialogRef.close();
   }
 
-  
-
-
 }
 
 

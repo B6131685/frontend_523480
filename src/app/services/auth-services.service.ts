@@ -3,7 +3,6 @@ import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { LocalStorageService } from 'angular-web-storage';
 import jwtDecode, { JwtPayload } from "jwt-decode";
-import { AdminNavbarComponent } from '../navBavcomponents/admin-navbar/admin-navbar.component';
 import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
