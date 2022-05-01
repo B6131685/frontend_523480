@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { ProductService } from 'src/app/services/product.service';
 import { FormArray, FormControl, FormGroup } from '@angular/forms';
-
+import Swal from 'sweetalert2';
 export interface stucture {
   name: string
   value: string
@@ -100,6 +100,13 @@ export class UpdateProductComponent implements OnInit {
     this.ProductService.updateProductOne(this.productOne).subscribe(
       data=>{
         console.log(data);
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'Update',
+          showConfirmButton: false,
+          timer: 1500
+        })
       },
       err =>{
         console.log(err);

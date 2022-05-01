@@ -171,6 +171,7 @@ export class AddProductComponent implements OnInit {
       data => {
         console.log(data);
         this.product.reset();
+        this.list = [];
         this.techSpec = [];  
         this.getSpecs();
         this.myForm.nativeElement.reset();
@@ -229,6 +230,7 @@ export class AddProductComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
+      this.list = [];
       this.techSpec = [];
       this.myForm.nativeElement.reset();
       this.myFormPrice.nativeElement.value = 0;

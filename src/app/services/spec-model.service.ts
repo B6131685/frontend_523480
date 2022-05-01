@@ -35,7 +35,7 @@ export class SpecModelService {
   }
 
   delete(id:String){
-    return  this.http.delete<any>('http://localhost:3000/specs/deleteSpec/'+id)
+    return  this.http.delete<any>('http://localhost:3000/specs/deleteSpecAndProduct/'+id)
     .pipe(map(data =>{
       return data;
     }));

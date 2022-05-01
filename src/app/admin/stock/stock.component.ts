@@ -36,7 +36,7 @@ export class StockComponent implements OnInit ,AfterViewInit {
 
   fromDialog = '';
 
-  displayedColumns: string[] = ['model', 'brand', 'type','stock','price','date','edit','delete'];
+  displayedColumns: string[] = ['type','model', 'brand', 'stock','price','date','edit','delete'];
   dataSource !: MatTableDataSource<any>;
   @ViewChild(MatPaginator) paginator !: MatPaginator;
   @ViewChild(MatSort) sort !: MatSort;
@@ -78,7 +78,7 @@ export class StockComponent implements OnInit ,AfterViewInit {
           id: element.id,
           model: element.spec[0].value,
           brand: element.spec[1].value,
-          type: element.type.name,
+          type: element?.type.name,
           price: element.price,
           stock: element.number,
           date: element.date
