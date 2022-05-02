@@ -21,6 +21,7 @@ import {MatSelectModule} from '@angular/material/select';
 import { StockComponent, DialogOverviewExampleDialog,DialogSettingProduct, DialogNewProduct } from './admin/stock/stock.component';
 
 //mat
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import {MatButtonModule} from '@angular/material/button';
 import {MatNativeDateModule} from '@angular/material/core';
 import { MatSliderModule } from '@angular/material/slider';
@@ -38,6 +39,7 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatSortModule} from '@angular/material/sort';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatTabsModule} from '@angular/material/tabs';
+import {MatCommonModule} from '@angular/material/core';
 import { StockButtonComponent } from './admin/stock-button/stock-button.component';
 import { TabProductComponent } from './admin/tab-product/tab-product.component';
 import {MatListModule} from '@angular/material/list';
@@ -90,6 +92,8 @@ import { OrderComponent } from './admin/order/order.component';
     MatDialogModule,
     MatTabsModule,
     MatListModule,
+    MatCommonModule,
+    MatButtonToggleModule,
   ],
   providers: [
     {

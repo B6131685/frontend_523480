@@ -29,7 +29,9 @@ export class LoginComponentsComponent implements OnInit {
    
   }
 
-  
+  home(){
+    this.router.navigate(['home']);
+  }
 
   login(){
     this.auth.loginServices(this.authForm.value).subscribe(

@@ -1,4 +1,4 @@
-<mat-toolbar color="primary">
+<mat-toolbar style="background-color: #303F9F;color: aliceblue;">
   
   <span>IT Shop</span>
   <span class="example-spacer"></span>
@@ -6,8 +6,8 @@
 </mat-toolbar>
 <div class="container-fluid">
   <div class="row">
-    <div class="col-3"></div>
-    <div class="col-6" style="height: 400px;">
+    <div class="col-3" style="background-color: #3F51B5;"></div>
+    <div class="col-6" style="height: 400px;background-color: #3F51B5;">
       <div id="carouselExampleFade" class="carousel slide" data-bs-ride="carousel">
         
         <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel" style="background-color: slategray;">
@@ -34,11 +34,20 @@
 
     </div>
     </div>
-    <div class="col-3"></div>
-    <div class="col-1"></div>
-    <div class="col-10" style="background-color: coral;padding-left: 120px;">
+    <div class="col-3" style="background-color: #3F51B5;" ></div>
+    <!-- menu select type Product -->
+    <div class="col-2" style="  border-right: 1px solid black;border-collapse: collapse;">
+      <mat-button-toggle-group style="display: block;margin-top: 50px;" name="fontStyle" aria-label="Font Style" >
+
+        <mat-button-toggle style="display: block;" (click)="FilterAll()" >All</mat-button-toggle>
+          <mat-button-toggle style="display: block;" (click)="Filter(item)" *ngFor="let item of specModel">{{item.name}}</mat-button-toggle>
+
+      </mat-button-toggle-group>
+    </div>
+    <!-- rgb(72, 94, 202) -->
+    <div class="col-10" style="padding-left: 120px;background-color: #FFFFFF;">
     
-      <div style="margin: 20px;display: inline-block;" *ngFor="let item of product">
+      <div style="margin: 20px;display: inline-block;" *ngFor="let item of filterdata">
         <div class="card" style="width: 18rem;">
           <img src="{{item.img}}" class="card-img-top" alt="..." style="height: 300px;">
           <div class="card-body">
@@ -51,6 +60,6 @@
       </div>
 
     </div>
-    <div class="col-1"></div>
+   
   </div>
 </div>

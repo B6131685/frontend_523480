@@ -17,3 +17,13 @@ img {
     color: rgb(6, 114, 223);
     cursor: pointer;
 }
+
+#menu:active {
+    background-color: #FF4081;
+}
+
+#menu:focus {
+    background-color: #FF4081;
+    border: #FF4081;
+}
+

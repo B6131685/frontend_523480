@@ -1,17 +1,48 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#">User</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav">
-          <a class="nav-link active" aria-current="page" >Home</a>
-          <a class="nav-link" >Features</a>
-          <a class="nav-link" >Pricing</a>
-          <a class="nav-link disabled">Disabled</a>
-        </div>
-      </div>
-    </div>
-  </nav>
+<mat-toolbar style="background-color: #303F9F;color: aliceblue;">
+  <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" (click)="sidenav.toggle()">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span>IT Shop</span>
+  <span class="example-spacer"></span>
+  <span style="margin-right: 20px;">Role : <span style="color: yellow;">User</span></span> 
+  <button mat-flat-button color="warn" (click)="logout()">log out</button>
+</mat-toolbar>
+
+
+
+<mat-sidenav-container class="example-container" style="background-color: rgb(255, 255, 255);">
+  <mat-sidenav #sidenav [mode]="mode.value" opened style="width: 200px;">
+      <!-- <mat-accordion >
+ 
+
+
+        <mat-expansion-panel (opened)="panelOpenState = true"
+                             (closed)="panelOpenState = false"
+                             style="width: 100%;">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              ข้อมูลผู้ใช้
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+
+        </mat-expansion-panel>
+        <mat-expansion-panel (opened)="panelOrderOpenState = true"
+                             (closed)="panelOrderOpenState = false">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              ประวัติการซื้อ
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+
+        </mat-expansion-panel>
+
+      </mat-accordion> -->
+      <mat-button-toggle-group style="display: block;" name="fontStyle" aria-label="Font Style" >
+        <mat-button-toggle style="display: block;" >สินค้า</mat-button-toggle>
+        <mat-button-toggle style="display: block;" >ตะกร้าสินค้า</mat-button-toggle>
+        <mat-button-toggle style="display: block;" >ข้อมูลผู้ใช้</mat-button-toggle>
+        <mat-button-toggle style="display: block;" >ประวัติการซื้อ</mat-button-toggle>
+      </mat-button-toggle-group>
+  </mat-sidenav>
   <router-outlet></router-outlet>
+</mat-sidenav-container>   
