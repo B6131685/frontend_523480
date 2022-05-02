@@ -20,14 +20,14 @@ export class AuthServicesService {
     .pipe(map(data =>{
       if(data){
         
-        console.log(data);
+        // console.log(data);
         const decoded = jwtDecode<JwtPayload>(data.access_token);
-        console.log("after decode");
-        console.log(decoded);
+        // console.log("after decode");
+        // console.log(decoded);
         this.result = decoded;
         this.roleAs = this.result.role;
         this.nameUser = this.result.name;
-        console.log(this.roleAs);
+        // console.log(this.roleAs);
         
         localStorage.setItem('id_token', data.access_token);
         localStorage.setItem('STATE', 'true');
@@ -59,26 +59,11 @@ export class AuthServicesService {
           return true;
         }
         else{
-          alert('คุณยังไม่ได้ login');
+          
           return false;
           //alert('คุณยังไม่ได้ login');
         }
   }
 
-
-  //getMe() not working!!!!!!!
-  // getMe():Observable<any> {
-  getMe():any {
-    // console.log("userid for get me  "+ userid);
-    console.log(" get me working");
-    
-    return  this.http.post<any>('http://localhost:3000/users/me',{id:"6231c03eb6ff5fe1c2a24185"})
-    .pipe(map(data =>{
-      
-        console.log("data from backend get Me");
-        console.log(data);
-
-    }));
-  }
 
 }

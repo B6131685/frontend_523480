@@ -4,7 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { PublicNavbarComponent, DialogHomeShowProduct } from './navBavcomponents/public-navbar/public-navbar.component';
+import { PublicNavbarComponent } from './navBavcomponents/public-navbar/public-navbar.component';
 import { UserNavbarComponent } from './navBavcomponents/user-navbar/user-navbar.component';
 import { LoginComponentsComponent } from './login-components/login-components.component';
 import { AddProductComponent,DialogEditSpecAtProductComponent } from './admin/add-product/add-product.component';
@@ -45,10 +45,13 @@ import { TabProductComponent } from './admin/tab-product/tab-product.component';
 import {MatListModule} from '@angular/material/list';
 import { UpdateProductComponent, DialogEditSpecAtUpdateProductComponent } from './admin/update-product/update-product.component';
 import { OrderComponent } from './admin/order/order.component';
+import { DialogShowProductComponent } from './customer/dialog-show-product/dialog-show-product.component';
+import { HomeComponent,DialogHomeShowProduct } from './customer/home/home.component';
+import { ProfileComponent } from './customer/profile/profile.component';
 @NgModule({
   declarations: [
     AppComponent,
-    PublicNavbarComponent,DialogHomeShowProduct,
+    PublicNavbarComponent,
     UserNavbarComponent,
     LoginComponentsComponent,
     AddProductComponent,DialogEditSpecAtProductComponent,
@@ -63,7 +66,8 @@ import { OrderComponent } from './admin/order/order.component';
     TabProductComponent,
     DialogSettingProduct,
     DialogNewProduct,
-    UpdateProductComponent,DialogEditSpecAtUpdateProductComponent, OrderComponent
+    UpdateProductComponent,DialogEditSpecAtUpdateProductComponent, OrderComponent, DialogShowProductComponent, 
+    HomeComponent,DialogHomeShowProduct, ProfileComponent,
   ],
   imports: [
     BrowserModule,

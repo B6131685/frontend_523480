@@ -12,15 +12,16 @@ import { AddSpecComponent } from './admin/add-spec/add-spec.component';
 import { StockComponent } from './admin/stock/stock.component';
 import { TabProductComponent } from './admin/tab-product/tab-product.component';
 import { OrderComponent } from './admin/order/order.component';
-
+import { HomeComponent } from './customer/home/home.component';
 import { AuthGuard } from './auth.guard';
-
+import { ProfileComponent } from './customer/profile/profile.component';
 const routes: Routes = [
   // {path: 'admin/addProduct', component: AddProductComponent,canActivate: [AuthGuard],
   // data: {
   //   role: 'admin'
   // }},
   {path: 'home', component: PublicNavbarComponent},
+  
   {path: 'login', component: LoginComponentsComponent},
   {path: 'singup', component: SingupComponent},
   {path: 'admin', component: SideNavadminComponent, canActivate: [AuthGuard],
@@ -38,7 +39,10 @@ const routes: Routes = [
   {path: 'user', component: UserNavbarComponent, canActivate: [AuthGuard],
   data: {
     role: 'customer'
-  }},
+  }, children: [
+    {path: 'home', component: HomeComponent},
+    {path: 'profile', component: ProfileComponent},
+  ]},
   {path: '',
     redirectTo: 'home',
     pathMatch: 'full'

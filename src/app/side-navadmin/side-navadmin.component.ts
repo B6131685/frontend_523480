@@ -20,8 +20,8 @@ export class SideNavadminComponent implements OnInit {
   decoded !:any;
   ngOnInit(): void {
     this.decoded = this.AuthServicesService.result;
-    console.log("decode get from AuthServices");
-    console.log(this.decoded);
+    // console.log("decode get from AuthServices");
+    // console.log(this.decoded);
     // console.log(this.user);
     
   }

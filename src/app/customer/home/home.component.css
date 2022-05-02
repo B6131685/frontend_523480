@@ -1,0 +1,16 @@
+
+img {
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+}
+
+.pageview-icon{
+    color: rgb(12, 12, 12);
+    font-size: 30px;
+}
+
+.pageview-icon:hover{
+    color: rgb(6, 114, 223);
+    cursor: pointer;
+}

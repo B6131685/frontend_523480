@@ -44,11 +44,11 @@ export class LoginComponentsComponent implements OnInit {
              this.decoded = jwtDecode<JwtPayload>(id_token);
         }
         if(this.decoded.role === "admin"){
-          this.router.navigate(['admin']);
+          this.router.navigate(['admin/stock']);
         }
 
         if(this.decoded.role === "customer"){
-          this.router.navigate(['user']);
+          this.router.navigate(['user/home']);
         }
         console.log("after login working");
       },
