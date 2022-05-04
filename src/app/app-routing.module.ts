@@ -15,6 +15,7 @@ import { OrderComponent } from './admin/order/order.component';
 import { HomeComponent } from './customer/home/home.component';
 import { AuthGuard } from './auth.guard';
 import { ProfileComponent } from './customer/profile/profile.component';
+import { EditContentComponent } from './admin/edit-content/edit-content.component';
 const routes: Routes = [
   // {path: 'admin/addProduct', component: AddProductComponent,canActivate: [AuthGuard],
   // data: {
@@ -34,6 +35,7 @@ const routes: Routes = [
     { path: 'stock', component: StockComponent},
     { path: 'tabProduct', component: TabProductComponent},
     { path: 'order', component: OrderComponent},
+    { path: 'editContent', component: EditContentComponent},
   ] 
   },
   {path: 'user', component: UserNavbarComponent, canActivate: [AuthGuard],

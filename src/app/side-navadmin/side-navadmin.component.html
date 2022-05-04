@@ -1,4 +1,4 @@
-<mat-toolbar color="primary">
+<mat-toolbar fixed color="primary" >
   <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" (click)="sidenav.toggle()">
    <mat-icon>menu</mat-icon>
  </button>
@@ -22,7 +22,7 @@
                 </mat-panel-title>
               </mat-expansion-panel-header>
 
-              <div class="menu-sidenav">Home</div> 
+              <div class="menu-sidenav"><a routerLink="editContent">จัดการหน้าเว็บ</a></div> 
             </mat-expansion-panel>
 
             <mat-expansion-panel (opened)="panelOpenState = true"

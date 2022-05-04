@@ -48,6 +48,7 @@ import { OrderComponent } from './admin/order/order.component';
 import { DialogShowProductComponent } from './customer/dialog-show-product/dialog-show-product.component';
 import { HomeComponent,DialogHomeShowProduct } from './customer/home/home.component';
 import { ProfileComponent } from './customer/profile/profile.component';
+import { EditContentComponent } from './admin/edit-content/edit-content.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -67,7 +68,7 @@ import { ProfileComponent } from './customer/profile/profile.component';
     DialogSettingProduct,
     DialogNewProduct,
     UpdateProductComponent,DialogEditSpecAtUpdateProductComponent, OrderComponent, DialogShowProductComponent, 
-    HomeComponent,DialogHomeShowProduct, ProfileComponent,
+    HomeComponent,DialogHomeShowProduct, ProfileComponent, EditContentComponent,
   ],
   imports: [
     BrowserModule,
