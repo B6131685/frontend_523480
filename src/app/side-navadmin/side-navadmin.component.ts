@@ -5,6 +5,7 @@ import { FormControl, FormGroup, Validators} from '@angular/forms'
 import { Router } from '@angular/router';
 import jwtDecode, { JwtPayload } from "jwt-decode";
 import { AuthServicesService } from '../services/auth-services.service';
+import { ShopPageService } from '../services/shop-page.service';
 @Component({
   selector: 'app-side-navadmin',
   templateUrl: './side-navadmin.component.html',
@@ -14,12 +15,23 @@ export class SideNavadminComponent implements OnInit {
   mode = new FormControl('over');
   panelOpenState = false;
   panelOrderOpenState = false;
-  constructor(public localStorage:LocalStorageService,private router: Router,private AuthServicesService:AuthServicesService) { }
+  constructor(  
+                public localStorage:LocalStorageService,
+                private router: Router,
+                private AuthServicesService:AuthServicesService,
+                private ShopPageService:ShopPageService) { }
 
   user!:any;
   decoded !:any;
+  nameShop !: String;
   ngOnInit(): void {
     this.decoded = this.AuthServicesService.result;
+    this.ShopPageService.getShopPage().subscribe(
+      data=>{
+        this.nameShop = data.nameShop;
+      }
+    )
+    
     // console.log("decode get from AuthServices");
     // console.log(this.decoded);
     // console.log(this.user);

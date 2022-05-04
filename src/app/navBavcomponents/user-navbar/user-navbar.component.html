@@ -3,7 +3,7 @@
   <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" (click)="sidenav.toggle()" *ngIf="state">
     <mat-icon>menu</mat-icon>
   </button>
-  <span>IT Shop</span>
+  <span>{{nameShop}}</span>
   <span  class="example-spacer"></span>
   <span style="margin-right: 20px;">{{decoded.role}} : <span style="color: yellow;">{{decoded.name}}</span></span> 
   <button mat-flat-button color="warn" (click)="logout()">log out</button>

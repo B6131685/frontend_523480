@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { ShopPageService } from 'src/app/services/shop-page.service';
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-edit-content',
   templateUrl: './edit-content.component.html',
@@ -45,6 +46,18 @@ export class EditContentComponent implements OnInit {
     )
   }
 
+  editNameShop(){
+    console.log(typeof(this.shopPage.nameShop));
+    
+    this.ShopPageService.editNameShop({newName:this.shopPage.nameShop.toString()}).subscribe(
+      data=>{
+       
+        this.getShopPage();
+        window.location.reload();
+      }
+    )
+  }
+
   onChangeImg(e:any){
     if(e.target.files.length>0){
       const file = e.target.files[0];
@@ -68,7 +81,15 @@ export class EditContentComponent implements OnInit {
           this.myInputImg.nativeElement.value = '';
           this.ShopPageService.getShopPage().subscribe(
             data =>{
+              Swal.fire({
+                position: 'center',
+                icon: 'success',
+                title: 'Your work has been saved',
+                showConfirmButton: false,
+                timer: 1500
+              });
               this.shopPage = data;
+              
             }
           )
         }

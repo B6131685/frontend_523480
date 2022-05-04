@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators} from '@angular/forms';
 import { LocalStorageService } from 'angular-web-storage';
 import { Router } from '@angular/router';
 import { AuthServicesService } from 'src/app/services/auth-services.service';
+import { ShopPageService } from 'src/app/services/shop-page.service';
 @Component({
   selector: 'app-user-navbar',
   templateUrl: './user-navbar.component.html',
@@ -14,10 +15,16 @@ export class UserNavbarComponent implements OnInit {
   panelOrderOpenState = false;
   decoded !:any;
   state !: boolean;
-  constructor(public localStorage:LocalStorageService,private router: Router,private AuthServicesService:AuthServicesService) { }
+  nameShop !: String;
+  constructor(private ShopPageService:ShopPageService,public localStorage:LocalStorageService,private router: Router,private AuthServicesService:AuthServicesService) { }
   ngOnInit(): void {
     this.decoded = this.AuthServicesService.result;
     this.state = this.AuthServicesService.checkLogin();
+    this.ShopPageService.getShopPage().subscribe(
+      data=>{
+        this.nameShop = data.nameShop;
+      }
+    )
   }
 
   logout(){

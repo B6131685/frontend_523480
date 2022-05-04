@@ -30,4 +30,11 @@ export class ShopPageService {
       return data;
     }));
   }
+
+  editNameShop(obj:{newName:String}){
+    return  this.http.put<any>('http://localhost:3000/shopPage/editNameShop',obj)
+    .pipe(map(data =>{
+      return data;
+    }));
+  }
 }

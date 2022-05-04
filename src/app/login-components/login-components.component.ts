@@ -4,6 +4,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { AuthServicesService } from '../services/auth-services.service';
 import { LocalStorageService } from 'angular-web-storage';
 import jwtDecode, { JwtPayload } from "jwt-decode";
+import { ShopPageService } from '../services/shop-page.service';
 @Component({
   selector: 'app-login-components',
   templateUrl: './login-components.component.html',
@@ -12,6 +13,7 @@ import jwtDecode, { JwtPayload } from "jwt-decode";
 export class LoginComponentsComponent implements OnInit {
 
    decoded !: any;
+   nameShop !: String;
   @Output() messageEvent = new EventEmitter<string>();
 
   authForm = new FormGroup({
@@ -19,9 +21,14 @@ export class LoginComponentsComponent implements OnInit {
     password: new FormControl(''),
   })
 
-  constructor(private router: Router, private auth:AuthServicesService,public localStorage:LocalStorageService,) { }
+  constructor(private router: Router, private auth:AuthServicesService,public localStorage:LocalStorageService,private ShopPageService:ShopPageService) { }
 
   ngOnInit(): void {
+    this.ShopPageService.getShopPage().subscribe(
+      data=>{
+        this.nameShop = data.nameShop
+      }
+    )
   }
 
   singUp(){

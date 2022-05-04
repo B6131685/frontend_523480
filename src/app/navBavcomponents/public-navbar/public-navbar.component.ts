@@ -4,6 +4,7 @@ import { ProductService } from 'src/app/services/product.service';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { SpecModelService } from 'src/app/services/spec-model.service';
 import { AuthServicesService } from 'src/app/services/auth-services.service';
+import { ShopPageService } from 'src/app/services/shop-page.service';
 @Component({
   selector: 'app-public-navbar',
   templateUrl: './public-navbar.component.html',
@@ -12,15 +13,23 @@ import { AuthServicesService } from 'src/app/services/auth-services.service';
 export class PublicNavbarComponent implements OnInit {
 
   product!:any;
+  nameShop !: String;
   specModel!:any;
   filterdata !: any;
   constructor(private router: Router,
               private ProductService:ProductService,
               public dialog: MatDialog,
               private SpecModelService:SpecModelService,
-              private AuthServicesService:AuthServicesService) { }
+              private AuthServicesService:AuthServicesService,
+              private ShopPageService:ShopPageService) { }
 
   ngOnInit(): void {
+
+    this.ShopPageService.getShopPage().subscribe(
+      data =>{
+        this.nameShop = data.nameShop;
+      }
+    )
 
     if(this.AuthServicesService.checkLogin()){
       this.router.navigate(['user/home']);
