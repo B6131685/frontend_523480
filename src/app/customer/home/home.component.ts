@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { ProductService } from 'src/app/services/product.service';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { SpecModelService } from 'src/app/services/spec-model.service';
+import { ShopPageService } from 'src/app/services/shop-page.service';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -12,12 +13,24 @@ export class HomeComponent implements OnInit {
   product!:any;
   specModel!:any;
   filterdata !: any;
+  shopPage : { _id:String ,nameShop:String, img:String[] }={ _id:'', nameShop:'', img:[]}
+  showImg !: String;
+  indexImg = 0;
   constructor(private router: Router,
               private ProductService:ProductService,
               public dialog: MatDialog,
-              private SpecModelService:SpecModelService) { }
+              private SpecModelService:SpecModelService,
+              private ShopPageService:ShopPageService) { }
 
   ngOnInit(): void {
+    this.ShopPageService.getShopPage().subscribe(
+      data =>{
+        this.shopPage = data;
+        console.log(this.shopPage);
+        this.showImg = data.img[0]
+      }
+    )
+
     this.ProductService.getAllProduct().subscribe(
       data =>{
         this.product = data.data
@@ -31,6 +44,19 @@ export class HomeComponent implements OnInit {
     )  
   }
 
+  PreviousImg(){
+    if(this.indexImg != 0){
+      this.indexImg -= 1;
+      this.showImg = this.shopPage.img[this.indexImg];
+    }
+  }
+
+  NextImg(){
+    if(this.indexImg != this.shopPage.img.length -1){
+      this.indexImg += 1;
+      this.showImg = this.shopPage.img[this.indexImg];
+    }
+  }
 
   FilterAll(){
     this.filterdata = this.product;
