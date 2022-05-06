@@ -47,7 +47,7 @@ import { UpdateProductComponent, DialogEditSpecAtUpdateProductComponent } from '
 import { OrderComponent } from './admin/order/order.component';
 import { DialogShowProductComponent } from './customer/dialog-show-product/dialog-show-product.component';
 import { HomeComponent,DialogHomeShowProduct } from './customer/home/home.component';
-import { ProfileComponent } from './customer/profile/profile.component';
+import { ProfileComponent, addresssDialog } from './customer/profile/profile.component';
 import { EditContentComponent } from './admin/edit-content/edit-content.component';
 @NgModule({
   declarations: [
@@ -67,8 +67,11 @@ import { EditContentComponent } from './admin/edit-content/edit-content.componen
     TabProductComponent,
     DialogSettingProduct,
     DialogNewProduct,
-    UpdateProductComponent,DialogEditSpecAtUpdateProductComponent, OrderComponent, DialogShowProductComponent, 
-    HomeComponent,DialogHomeShowProduct, ProfileComponent, EditContentComponent,
+    UpdateProductComponent,DialogEditSpecAtUpdateProductComponent, 
+    OrderComponent, DialogShowProductComponent, 
+    HomeComponent,DialogHomeShowProduct, 
+    ProfileComponent,addresssDialog,
+    EditContentComponent,
   ],
   imports: [
     BrowserModule,

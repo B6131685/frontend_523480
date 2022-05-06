@@ -65,5 +65,22 @@ export class AuthServicesService {
         }
   }
 
+  getDataUserByID(){
+    const idtoken = localStorage.getItem('id_token');
+    let id
+    if(idtoken!=null){
+      const decoded = jwtDecode<JwtPayload>(idtoken);
+        
+      this.result = decoded;
+      // console.log(result);
+      
+      id = this.result.id;
+    }
+    return  this.http.get<any>('http://localhost:3000/users/me/'+id)
+    .pipe(map(data =>{
+      return data;
+    }));
+  }
+
 
 }

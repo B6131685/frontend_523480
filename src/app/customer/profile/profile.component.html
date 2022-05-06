@@ -1,1 +1,53 @@
-<p>profile works!</p>
+<div class="container-fluid">
+    <div class="row">
+      <div class="col">
+        
+      </div>
+      <div class="col" style="background-color:antiquewhite;">
+        <div style="margin-top: 50px;width: 100%; border: 2px solid #000000;padding: 20px;">
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label fs-5">Email</label>
+                <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com" [(ngModel)]="user.email">
+            </div>
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label fs-5">Name</label>
+                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="name surname" [(ngModel)]="user.name">
+            </div>
+            <hr>
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label fs-5">Address</label>
+                
+                
+                <div class="card" *ngFor="let item of user.location;let i = index" style="padding: 10px;margin-top: 15px;">
+                    <div class="card-body" style="text-align: center;">
+                        <div>
+                            <span>{{item?.address}}</span><span> {{item?.area}}</span><span> {{item?.postcode}}</span>
+                        </div>
+                        <div style="margin-top: 10px;">
+                            <button type="button" class="btn btn-danger fs-6" (click)="deleteSubLocation(i)" >delete</button>
+                        </div>
+                    </div>
+                </div>    
+
+                <div class="card" style="border-style: dashed;border-width: 5px;margin-top: 20px;">
+                    <div class="card-body" style="text-align: center;">
+                        <button type="button" class="btn btn-primary" (click)="openDialog()" >add address</button>
+                    </div>
+                </div>
+                <hr>
+                <div style="text-align: center;">
+                    <button type="button" class="btn btn-primary">save</button>
+                </div>
+            </div>
+        </div>
+        <div style="margin-top: 50px;width: 100%; border: 2px solid #000000;padding: 20px;">
+            <div style="text-align: center;">
+                <button type="button" class="btn btn-primary">change password</button>
+            </div>
+        </div>
+      </div>
+      <div class="col">
+        {{user | json}}
+      </div>
+    </div>
+  </div>
