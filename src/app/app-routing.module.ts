@@ -16,6 +16,7 @@ import { HomeComponent } from './customer/home/home.component';
 import { AuthGuard } from './auth.guard';
 import { ProfileComponent } from './customer/profile/profile.component';
 import { EditContentComponent } from './admin/edit-content/edit-content.component';
+import { CartComponent } from './customer/cart/cart.component';
 const routes: Routes = [
   // {path: 'admin/addProduct', component: AddProductComponent,canActivate: [AuthGuard],
   // data: {
@@ -44,6 +45,7 @@ const routes: Routes = [
   }, children: [
     {path: 'home', component: HomeComponent},
     {path: 'profile', component: ProfileComponent},
+    {path: 'cart', component: CartComponent},
   ]},
   {path: '',
     redirectTo: 'home',

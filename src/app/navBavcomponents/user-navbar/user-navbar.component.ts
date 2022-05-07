@@ -4,6 +4,7 @@ import { LocalStorageService } from 'angular-web-storage';
 import { Router } from '@angular/router';
 import { AuthServicesService } from 'src/app/services/auth-services.service';
 import { ShopPageService } from 'src/app/services/shop-page.service';
+import { CartService } from 'src/app/services/cart.service';
 @Component({
   selector: 'app-user-navbar',
   templateUrl: './user-navbar.component.html',
@@ -16,7 +17,7 @@ export class UserNavbarComponent implements OnInit {
   decoded !:any;
   state !: boolean;
   nameShop !: String;
-  constructor(private ShopPageService:ShopPageService,public localStorage:LocalStorageService,private router: Router,private AuthServicesService:AuthServicesService) { }
+  constructor(public CartService:CartService, private ShopPageService:ShopPageService,public localStorage:LocalStorageService,private router: Router,private AuthServicesService:AuthServicesService) { }
   ngOnInit(): void {
     this.decoded = this.AuthServicesService.result;
     this.state = this.AuthServicesService.checkLogin();

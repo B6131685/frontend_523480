@@ -40,6 +40,7 @@ import {MatSortModule} from '@angular/material/sort';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatCommonModule} from '@angular/material/core';
+import {MatBadgeModule} from '@angular/material/badge';
 import { StockButtonComponent } from './admin/stock-button/stock-button.component';
 import { TabProductComponent } from './admin/tab-product/tab-product.component';
 import {MatListModule} from '@angular/material/list';
@@ -49,6 +50,7 @@ import { DialogShowProductComponent } from './customer/dialog-show-product/dialo
 import { HomeComponent,DialogHomeShowProduct } from './customer/home/home.component';
 import { ProfileComponent, addresssDialog } from './customer/profile/profile.component';
 import { EditContentComponent } from './admin/edit-content/edit-content.component';
+import { CartComponent } from './customer/cart/cart.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -72,6 +74,7 @@ import { EditContentComponent } from './admin/edit-content/edit-content.componen
     HomeComponent,DialogHomeShowProduct, 
     ProfileComponent,addresssDialog,
     EditContentComponent,
+    CartComponent,
   ],
   imports: [
     BrowserModule,
@@ -102,6 +105,7 @@ import { EditContentComponent } from './admin/edit-content/edit-content.componen
     MatListModule,
     MatCommonModule,
     MatButtonToggleModule,
+    MatBadgeModule,
   ],
   providers: [
     {

@@ -14,3 +14,7 @@
 .example-spacer {
   flex: 1 1 auto;
 }
+
+.icon-cart:hover{
+  color: #FF4081;
+}

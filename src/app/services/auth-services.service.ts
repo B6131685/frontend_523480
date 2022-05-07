@@ -10,6 +10,8 @@ import { Observable } from 'rxjs';
 export class AuthServicesService {
 
   loginMode = false;
+
+  idUser!:String;
   roleAs!: string;
   result !: any;
   nameUser!:String;
@@ -48,8 +50,8 @@ export class AuthServicesService {
             const decoded = jwtDecode<JwtPayload>(idtoken);
               
             this.result = decoded;
-            // console.log(result);
-            
+            // console.log(this.result);
+            this.idUser = this.result.id;
             this.roleAs = this.result.role;
           }
           // console.log("decode in checkLogin =");
