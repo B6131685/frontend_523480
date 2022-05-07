@@ -3,6 +3,7 @@ import { FormControl, FormGroup, FormArray, Validators } from '@angular/forms';
 import { AddressFreeAPIService } from '../services/address-free-api.service';
 import { SingUpService } from '../services/sing-up.service';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-singup',
   templateUrl: './singup.component.html',
@@ -101,6 +102,13 @@ export class SingupComponent implements OnInit {
     this.singUpService.registerData(this.profileForm.value).subscribe(
       data => {
         console.log(data);
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'sing up success',
+          showConfirmButton: false,
+          timer: 1500
+        });
         this.profileForm.value.address.length = 0;
         this.profileForm.reset();
       },
