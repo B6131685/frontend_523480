@@ -5,8 +5,8 @@
   </button>
   <span>{{nameShop}}</span>
   <span  class="example-spacer"></span>
-  <div style="margin-right: 20px;margin-top: 10px;" class="icon-cart" >
-    <mat-icon matBadge="{{CartService.number}}" matBadgeColor="warn">shopping_cart</mat-icon>
+  <div style="margin-right: 20px;margin-top: 10px;" class="icon-cart" *ngIf="iconcart">
+    <mat-icon matBadge="{{CartService.AllQuantity}}" matBadgeColor="warn" (click)="cart()">shopping_cart</mat-icon>
   </div>
   <!-- Include text description of the icon's meaning for screen-readers -->
   <span style="margin-right: 20px;">{{decoded.role}} : <span style="color: yellow;">{{decoded.name}}</span></span> 
@@ -20,7 +20,7 @@
   <mat-sidenav #sidenav [mode]="mode.value" opened style="width: 200px;">
       <mat-button-toggle-group style="display: block;" name="fontStyle" aria-label="Font Style" >
         <mat-button-toggle style="display: block;" (click)="home()" >สินค้า</mat-button-toggle>
-        <mat-button-toggle style="display: block;" routerLink="cart">ตะกร้าสินค้า</mat-button-toggle>
+        <mat-button-toggle style="display: block;" (click)="cart()">ตะกร้าสินค้า</mat-button-toggle>
         <mat-button-toggle style="display: block;" (click)="profile()">ข้อมูลผู้ใช้</mat-button-toggle>
         <mat-button-toggle style="display: block;" >ประวัติการซื้อ</mat-button-toggle>
       </mat-button-toggle-group>

@@ -12,6 +12,7 @@ import { CartService } from 'src/app/services/cart.service';
 })
 export class UserNavbarComponent implements OnInit {
   mode = new FormControl('over');
+  iconcart = true;
   panelOpenState = false;
   panelOrderOpenState = false;
   decoded !:any;
@@ -19,6 +20,7 @@ export class UserNavbarComponent implements OnInit {
   nameShop !: String;
   constructor(public CartService:CartService, private ShopPageService:ShopPageService,public localStorage:LocalStorageService,private router: Router,private AuthServicesService:AuthServicesService) { }
   ngOnInit(): void {
+    this.iconcart = true;
     this.decoded = this.AuthServicesService.result;
     this.state = this.AuthServicesService.checkLogin();
     this.ShopPageService.getShopPage().subscribe(
@@ -26,17 +28,27 @@ export class UserNavbarComponent implements OnInit {
         this.nameShop = data.nameShop;
       }
     )
+    this.CartService.getCart({idUser:this.AuthServicesService.idUser}).subscribe()
   }
 
   logout(){
     this.localStorage.clear();
     this.router.navigate(['login']);
+    this.iconcart = false;
   }
   home(){
+    
     this.router.navigate(['user/home']);
+    this.iconcart = true;
   }
 
   profile(){
     this.router.navigate(['user/profile']);
+    this.iconcart = true;
+  }
+
+  cart(){
+    this.iconcart = false;
+    this.router.navigate(['user/cart']);
   }
 }

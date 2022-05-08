@@ -1,3 +1,28 @@
 .card-cart{
     font-size: 20px;
 }
+
+.icon-delete:hover{
+    color: red;
+    cursor: pointer;
+}
+
+.div-contentname{
+    width: 150px;
+    font-size: 20px;
+    display: inline-block;
+}
+
+.content{
+    display: inline-block;
+    font-size: 20px;
+    width: 100px;
+    text-align: right;
+}
+
+.Unit{
+    display: inline-block;
+    font-size: 20px;
+    text-align: center;
+    width: 100px;
+}

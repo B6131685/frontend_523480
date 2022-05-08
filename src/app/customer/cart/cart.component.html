@@ -3,7 +3,7 @@
     <div class="col-12" style="height: 50px;">
 
     </div>
-    <div class="col-8" >
+    <div class="col-8"  >
       <div class="card" style="width: 90%; margin-left: 60px;"> 
         
         <div class="card-body">
@@ -12,7 +12,7 @@
           <div
             class="card"
             style="margin-top: 30px"
-            *ngFor="let item of cartData?.list"
+            *ngFor="let item of cartData?.list; index as i"
           >
             <div class="card-body card-cart">
               <div class="row">
@@ -22,16 +22,16 @@
                 <div class="col">
                     <p>Model: {{item.idProduct.spec[0].value}}</p>
                     <p>Brand: {{item.idProduct.spec[1].value}}</p>
-                    <p><mat-icon>delete</mat-icon></p>
+                    <p><mat-icon (click)="delete(i)" class="icon-delete">delete</mat-icon></p>
 
                 </div>
                 <div class="col">
-                        <button class="btn btn-primary" style="margin: 0 10px;">-</button>
-                        <div style="display: inline-block; width:130px;">
+                        <button class="btn btn-primary" style="margin: 0 10px;" (click)="subQuantityCart(i)">-</button>
+                        <div style="display: inline-block; width:130px;text-align: center;">
                             <div>Quantity: {{item.quantity}}  </div>
                         </div>
-                        <button class="btn btn-primary" style="margin: 0 10px;">+</button>
-                        <div style="margin-left:70px;margin-top: 20px;"> XXX bth.</div>
+                        <button class="btn btn-primary" style="margin: 0 10px;" (click)="plusQuantityCart(i)">+</button>
+                        <div style="margin-left:70px;margin-top: 20px;"> {{item.idProduct.price * item.quantity}} bth.</div>
                     
                 </div>
               </div>
@@ -40,25 +40,60 @@
         </div>
       </div>
     </div>
-    <div class="col-4" style="background-color: rgb(231, 107, 107)">
+    <div class="col-4" >
         <div class="card" style="width: 90%;">
             <div class="card-body">
               <div class="card-title"><h1>Summary</h1></div>
               <hr style="height: 3px;">
 
               <div style="margin-top: 40px;">
-                  <div>
-                    Products: 200 bth.
+                <!-- <div>
+                    <div class="div-contentname">
+                        All item:
+                    </div>
+                    <div class="content">
+                        {{CartService.AllQuantity}}
+                    </div> 
+                    <div class="Unit">
+                        item
+                    </div> 
+                </div>   -->
+                <div>
+                    <div class="div-contentname">
+                        All Products:
+                    </div>
+                    <div class="content">
+                        {{summary}}
+                    </div>
+                    <div class="Unit">
+                        bth.
+                    </div>
                   </div>
                   <div>
-                    Shipping: 0 bth.
+                      <div class="div-contentname">
+                        Shipping: 
+                      </div>
+                      <div class="content">
+                        0 
+                      </div>
+                      <div class="Unit">
+                        bth.
+                      </div>
                   </div>
               </div>
               <hr style="height: 3px;">
               <div>
-                Total amount: 200 bth.
+                <div class="div-contentname">
+                    Total amount: 
+                  </div>
+                  <div class="content">
+                    {{summary}} 
+                  </div>
+                  <div class="Unit">
+                    bth.
+                  </div>
               </div>
-              <button class="btn btn-primary">check out cart</button>
+              <button class="btn btn-primary" style="margin-top: 30px;" (click)="checkOutCart()">check out cart</button>
             </div>
           </div>
     </div>
