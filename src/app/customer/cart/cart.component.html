@@ -1,1 +1,66 @@
-<p>cart works!</p>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12" style="height: 50px;">
+
+    </div>
+    <div class="col-8" >
+      <div class="card" style="width: 90%; margin-left: 60px;"> 
+        
+        <div class="card-body">
+            <div class="card-title"><h1>Cart</h1></div>
+            <hr style="height: 3px;">
+          <div
+            class="card"
+            style="margin-top: 30px"
+            *ngFor="let item of cartData?.list"
+          >
+            <div class="card-body card-cart">
+              <div class="row">
+                <div class="col">
+                    <img src="{{item.idProduct.img}}" style="width:120px;height: 150px;">
+                </div>
+                <div class="col">
+                    <p>Model: {{item.idProduct.spec[0].value}}</p>
+                    <p>Brand: {{item.idProduct.spec[1].value}}</p>
+                    <p><mat-icon>delete</mat-icon></p>
+
+                </div>
+                <div class="col">
+                        <button class="btn btn-primary" style="margin: 0 10px;">-</button>
+                        <div style="display: inline-block; width:130px;">
+                            <div>Quantity: {{item.quantity}}  </div>
+                        </div>
+                        <button class="btn btn-primary" style="margin: 0 10px;">+</button>
+                        <div style="margin-left:70px;margin-top: 20px;"> XXX bth.</div>
+                    
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-4" style="background-color: rgb(231, 107, 107)">
+        <div class="card" style="width: 90%;">
+            <div class="card-body">
+              <div class="card-title"><h1>Summary</h1></div>
+              <hr style="height: 3px;">
+
+              <div style="margin-top: 40px;">
+                  <div>
+                    Products: 200 bth.
+                  </div>
+                  <div>
+                    Shipping: 0 bth.
+                  </div>
+              </div>
+              <hr style="height: 3px;">
+              <div>
+                Total amount: 200 bth.
+              </div>
+              <button class="btn btn-primary">check out cart</button>
+            </div>
+          </div>
+    </div>
+  </div>
+</div>
