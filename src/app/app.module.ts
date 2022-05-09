@@ -48,7 +48,7 @@ import { UpdateProductComponent, DialogEditSpecAtUpdateProductComponent } from '
 import { OrderComponent } from './admin/order/order.component';
 import { DialogShowProductComponent } from './customer/dialog-show-product/dialog-show-product.component';
 import { HomeComponent,DialogHomeShowProduct } from './customer/home/home.component';
-import { ProfileComponent, addresssDialog } from './customer/profile/profile.component';
+import { ProfileComponent, addresssDialog, EmailDialog, PasswordDialog } from './customer/profile/profile.component';
 import { EditContentComponent } from './admin/edit-content/edit-content.component';
 import { CartComponent } from './customer/cart/cart.component';
 @NgModule({
@@ -72,7 +72,7 @@ import { CartComponent } from './customer/cart/cart.component';
     UpdateProductComponent,DialogEditSpecAtUpdateProductComponent, 
     OrderComponent, DialogShowProductComponent, 
     HomeComponent,DialogHomeShowProduct, 
-    ProfileComponent,addresssDialog,
+    ProfileComponent,addresssDialog,EmailDialog, PasswordDialog,
     EditContentComponent,
     CartComponent,
   ],

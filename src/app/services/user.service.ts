@@ -12,8 +12,15 @@ export class UserService {
 
 
   
-  EditUserByID(item:{_id:String,email:String, location:{postcode:Number,area:'', address:String}[], name:String}){
-    return  this.http.put<any>('http://localhost:3000/users/editProfile',item)
+  EditUserByID(obj:{_id:String,email:String, location:{postcode:Number,area:'', address:String}[], name:String}){
+    return  this.http.put<any>('http://localhost:3000/users/editProfile',obj)
+    .pipe(map(data =>{
+      return data;
+    }));
+  }
+
+  changeEmail(obj:{email:String, userID:String}){
+    return  this.http.put<any>('http://localhost:3000/users/changeEmail',obj)
     .pipe(map(data =>{
       return data;
     }));

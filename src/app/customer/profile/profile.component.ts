@@ -78,8 +78,71 @@ export class ProfileComponent implements OnInit {
     console.log(this.user.location[index]);
     this.user.location.splice(index,1);
   }
+
+  changeEmail(){
+    
+      const dialogRef = this.dialog.open(EmailDialog, {
+        width: '600px',
+      });
+  
+      dialogRef.afterClosed().subscribe(result => {
+      });
+    }
+
+  changePassword(){
+    const dialogRef = this.dialog.open(PasswordDialog, {
+      width: '600px',
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+    });
+  }  
 }
 
+@Component({
+  selector: 'dialog-email',
+  templateUrl: 'dialog-email.html',
+})
+export class EmailDialog {
+  newEmail!:String;
+  obj:{email:String,userID:String} = {email:'',userID:this.AuthServicesService.idUser}
+  constructor(
+    private AuthServicesService:AuthServicesService,
+    private UserService:UserService,
+    public dialogRef: MatDialogRef<EmailDialog>,
+    // @Inject(MAT_DIALOG_DATA) public data: DialogData,
+  ) {}
+
+  changeEmail(): void {
+    // console.log(this.newEmail);
+    console.log(this.AuthServicesService.idUser);
+    if(this.obj.email != ''){
+      this.UserService.changeEmail(this.obj).subscribe()
+      this.dialogRef.close();
+    }else(
+      alert('โปรดกรอกอีเมลใหม่')
+    )
+  }
+
+
+}
+
+
+
+@Component({
+  selector: 'dialog-password',
+  templateUrl: 'dialog-password.html',
+})
+export class PasswordDialog {
+  constructor(
+    public dialogRef: MatDialogRef<PasswordDialog>,
+    // @Inject(MAT_DIALOG_DATA) public data: DialogData,
+  ) {}
+
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
+}
 
 @Component({
   selector: 'dialog-overview-example-dialog',

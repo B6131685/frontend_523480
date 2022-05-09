@@ -5,6 +5,7 @@ import { AuthServicesService } from '../services/auth-services.service';
 import { LocalStorageService } from 'angular-web-storage';
 import jwtDecode, { JwtPayload } from "jwt-decode";
 import { ShopPageService } from '../services/shop-page.service';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 @Component({
   selector: 'app-login-components',
   templateUrl: './login-components.component.html',
@@ -21,7 +22,12 @@ export class LoginComponentsComponent implements OnInit {
     password: new FormControl(''),
   })
 
-  constructor(private router: Router, private auth:AuthServicesService,public localStorage:LocalStorageService,private ShopPageService:ShopPageService) { }
+  constructor(
+    private router: Router, 
+    private auth:AuthServicesService,
+    public localStorage:LocalStorageService,
+    private ShopPageService:ShopPageService,
+    public dialog: MatDialog,) { }
 
   ngOnInit(): void {
     this.ShopPageService.getShopPage().subscribe(
@@ -67,10 +73,32 @@ export class LoginComponentsComponent implements OnInit {
   }
 
   resetPassword(){
-    alert("reset password Not alredy dev")
+    const dialogRef = this.dialog.open(ResetPasswordDialog, {
+      width: '600px',
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+    });
   }
 
   logout(){
     this.localStorage.clear();
+  }
+  
+}
+
+
+@Component({
+  selector: 'dialog-reset-password',
+  templateUrl: 'dialog-reset-password.html',
+})
+export class ResetPasswordDialog {
+  constructor(
+    public dialogRef: MatDialogRef<ResetPasswordDialog>,
+    // @Inject(MAT_DIALOG_DATA) public data: DialogData,
+  ) {}
+
+  onNoClick(): void {
+    this.dialogRef.close();
   }
 }
