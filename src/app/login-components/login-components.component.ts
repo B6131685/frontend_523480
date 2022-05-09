@@ -6,6 +6,7 @@ import { LocalStorageService } from 'angular-web-storage';
 import jwtDecode, { JwtPayload } from "jwt-decode";
 import { ShopPageService } from '../services/shop-page.service';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-login-components',
   templateUrl: './login-components.component.html',
@@ -63,11 +64,15 @@ export class LoginComponentsComponent implements OnInit {
         if(this.decoded.role === "customer"){
           this.router.navigate(['user/home']);
         }
-        console.log("after login working");
+        
       },
       err =>{
-        console.log(err);
-        
+        // console.log(err);
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: err.error.error.message,
+        })
       }
     );
   }

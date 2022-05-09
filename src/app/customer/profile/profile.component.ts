@@ -134,13 +134,24 @@ export class EmailDialog {
   templateUrl: 'dialog-password.html',
 })
 export class PasswordDialog {
+  obj:{oldPassword:String,newPassword:String,userID:String} = {oldPassword:'',newPassword:'',userID:this.AuthServicesService.idUser}
   constructor(
+    private AuthServicesService:AuthServicesService,
+    private UserService:UserService,
     public dialogRef: MatDialogRef<PasswordDialog>,
     // @Inject(MAT_DIALOG_DATA) public data: DialogData,
   ) {}
 
-  onNoClick(): void {
-    this.dialogRef.close();
+  changePassword(): void {
+    console.log(this.obj);
+    this.UserService.changePassword(this.obj).subscribe(
+      data =>{
+        this.dialogRef.close();
+      },
+      error =>{
+
+      }
+    )
   }
 }
 

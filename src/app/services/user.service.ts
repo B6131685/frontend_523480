@@ -26,4 +26,10 @@ export class UserService {
     }));
   }
 
+  changePassword(obj:{oldPassword:String,newPassword:String,userID:String}){
+    return  this.http.put<any>('http://localhost:3000/users/changePassword',obj)
+    .pipe(map(data =>{
+      return data;
+    }));
+  }
 }
