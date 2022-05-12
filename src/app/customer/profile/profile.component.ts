@@ -146,10 +146,21 @@ export class PasswordDialog {
     console.log(this.obj);
     this.UserService.changePassword(this.obj).subscribe(
       data =>{
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'password is changed',
+          showConfirmButton: false,
+          timer: 1500
+        })
         this.dialogRef.close();
       },
       error =>{
-
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: error.error.error.message,
+        })
       }
     )
   }

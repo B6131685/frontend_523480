@@ -13,6 +13,7 @@ export class EditContentComponent implements OnInit {
   shopPage = { 
     _id:String,
     nameShop:String,
+    shipping:Number,
     img: []
   };
   previewLoaded: boolean = false;
@@ -26,6 +27,7 @@ export class EditContentComponent implements OnInit {
   getShopPage(){
     this.ShopPageService.getShopPage().subscribe(
       data =>{
+        console.log(data);
         this.shopPage = data;
       }
     )
@@ -95,6 +97,10 @@ export class EditContentComponent implements OnInit {
         }
       )
     }
+  }
+
+  editShipping(){
+
   }
 
 }

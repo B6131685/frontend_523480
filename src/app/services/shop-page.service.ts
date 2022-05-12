@@ -11,6 +11,8 @@ export class ShopPageService {
   getShopPage(){
     return  this.http.get<any>('http://localhost:3000/shopPage/getShopPage')
     .pipe(map(data =>{
+      // console.log(data);
+      
       return data.data;
   }));
   }
@@ -32,6 +34,13 @@ export class ShopPageService {
   }
 
   editNameShop(obj:{newName:String}){
+    return  this.http.put<any>('http://localhost:3000/shopPage/editNameShop',obj)
+    .pipe(map(data =>{
+      return data;
+    }));
+  }
+
+  editShipping(obj:{shipping:Number}){
     return  this.http.put<any>('http://localhost:3000/shopPage/editNameShop',obj)
     .pipe(map(data =>{
       return data;

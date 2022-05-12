@@ -26,10 +26,11 @@ export class CartService {
     return  this.http.put<any>('http://localhost:3000/cart/getcart',data)
     .pipe(map(data =>{
       if(data){
-        this.AllQuantity = 0;
-        for (let index = 0; index < data.data.list.length; index++) {
-          this.AllQuantity += data.data.list[index].quantity;
-        }
+        this.AllQuantity = data.data.list.length;
+        // for (let index = 0; index < data.data.list.length; index++) {
+        //   // this.AllQuantity += data.data.list[index];
+        //   this.AllQuantity += (index+1);
+        // }
       }
       return data;
   }));
