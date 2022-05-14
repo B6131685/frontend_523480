@@ -51,6 +51,7 @@ import { HomeComponent,DialogHomeShowProduct } from './customer/home/home.compon
 import { ProfileComponent, addresssDialog, EmailDialog, PasswordDialog } from './customer/profile/profile.component';
 import { EditContentComponent } from './admin/edit-content/edit-content.component';
 import { CartComponent } from './customer/cart/cart.component';
+import { ChartCheckoutComponent } from './customer/chart-checkout/chart-checkout.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -75,6 +76,7 @@ import { CartComponent } from './customer/cart/cart.component';
     ProfileComponent,addresssDialog,EmailDialog, PasswordDialog,
     EditContentComponent,
     CartComponent,
+    ChartCheckoutComponent,
   ],
   imports: [
     BrowserModule,
