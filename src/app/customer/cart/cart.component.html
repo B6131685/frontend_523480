@@ -22,6 +22,7 @@
                 <div class="col">
                     <p>Model: {{item.idProduct.spec[0].value}}</p>
                     <p>Brand: {{item.idProduct.spec[1].value}}</p>
+                    <p>Stock: {{item.idProduct.number}}</p>
                     <p><mat-icon (click)="delete(i)" class="icon-delete">delete</mat-icon></p>
 
                 </div>
@@ -74,7 +75,7 @@
                         Shipping: 
                       </div>
                       <div class="content">
-                        0 
+                        {{shipping}} 
                       </div>
                       <div class="Unit">
                         bth.
@@ -87,7 +88,7 @@
                     Total amount: 
                   </div>
                   <div class="content">
-                    {{summary}} 
+                    {{summary + shipping}} 
                   </div>
                   <div class="Unit">
                     bth.

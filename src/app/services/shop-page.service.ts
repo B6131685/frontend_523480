@@ -6,6 +6,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ShopPageService {
 
+
   constructor(private http:HttpClient) { }
 
   getShopPage(){
@@ -33,7 +34,7 @@ export class ShopPageService {
     }));
   }
 
-  editNameShop(obj:{newName:String}){
+  editNameShop(obj:{newName:String,shipping:Number, cost_shipping: Number}){
     return  this.http.put<any>('http://localhost:3000/shopPage/editNameShop',obj)
     .pipe(map(data =>{
       return data;

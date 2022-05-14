@@ -14,6 +14,7 @@ export class EditContentComponent implements OnInit {
     _id:String,
     nameShop:String,
     shipping:Number,
+    cost_shipping:Number,
     img: []
   };
   previewLoaded: boolean = false;
@@ -49,9 +50,9 @@ export class EditContentComponent implements OnInit {
   }
 
   editNameShop(){
-    console.log(typeof(this.shopPage.nameShop));
+    // console.log(typeof(this.shopPage.nameShop));
     
-    this.ShopPageService.editNameShop({newName:this.shopPage.nameShop.toString()}).subscribe(
+    this.ShopPageService.editNameShop({newName:this.shopPage.nameShop.toString(),shipping: Number(this.shopPage.shipping),cost_shipping: Number(this.shopPage.cost_shipping)}).subscribe(
       data=>{
        
         this.getShopPage();
