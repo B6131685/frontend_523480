@@ -52,6 +52,8 @@ import { ProfileComponent, addresssDialog, EmailDialog, PasswordDialog } from '.
 import { EditContentComponent } from './admin/edit-content/edit-content.component';
 import { CartComponent } from './customer/cart/cart.component';
 import { ChartCheckoutComponent } from './customer/chart-checkout/chart-checkout.component';
+import { OrdercustomerComponent } from './customer/ordercustomer/ordercustomer.component';
+import { SlipComponent } from './customer/slip/slip.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -77,6 +79,8 @@ import { ChartCheckoutComponent } from './customer/chart-checkout/chart-checkout
     EditContentComponent,
     CartComponent,
     ChartCheckoutComponent,
+    OrdercustomerComponent,
+    SlipComponent,
   ],
   imports: [
     BrowserModule,

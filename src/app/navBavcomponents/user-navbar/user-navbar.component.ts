@@ -34,21 +34,20 @@ export class UserNavbarComponent implements OnInit {
   logout(){
     this.localStorage.clear();
     this.router.navigate(['login']);
-    this.iconcart = false;
   }
   home(){
-    
     this.router.navigate(['user/home']);
-    this.iconcart = true;
   }
 
   profile(){
     this.router.navigate(['user/profile']);
-    this.iconcart = true;
   }
 
   cart(){
-    this.iconcart = false;
     this.router.navigate(['user/cart']);
+  }
+
+  order(){
+    this.router.navigate(['user/order']);
   }
 }

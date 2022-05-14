@@ -9,7 +9,9 @@ export class CartService {
 
   AllQuantity=0;
   
-  constructor(private http:HttpClient,private AuthServices:AuthServicesService) { }
+  constructor(
+    private http:HttpClient,
+    private AuthServices:AuthServicesService) { }
 
   updateCart(data:{ idUser:String, idProduct:String, quantity:Number}){
     return  this.http.put<any>('http://localhost:3000/cart/updateCart',data)

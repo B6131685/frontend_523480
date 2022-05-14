@@ -2,6 +2,7 @@ import { Component, OnInit,OnDestroy } from '@angular/core';
 import { CartService } from 'src/app/services/cart.service';
 import { AuthServicesService } from 'src/app/services/auth-services.service';
 import { ShopPageService } from 'src/app/services/shop-page.service';
+import { OrderService } from 'src/app/services/order.service';
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
@@ -18,7 +19,8 @@ export class CartComponent implements OnInit,OnDestroy {
   constructor(
      private ShopPageService:ShopPageService,
      public CartService:CartService,
-     private AuthServices:AuthServicesService 
+     private AuthServices:AuthServicesService,
+     private OrderService:OrderService 
   ) { }
 
   ngOnInit(): void {
@@ -84,7 +86,16 @@ export class CartComponent implements OnInit,OnDestroy {
 
   checkOutCart(){
     console.log('check Out Cart');
-    
+    this.OrderService.addOrder({
+      idCart: this.cartData._id,
+      idUser: this.AuthServices.idUser,
+      
+    }).subscribe(
+      data=>{
+        console.log(data);
+        this.getCart();
+      }
+    )
   }
 
   delete(index:any){
