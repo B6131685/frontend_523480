@@ -54,6 +54,7 @@ import { CartComponent } from './customer/cart/cart.component';
 import { ChartCheckoutComponent } from './customer/chart-checkout/chart-checkout.component';
 import { OrdercustomerComponent } from './customer/ordercustomer/ordercustomer.component';
 import { SlipComponent } from './customer/slip/slip.component';
+import { DetailForSlipComponent } from './customer/detail-for-slip/detail-for-slip.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -81,6 +82,7 @@ import { SlipComponent } from './customer/slip/slip.component';
     ChartCheckoutComponent,
     OrdercustomerComponent,
     SlipComponent,
+    DetailForSlipComponent,
   ],
   imports: [
     BrowserModule,

@@ -17,14 +17,14 @@ export class CartService {
     return  this.http.put<any>('http://localhost:3000/cart/updateCart',data)
     .pipe(map(data =>{
       if(data){
-        this.getCart({idUser:this.AuthServices.idUser}).subscribe();
+        this.getCartByUser({idUser:this.AuthServices.idUser}).subscribe();
         console.log(data);
       }
       return data;
   }));
   }
 
-  getCart(data:{idUser:String}){
+  getCartByUser(data:{idUser:String}){
     return  this.http.put<any>('http://localhost:3000/cart/getcart',data)
     .pipe(map(data =>{
       if(data){
@@ -34,6 +34,15 @@ export class CartService {
         //   this.AllQuantity += (index+1);
         // }
       }
+      return data;
+  }));
+  }
+
+  
+  getCartByIDCart(id:String){
+    return  this.http.get<any>('http://localhost:3000/cart/getcart/'+id)
+    .pipe(map(data =>{
+
       return data;
   }));
   }

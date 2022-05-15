@@ -46,7 +46,7 @@ export class CartComponent implements OnInit,OnDestroy {
 
   getCart(){
     const id = this.AuthServices.idUser
-    this.CartService.getCart({idUser:id}).subscribe(
+    this.CartService.getCartByUser({idUser:id}).subscribe(
       data=>{
         console.log(data);
         this.summary = 0;
@@ -86,16 +86,23 @@ export class CartComponent implements OnInit,OnDestroy {
 
   checkOutCart(){
     console.log('check Out Cart');
-    this.OrderService.addOrder({
-      idCart: this.cartData._id,
-      idUser: this.AuthServices.idUser,
-      
-    }).subscribe(
-      data=>{
-        console.log(data);
-        this.getCart();
-      }
-    )
+    if(this.cartData.list.length == 0){
+      alert('ไม่มีรายการสินค้า')
+    }else{
+      alert('เพิ่มรายการสินค้าเรียบร้อย')
+      this.OrderService.addOrder({
+        idCart: this.cartData._id,
+        idUser: this.AuthServices.idUser,
+        
+      }).subscribe(
+        data=>{
+          console.log(data);
+          this.getCart();
+        }
+      )
+    }
+
+  
   }
 
   delete(index:any){

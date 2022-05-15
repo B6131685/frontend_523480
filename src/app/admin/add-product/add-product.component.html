@@ -69,7 +69,7 @@
       </div>
       <br><br>
     
-      <img *ngIf="previewLoaded" class="img-thumbnail" [src]="this.product.value.img" style="height:150px;">
+      <img *ngIf="previewLoaded" class="img-thumbnail" #dilog [src]="this.product.value.img" style="height:150px;" >
       <br><br>
       <button type="button"  (click)="submitProduct()" class="btn btn-primary">submit</button>
 

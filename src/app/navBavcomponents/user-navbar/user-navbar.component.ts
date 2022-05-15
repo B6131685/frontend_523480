@@ -28,7 +28,7 @@ export class UserNavbarComponent implements OnInit {
         this.nameShop = data.nameShop;
       }
     )
-    this.CartService.getCart({idUser:this.AuthServicesService.idUser}).subscribe()
+    this.CartService.getCartByUser({idUser:this.AuthServicesService.idUser}).subscribe()
   }
 
   logout(){
