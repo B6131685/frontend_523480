@@ -3,6 +3,8 @@ import { CartService } from 'src/app/services/cart.service';
 import { AuthServicesService } from 'src/app/services/auth-services.service';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { ShopPageService } from 'src/app/services/shop-page.service';
+import { OrderService } from 'src/app/services/order.service';
+import Swal from 'sweetalert2';
 @Component({
 selector: 'app-detail-for-slip',
   templateUrl: './detail-for-slip.component.html',
@@ -16,7 +18,9 @@ export class DetailForSlipComponent implements OnInit {
   shopPage!:any;
   cost_shipping = 0;
   @Input() idCart !: String;
+  @Input() order !: any;
   constructor(
+    private OrderService:OrderService,
     private ShopPageService:ShopPageService,
     private AuthServices:AuthServicesService,
     private CartService:CartService,
@@ -40,7 +44,7 @@ export class DetailForSlipComponent implements OnInit {
 
   getCart(){
     this.getShopPage();
-    this.CartService.getCartByIDCart(this.idCart).subscribe(
+    this.CartService.getCartByIDCart(this.order.idCart).subscribe(
       data=>{ 
         this.cart = data.data
         // console.log(this.cart);
@@ -49,11 +53,8 @@ export class DetailForSlipComponent implements OnInit {
            this.sum += (this.cart.list[index].quantity * this.cart.list[index].idProduct.price);
         }
         if(this.shopPage?.shipping >= this.sum ){
-          console.log('sum น้อยกว่า');
-          
           this.cost_shipping = this.shopPage.cost_shipping;
         }else{
-          console.log('sum มากกว่า');
           this.cost_shipping = 0;
           this.sum += this.cost_shipping;
         }
@@ -78,7 +79,21 @@ export class DetailForSlipComponent implements OnInit {
     if(!this.slipImg){
       alert('กรุณาแนปหลักฐานการชำระเงิน')
     }else{
-      alert('โปรดรอแอดมินตรวจสอบหลักฐาน')
+      // alert('โปรดรอแอดมินตรวจสอบหลักฐาน')
+      this.OrderService.updateImgSlip({idOrder:this.order._id,img:this.slipImg}).subscribe(
+        data=>{
+          Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'order has been updated',
+            showConfirmButton: false,
+            timer: 1500
+          })
+        },
+        error=>{
+
+        }
+      )
     }
   }
 

@@ -3,6 +3,7 @@ import { CartService } from 'src/app/services/cart.service';
 import { AuthServicesService } from 'src/app/services/auth-services.service';
 import { ShopPageService } from 'src/app/services/shop-page.service';
 import { OrderService } from 'src/app/services/order.service';
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
@@ -96,8 +97,16 @@ export class CartComponent implements OnInit,OnDestroy {
         
       }).subscribe(
         data=>{
-          console.log(data);
+          // console.log(data);
+          
           this.getCart();
+          Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'order has been saved',
+            showConfirmButton: false,
+            timer: 1500
+          })
         }
       )
     }
