@@ -36,6 +36,14 @@ export class OrderService {
     }));
   }
 
+  getAllOrderHaveSlip(){
+    return  this.http.get<any>('http://localhost:3000/order/getAllOrderHaveslip')
+    .pipe(map(data =>{
+
+      return data;
+    }));
+  }
+
   updateImgSlip(obj:{idOrder:String,img:String, address:String}){
     return  this.http.put<any>('http://localhost:3000/order/updateSlip',obj)
     .pipe(map(data =>{
@@ -43,5 +51,7 @@ export class OrderService {
       return data;
     }));
   }
+
+  
 
 }

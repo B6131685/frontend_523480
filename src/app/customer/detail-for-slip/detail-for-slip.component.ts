@@ -135,6 +135,16 @@ export class DetailForSlipComponent implements OnInit {
     }
   }
 
+  approve(){
+    console.log('approve');
+    console.log(this.order);
+  }
+
+  notApproved(){
+    console.log('Not approve');
+    console.log(this.order);
+  }
+
   openDialog(): void {
     const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
       width: '400px',

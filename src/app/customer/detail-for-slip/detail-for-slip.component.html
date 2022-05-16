@@ -42,7 +42,7 @@
         </div>
         
         <div class="col" style="border-left: 2px solid black;">
-            <div style="padding-left:30px;background-color: aqua;width: 250px;" >
+            <div style="padding-left:30px;width: 250px;" >
                 <div *ngIf="order.slipStatus === false">
                     <div>
                         <input type="file" #myInputImg class="form-control-file"  (change)="onChangeImg($event)">
@@ -56,10 +56,15 @@
                     <br><br>
                     <img class="img-thumbnail dilog" [src]="order.slipVerification" style="height:150px;" (click)="openDialog2()">
                     <br><br>
+                    <div>
+
+                        <button style="margin-right:20px;" type="button" class="btn btn-primary" (click)="approve()">ถูกต้อง</button>
+
+                        <button type="button" class="btn btn-danger" (click)="notApproved()">ไม่ถูกต้อง</button>
+                    </div>
                 </div>
             </div>
             
         </div>
-            
     </div>
 </div>
