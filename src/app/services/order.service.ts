@@ -36,7 +36,7 @@ export class OrderService {
     }));
   }
 
-  updateImgSlip(obj:{idOrder:String,img:String}){
+  updateImgSlip(obj:{idOrder:String,img:String, address:String}){
     return  this.http.put<any>('http://localhost:3000/order/updateSlip',obj)
     .pipe(map(data =>{
 

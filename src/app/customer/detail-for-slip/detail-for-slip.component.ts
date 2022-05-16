@@ -4,6 +4,7 @@ import { AuthServicesService } from 'src/app/services/auth-services.service';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { ShopPageService } from 'src/app/services/shop-page.service';
 import { OrderService } from 'src/app/services/order.service';
+import { UserService } from 'src/app/services/user.service';
 import Swal from 'sweetalert2';
 @Component({
 selector: 'app-detail-for-slip',
@@ -11,15 +12,21 @@ selector: 'app-detail-for-slip',
   styleUrls: ['./detail-for-slip.component.css']
 })
 export class DetailForSlipComponent implements OnInit {
+  
+  userData!:any;
   slipImg!:any;
   previewLoaded!:Boolean
   cart!: any;
   sum = 0;
   shopPage!:any;
   cost_shipping = 0;
+
+  selectAddress = '';
+  address = '';
   @Input() idCart !: String;
   @Input() order !: any;
   constructor(
+    private UserService:UserService,
     private OrderService:OrderService,
     private ShopPageService:ShopPageService,
     private AuthServices:AuthServicesService,
@@ -28,15 +35,25 @@ export class DetailForSlipComponent implements OnInit {
   ) { }
 
   async ngOnInit(): Promise<void> {
-    
+    this.getUser();
     this.getCart();
   }
+
+  getUser(){
+    this.AuthServices.getDataUserByID().subscribe(
+      data=>{
+        console.log(data.data);
+        this.userData =data.data
+      }
+    )
+  }
+
 
   getShopPage(){
     //get shiipping
     this.ShopPageService.getShopPage().subscribe(
       data=>{
-        console.log(data);
+        // console.log(data);
         this.shopPage = data
       }
     )
@@ -76,16 +93,27 @@ export class DetailForSlipComponent implements OnInit {
   }
 
   submit(){
-    if(!this.slipImg){
+    if(this.selectAddress == ''){
+      alert('กรุณาเลือกที่อยู่')
+    }else if(!this.slipImg){
       alert('กรุณาแนปหลักฐานการชำระเงิน')
     }else{
+
+      console.log(this.selectAddress);
+      for (let index = 0; index < this.userData.location.length; index++) {
+        if(this.userData.location[index]._id == this.selectAddress){
+          this.address = ' '+this.userData.location[index].address+' '+ this.userData.location[index].area+' '+this.userData.location[index].postcode.toString()
+        }
+      }
+      console.log(this.address);
+
       // alert('โปรดรอแอดมินตรวจสอบหลักฐาน')
-      this.OrderService.updateImgSlip({idOrder:this.order._id,img:this.slipImg}).subscribe(
+      this.OrderService.updateImgSlip({idOrder:this.order._id,img:this.slipImg, address: this.address}).subscribe(
         data=>{
           Swal.fire({
             position: 'center',
             icon: 'success',
-            title: 'order has been updated',
+            title: 'โปรดรอแอดมินตรวจสอบหลักฐาน',
             showConfirmButton: false,
             timer: 1500
           })

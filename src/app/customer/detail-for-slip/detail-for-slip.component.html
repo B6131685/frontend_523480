@@ -25,8 +25,19 @@
         </div>
 
         <div class="col" style="border-left: 2px solid black;">
-            <div style="background-color:tomato;width:200px">
-                เลือกที่อยู่จัดส่ง
+            <div *ngIf="order.slipStatus === false">
+                <div style="background-color:tomato;width:90%">
+                    <select class="form-select"
+                    [(ngModel)]="selectAddress"
+                    >
+                        <option selected value="">เลือกที่อยู่</option>
+                        <option *ngFor="let item of userData?.location" value="{{item._id}}">{{item.address}} {{item.area}}</option>
+                      </select>
+                </div>
+            </div>
+            <div *ngIf="order.slipStatus !== false">
+                <p>ที่อยู่จัดส่ง</p>
+                <p>{{order.address}}</p>
             </div>
         </div>
         

@@ -32,4 +32,12 @@ export class UserService {
       return data;
     }));
   }
+
+  getUser(userID:String){
+    return  this.http.get<any>('http://localhost:3000/users/me/'+userID)
+    .pipe(map(data =>{
+      return data;
+    }));
+  }
+
 }

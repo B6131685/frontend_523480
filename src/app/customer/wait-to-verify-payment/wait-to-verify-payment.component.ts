@@ -23,7 +23,7 @@ export class WaitToVerifyPaymentComponent implements OnInit {
   getOrder(){
     this.OrderService.getOrderHaveSlip({idUser:this.AuthServices.idUser}).subscribe(
       data=>{
-        console.log(data);
+        // console.log(data);
         this.order = data.data
       }
     )
