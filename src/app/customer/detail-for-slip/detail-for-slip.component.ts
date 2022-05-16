@@ -1,4 +1,4 @@
-import { Component, OnInit,  Input, Inject } from '@angular/core';
+import { Component, OnInit,  Input, Inject,  Output, EventEmitter } from '@angular/core';
 import { CartService } from 'src/app/services/cart.service';
 import { AuthServicesService } from 'src/app/services/auth-services.service';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
@@ -13,6 +13,9 @@ selector: 'app-detail-for-slip',
 })
 export class DetailForSlipComponent implements OnInit {
   
+  //send to refresh orfer after save slip
+  @Output() newItemEvent = new EventEmitter<string>();
+
   userData!:any;
   slipImg!:any;
   previewLoaded!:Boolean
@@ -47,7 +50,6 @@ export class DetailForSlipComponent implements OnInit {
       }
     )
   }
-
 
   getShopPage(){
     //get shiipping
@@ -92,6 +94,11 @@ export class DetailForSlipComponent implements OnInit {
     }
   }
 
+  //
+  refreshOrder() {
+    this.newItemEvent.emit();
+  }
+
   submit(){
     if(this.selectAddress == ''){
       alert('กรุณาเลือกที่อยู่')
@@ -116,17 +123,16 @@ export class DetailForSlipComponent implements OnInit {
             title: 'โปรดรอแอดมินตรวจสอบหลักฐาน',
             showConfirmButton: false,
             timer: 1500
-          })
+          });
+
+          this.refreshOrder()
+
         },
         error=>{
 
         }
       )
     }
-  }
-
-  showImg(){
-    alert('show Img')
   }
 
   openDialog(): void {

@@ -5,3 +5,7 @@
 .dilog:hover{
     cursor: zoom-in;
 }
+
+p{
+    font-size: 20px;
+}

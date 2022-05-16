@@ -18,3 +18,7 @@
 .icon-cart:hover{
   color: #FF4081;
 }
+
+.nameOfShop:hover{
+  cursor: pointer;
+}

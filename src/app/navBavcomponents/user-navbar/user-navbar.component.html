@@ -3,7 +3,7 @@
   <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" (click)="sidenav.toggle()" *ngIf="state">
     <mat-icon>menu</mat-icon>
   </button>
-  <span>{{nameShop}}</span>
+  <span class="nameOfShop" (click)="home()">{{nameShop}}</span>
   <span  class="example-spacer"></span>
   <div style="margin-right: 20px;margin-top: 10px;" class="icon-cart" >
     <mat-icon matBadge="{{CartService.AllQuantity}}" matBadgeColor="warn" (click)="cart()">shopping_cart</mat-icon>

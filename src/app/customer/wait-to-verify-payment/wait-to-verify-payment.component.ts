@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { OrderService } from 'src/app/services/order.service';
 import { AuthServicesService } from 'src/app/services/auth-services.service';
 import { CartService } from 'src/app/services/cart.service';
+import { CommonService } from 'src/app/services/common.service';
 @Component({
   selector: 'app-wait-to-verify-payment',
   templateUrl: './wait-to-verify-payment.component.html',
@@ -11,6 +12,7 @@ export class WaitToVerifyPaymentComponent implements OnInit {
 
   order!:any;
   constructor(
+    private CommonService:CommonService,
     private OrderService:OrderService,
     private AuthServices:AuthServicesService,
     private CartService:CartService,
@@ -18,6 +20,11 @@ export class WaitToVerifyPaymentComponent implements OnInit {
 
   ngOnInit(): void {
     this.getOrder();
+    this.CommonService.newItemEvent.subscribe(
+      ()=>{
+        this.getOrder();
+      }
+    )
   }
 
   getOrder(){
