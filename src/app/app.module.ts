@@ -55,6 +55,7 @@ import { ChartCheckoutComponent } from './customer/chart-checkout/chart-checkout
 import { OrdercustomerComponent } from './customer/ordercustomer/ordercustomer.component';
 import { SlipComponent } from './customer/slip/slip.component';
 import { DetailForSlipComponent } from './customer/detail-for-slip/detail-for-slip.component';
+import { WaitToVerifyPaymentComponent } from './customer/wait-to-verify-payment/wait-to-verify-payment.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -83,6 +84,7 @@ import { DetailForSlipComponent } from './customer/detail-for-slip/detail-for-sl
     OrdercustomerComponent,
     SlipComponent,
     DetailForSlipComponent,
+    WaitToVerifyPaymentComponent,
   ],
   imports: [
     BrowserModule,

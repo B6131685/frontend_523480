@@ -1,31 +1,30 @@
 import { Component, OnInit } from '@angular/core';
 import { OrderService } from 'src/app/services/order.service';
 import { AuthServicesService } from 'src/app/services/auth-services.service';
+import { CartService } from 'src/app/services/cart.service';
 @Component({
-  selector: 'app-slip',
-  templateUrl: './slip.component.html',
-  styleUrls: ['./slip.component.css']
+  selector: 'app-wait-to-verify-payment',
+  templateUrl: './wait-to-verify-payment.component.html',
+  styleUrls: ['./wait-to-verify-payment.component.css']
 })
-export class SlipComponent implements OnInit {
+export class WaitToVerifyPaymentComponent implements OnInit {
 
   order!:any;
   constructor(
     private OrderService:OrderService,
     private AuthServices:AuthServicesService,
+    private CartService:CartService,
   ) { }
 
   ngOnInit(): void {
     this.getOrder();
   }
-  
+
   getOrder(){
-    this.OrderService.getOrderNotSlip({idUser:this.AuthServices.idUser}).subscribe(
+    this.OrderService.getOrderHaveSlip({idUser:this.AuthServices.idUser}).subscribe(
       data=>{
         console.log(data);
         this.order = data.data
-      },
-      error=>{
-        this.order = [] 
       }
     )
   }

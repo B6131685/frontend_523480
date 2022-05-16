@@ -113,6 +113,18 @@ export class DetailForSlipComponent implements OnInit {
     });
   }
 
+  openDialog2(): void {
+    const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
+      width: '400px',
+      data: this.order.slipVerification,
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      // this.animal = result;
+    });
+  }
+
 }
 
 

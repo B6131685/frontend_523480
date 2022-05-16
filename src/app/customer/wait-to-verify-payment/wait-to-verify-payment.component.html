@@ -1,0 +1,10 @@
+
+<div>
+    <div *ngFor="let item of order" style="width: 100%;margin-top: 10px;">
+        <div class="card">
+            <div class="card-body">
+              <app-detail-for-slip [order]="item"></app-detail-for-slip>
+            </div>
+          </div>
+    </div>
+</div>

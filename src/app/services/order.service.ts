@@ -28,6 +28,14 @@ export class OrderService {
     }));
   }
 
+  getOrderHaveSlip(obj:{idUser:String}){
+    return  this.http.put<any>('http://localhost:3000/order/getOrderHaveslip',obj)
+    .pipe(map(data =>{
+
+      return data;
+    }));
+  }
+
   updateImgSlip(obj:{idOrder:String,img:String}){
     return  this.http.put<any>('http://localhost:3000/order/updateSlip',obj)
     .pipe(map(data =>{
