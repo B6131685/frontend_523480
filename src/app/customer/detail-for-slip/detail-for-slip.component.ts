@@ -23,6 +23,7 @@ export class DetailForSlipComponent implements OnInit {
   sum = 0;
   shopPage!:any;
   cost_shipping = 0;
+  roleas !:String;
 
   selectAddress = '';
   address = '';
@@ -35,7 +36,11 @@ export class DetailForSlipComponent implements OnInit {
     private AuthServices:AuthServicesService,
     private CartService:CartService,
     public dialog: MatDialog
-  ) { }
+  ) { 
+    this.roleas = this.AuthServices.roleAs 
+    console.log(this.roleas);
+    
+  }
 
   async ngOnInit(): Promise<void> {
     this.getUser();

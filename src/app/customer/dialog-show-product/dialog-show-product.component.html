@@ -32,9 +32,9 @@
                 <button class="button-operater" (click)="sub()">-</button>
                 <!-- <input class="form-control" type="number" oninput="validity.valid||(value='');"> -->
                 <span style="width: 60px;border: 1px solid black;text-align: center;font-size: 25px;padding-top: 5px;" >{{quntity}}</span>
-                <button class="button-operater" (click)="plus()">+</button>   
+                <button class="button-operater"  [disabled]="checkPlusButton" (click)="plus()">+</button>   
             </div>
-            <button type="button" class="btn btn-primary" style="margin-left: 20px;" (click)="checkState()">เพิ่มลงตะกร้าสินค้า</button>
+            <button [disabled]="checkAddToCart" type="button" class="btn btn-primary" style="margin-left: 20px;" (click)="checkState()">เพิ่มลงตะกร้าสินค้า</button>
         </div>
       </div>
       <div class="col-2">

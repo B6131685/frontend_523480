@@ -17,7 +17,7 @@
             <div class="detail" style="margin-top: 10px;display: inline-block;width: 100px;">ค่าจัดส่ง</div>
             <div class="detail" style="margin-top: 10px;display: inline-block;width: 256px;text-align: end;">{{cost_shipping}}</div>
             <div class="detail" style="margin-left: 15px;display:inline-block"> บาท </div>
-            <hr style="heigth:3px;width:100%">
+            <hr style="height:3px;width:100%">
             <!-- shipping + sum -->
             <div class="detail" style="margin-top: 10px;display: inline-block;width: 180px;">จำนวนเงินที่ต้องชำระ</div>
             <div class="detail" style="margin-top: 10px;display: inline-block;width: 176px;text-align: end;">{{sum}}</div>
@@ -56,8 +56,7 @@
                     <br><br>
                     <img class="img-thumbnail dilog" [src]="order.slipVerification" style="height:150px;" (click)="openDialog2()">
                     <br><br>
-                    <div>
-
+                    <div *ngIf="roleas == 'admin'">
                         <button style="margin-right:20px;" type="button" class="btn btn-primary" (click)="approve()">ถูกต้อง</button>
 
                         <button type="button" class="btn btn-danger" (click)="notApproved()">ไม่ถูกต้อง</button>

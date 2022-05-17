@@ -78,11 +78,20 @@ export class CartComponent implements OnInit,OnDestroy {
   }
 
   plusQuantityCart(index:number){
-    this.CartService.updateCart({idUser:this.AuthServices.idUser,idProduct:this.cartData.list[index].idProduct._id,quantity: 1}).subscribe(
-      data=>{
-        this.getCart();
-      }
-    )
+
+  if( this.cartData.list[index].quantity + 1 <= this.cartData.list[index].idProduct.number){
+
+      this.CartService.updateCart({idUser:this.AuthServices.idUser,idProduct:this.cartData.list[index].idProduct._id,quantity: 1}).subscribe(
+        data=>{
+          this.getCart();
+        }
+      )
+    }else{
+      Swal.fire({
+        icon: 'error',
+        text: 'สินถึงจำนวนจำกัดเบื้องต้น',
+      })
+    }
   }
 
   checkOutCart(){
