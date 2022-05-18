@@ -6,6 +6,7 @@ import { LocalStorageService } from 'angular-web-storage';
 import jwtDecode, { JwtPayload } from "jwt-decode";
 import { ShopPageService } from '../services/shop-page.service';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { UserService } from '../services/user.service';
 import Swal from 'sweetalert2';
 @Component({
   selector: 'app-login-components',
@@ -98,11 +99,26 @@ export class LoginComponentsComponent implements OnInit {
   templateUrl: 'dialog-reset-password.html',
 })
 export class ResetPasswordDialog {
+  
+  email: string = '';
   constructor(
     public dialogRef: MatDialogRef<ResetPasswordDialog>,
+    private UserService:UserService
     // @Inject(MAT_DIALOG_DATA) public data: DialogData,
   ) {}
+   
+  resetPassword(){
 
+    if(this.email !=''){
+
+      this.UserService.forgotPassword({email: this.email}).subscribe(
+        data=>{ console.log(data);
+        }
+        )
+    }else{
+      alert('กรอกอีเมล')
+    }
+  }
   onNoClick(): void {
     this.dialogRef.close();
   }

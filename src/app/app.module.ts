@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { PublicNavbarComponent } from './navBavcomponents/public-navbar/public-navbar.component';
 import { UserNavbarComponent } from './navBavcomponents/user-navbar/user-navbar.component';
-import { LoginComponentsComponent } from './login-components/login-components.component';
+import { LoginComponentsComponent, ResetPasswordDialog } from './login-components/login-components.component';
 import { AddProductComponent,DialogEditSpecAtProductComponent } from './admin/add-product/add-product.component';
 import { ShowProductComponent } from './admin/show-product/show-product.component';
 import { ModelProductsComponent } from './products/model-products/model-products.component';
@@ -62,7 +62,7 @@ import { VerifyOrderComponent } from './admin/verify-order/verify-order.componen
     AppComponent,
     PublicNavbarComponent,
     UserNavbarComponent,
-    LoginComponentsComponent,
+    LoginComponentsComponent,ResetPasswordDialog,
     AddProductComponent,DialogEditSpecAtProductComponent,
     ShowProductComponent,
     ModelProductsComponent,

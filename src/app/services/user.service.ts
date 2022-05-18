@@ -33,11 +33,19 @@ export class UserService {
     }));
   }
 
+  forgotPassword(obj:{email:String}){
+    return  this.http.put<any>('http://localhost:3000/users/forgotPassword',obj)
+    .pipe(map(data =>{
+      return data;
+    }));
+  }
+
   getUser(userID:String){
     return  this.http.get<any>('http://localhost:3000/users/me/'+userID)
     .pipe(map(data =>{
       return data;
     }));
   }
+
 
 }
