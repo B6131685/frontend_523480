@@ -25,6 +25,8 @@ export class DetailForSlipComponent implements OnInit {
   cost_shipping = 0;
   roleas !:String;
 
+  DBshipping = 0;
+
   selectAddress = '';
   address = '';
   @Input() idCart !: String;
@@ -38,19 +40,20 @@ export class DetailForSlipComponent implements OnInit {
     public dialog: MatDialog
   ) { 
     this.roleas = this.AuthServices.roleAs 
-    console.log(this.roleas);
+    // console.log(this.roleas);
     
   }
 
-  async ngOnInit(): Promise<void> {
+  ngOnInit(){
+    this.getShopPage();
     this.getUser();
-    this.getCart();
+    
   }
 
   getUser(){
     this.AuthServices.getDataUserByID().subscribe(
       data=>{
-        console.log(data.data);
+        // console.log(data.data);
         this.userData =data.data
       }
     )
@@ -60,14 +63,17 @@ export class DetailForSlipComponent implements OnInit {
     //get shiipping
     this.ShopPageService.getShopPage().subscribe(
       data=>{
-        // console.log(data);
-        this.shopPage = data
+        console.log('get ShopPage');
+        console.log(data);
+        this.shopPage = data;
+        this.DBshipping = data.shiipping;
+        this.getCart();
       }
     )
   }
 
   getCart(){
-    this.getShopPage();
+   
     this.CartService.getCartByIDCart(this.order.idCart).subscribe(
       data=>{ 
         this.cart = data.data
@@ -76,13 +82,15 @@ export class DetailForSlipComponent implements OnInit {
         for (let index = 0; index < this.cart.list.length; index++) {
            this.sum += (this.cart.list[index].quantity * this.cart.list[index].idProduct.price);
         }
-        if(this.shopPage?.shipping >= this.sum ){
+        console.log('before if condition'+this.cart);
+        console.log(this.shopPage);
+        // console.log(this.DBshipping );
+        if(this.shopPage.shipping >= this.sum ){
           this.cost_shipping = this.shopPage.cost_shipping;
         }else{
-          this.cost_shipping = 0;
-          this.sum += this.cost_shipping;
+          this.cost_shipping = 0
         }
-
+        this.sum += this.cost_shipping;
       }
     )
   }
