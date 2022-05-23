@@ -60,6 +60,8 @@ import { VerifyOrderComponent } from './admin/verify-order/verify-order.componen
 import { CancleOrderComponent } from './customer/cancle-order/cancle-order.component';
 import { PrepareOrderComponent } from './admin/prepare-order/prepare-order.component';
 import { OrderSuccessComponent } from './admin/order-success/order-success.component';
+import { OrderDisapproveComponent } from './customer/order-disapprove/order-disapprove.component';
+import { OrderApproveComponent } from './customer/order-approve/order-approve.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -93,6 +95,8 @@ import { OrderSuccessComponent } from './admin/order-success/order-success.compo
     CancleOrderComponent,
     PrepareOrderComponent,
     OrderSuccessComponent,
+    OrderDisapproveComponent,
+    OrderApproveComponent,
   ],
   imports: [
     BrowserModule,

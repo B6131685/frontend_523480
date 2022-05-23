@@ -44,6 +44,14 @@ export class OrderService {
     }));
   }
 
+  getAllOrderDisapprove(id:string){
+    return  this.http.get<any>('http://localhost:3000/order/getOrderDisapprove/'+id)
+    .pipe(map(data =>{
+
+      return data;
+    }));
+  }
+
   
   getAllOrderHaveSlipAndVerifyTrue(){
     return  this.http.get<any>('http://localhost:3000/order/trueVerifyPayment')
