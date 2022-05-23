@@ -50,7 +50,6 @@
                         <input type="file" #myInputImg class="form-control-file"  (change)="onChangeImg($event)">
                     </div>
                     <br><br>
-                    this
                     <img *ngIf="previewLoaded" class="img-thumbnail dilog" [src]="slipImg" style="height:150px;" (click)="openDialog()">
                     <br><br>
                     <!-- <button type="button" class="btn btn-primary" (click)="submit()">ยืนยันการชำระเงิน</button> -->
@@ -75,7 +74,7 @@
         </div>
 
         <hr style="height: 3px;background-color:black;margin: 10px  0px;color: black;">
-        <div *ngIf="roleas !== 'admin'" style="text-align: right;">
+        <div *ngIf="roleas !== 'admin' && order.slipStatus === false" style="text-align: right;">
             <button type="button" class="btn btn-primary" style="margin-right: 20px;" (click)="submit()">ยืนยัน</button>
             <button type="button" class="btn btn-danger" (click)="cancleOrder()">ยกเลิก</button>
         </div>

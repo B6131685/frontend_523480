@@ -5,6 +5,7 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog
 import { ShopPageService } from 'src/app/services/shop-page.service';
 import { OrderService } from 'src/app/services/order.service';
 import { UserService } from 'src/app/services/user.service';
+import { CommonService } from 'src/app/services/common.service';
 import Swal from 'sweetalert2';
 @Component({
 selector: 'app-detail-for-slip',
@@ -37,7 +38,8 @@ export class DetailForSlipComponent implements OnInit {
     private ShopPageService:ShopPageService,
     private AuthServices:AuthServicesService,
     private CartService:CartService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private CommonService:CommonService,
   ) { 
     this.roleas = this.AuthServices.roleAs 
     // console.log(this.roleas);
@@ -163,12 +165,29 @@ export class DetailForSlipComponent implements OnInit {
 
   approve(){
     console.log('approve');
-    console.log(this.order);
+    // console.log(this.order);
+    this.OrderService.verifyPayment({idOrder:this.order._id, idUser:this.AuthServices.idUser, paymentStatus: true}).subscribe(
+      data=>{
+        console.log(data);
+        this.CommonService.adminVerifySlip();
+      },
+      error=>{ console.log(error);
+      }
+    )
+    
   }
 
   notApproved(){
     console.log('Not approve');
-    console.log(this.order);
+    // console.log(this.order);
+    this.OrderService.verifyPayment({idOrder:this.order._id, idUser:this.AuthServices.idUser, paymentStatus: false}).subscribe(
+      data=>{
+        console.log(data);
+        this.CommonService.adminVerifySlip();
+      },
+      error=>{ console.log(error);
+      }
+    )
   }
 
   openDialog(): void {

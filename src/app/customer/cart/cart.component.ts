@@ -99,7 +99,7 @@ export class CartComponent implements OnInit,OnDestroy {
     if(this.cartData.list.length == 0){
       alert('ไม่มีรายการสินค้า')
     }else{
-      alert('เพิ่มรายการสินค้าเรียบร้อย')
+      
       this.OrderService.addOrder({
         idCart: this.cartData._id,
         idUser: this.AuthServices.idUser,

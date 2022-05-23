@@ -44,6 +44,15 @@ export class OrderService {
     }));
   }
 
+  
+  getAllOrderHaveSlipAndVerifyTrue(){
+    return  this.http.get<any>('http://localhost:3000/order/trueVerifyPayment')
+    .pipe(map(data =>{
+
+      return data;
+    }));
+  }
+
   updateImgSlip(obj:{idOrder:String,img:String, address:String}){
     return  this.http.put<any>('http://localhost:3000/order/updateSlip',obj)
     .pipe(map(data =>{
@@ -51,6 +60,15 @@ export class OrderService {
       return data;
     }));
   }
+
+  verifyPayment(obj:{idOrder:string, idUser:string, paymentStatus:boolean}){
+    return  this.http.put<any>('http://localhost:3000/order/verifyPayment',obj)
+    .pipe(map(data =>{
+
+      return data;
+    }));
+  }
+
 
   cancleOrder(id:string){
     return  this.http.delete<any>('http://localhost:3000/order/cancleOrder/'+id)

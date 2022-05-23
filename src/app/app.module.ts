@@ -58,6 +58,8 @@ import { DetailForSlipComponent } from './customer/detail-for-slip/detail-for-sl
 import { WaitToVerifyPaymentComponent } from './customer/wait-to-verify-payment/wait-to-verify-payment.component';
 import { VerifyOrderComponent } from './admin/verify-order/verify-order.component';
 import { CancleOrderComponent } from './customer/cancle-order/cancle-order.component';
+import { PrepareOrderComponent } from './admin/prepare-order/prepare-order.component';
+import { OrderSuccessComponent } from './admin/order-success/order-success.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -89,6 +91,8 @@ import { CancleOrderComponent } from './customer/cancle-order/cancle-order.compo
     WaitToVerifyPaymentComponent,
     VerifyOrderComponent,
     CancleOrderComponent,
+    PrepareOrderComponent,
+    OrderSuccessComponent,
   ],
   imports: [
     BrowserModule,
