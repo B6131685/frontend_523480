@@ -63,8 +63,8 @@ export class DetailForSlipComponent implements OnInit {
     //get shiipping
     this.ShopPageService.getShopPage().subscribe(
       data=>{
-        console.log('get ShopPage');
-        console.log(data);
+        // console.log('get ShopPage');
+        // console.log(data);
         this.shopPage = data;
         this.DBshipping = data.shiipping;
         this.getCart();
@@ -82,8 +82,8 @@ export class DetailForSlipComponent implements OnInit {
         for (let index = 0; index < this.cart.list.length; index++) {
            this.sum += (this.cart.list[index].quantity * this.cart.list[index].idProduct.price);
         }
-        console.log('before if condition'+this.cart);
-        console.log(this.shopPage);
+        // console.log('before if condition'+this.cart);
+        // console.log(this.shopPage);
         // console.log(this.DBshipping );
         if(this.shopPage.shipping >= this.sum ){
           this.cost_shipping = this.shopPage.cost_shipping;
@@ -146,6 +146,19 @@ export class DetailForSlipComponent implements OnInit {
         }
       )
     }
+  }
+
+  cancleOrder(){
+    console.log('cancle Order');
+    console.log(this.order._id);
+    this.OrderService.cancleOrder(this.order._id).subscribe(
+      data=>{
+        this.refreshOrder();
+      },
+      error=>{
+        console.log(error);        
+      }
+    )
   }
 
   approve(){

@@ -11,7 +11,7 @@ export class AuthServicesService {
 
   loginMode = false;
 
-  idUser!:String;
+  idUser!:string;
   roleAs!: string;
   result !: any;
   nameUser!:String;

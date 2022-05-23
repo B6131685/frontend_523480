@@ -1,0 +1,14 @@
+
+<div style="margin: 50px 0 px;height:70px" >
+    รายการสั่งซื้อที่ยกเลิกแล้ว
+</div>
+
+<div *ngFor="let item of order" >
+    <div class="card" style="margin: 20px 0px;">
+        <div class="card-body">
+          <div *ngFor="let item2 of item.idCart.list">
+              {{item2.idProduct.spec[0].value}} : {{item2.quantity}}
+          </div>
+        </div>
+      </div>
+</div>

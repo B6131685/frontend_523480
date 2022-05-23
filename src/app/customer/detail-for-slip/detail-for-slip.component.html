@@ -7,7 +7,7 @@
             <div style="width: 110px;display: inline-block;margin-top: 10px;">{{item.idProduct.spec[0].value}} </div>
             : 
             <div style="margin-left: 10px;display:inline"> {{item.quantity}} </div>
-            <div style="margin-left: 10px;display:inline"> รายการ </div>
+            <div style="margin-left: 10px;display:inline"> จำนวน </div>
             :
             <div style="margin-left: 10px;display:inline-block;width: 110px;text-align: end;"> {{item.idProduct.price * item.quantity}}</div>
             <div style="margin-left: 10px;display:inline"> บาท </div>
@@ -15,12 +15,12 @@
             <!-- shipping -->
 
             <div class="detail" style="margin-top: 10px;display: inline-block;width: 100px;">ค่าจัดส่ง</div>
-            <div class="detail" style="margin-top: 10px;display: inline-block;width: 256px;text-align: end;">{{cost_shipping}}</div>
+            <div class="detail" style="margin-top: 10px;display: inline-block;width: 252px;text-align: end;">{{cost_shipping}}</div>
             <div class="detail" style="margin-left: 15px;display:inline-block"> บาท </div>
             <hr style="height:3px;width:100%">
             <!-- shipping + sum -->
             <div class="detail" style="margin-top: 10px;display: inline-block;width: 180px;">จำนวนเงินที่ต้องชำระ</div>
-            <div class="detail" style="margin-top: 10px;display: inline-block;width: 176px;text-align: end;">{{sum}}</div>
+            <div class="detail" style="margin-top: 10px;display: inline-block;width: 175px;text-align: end;">{{sum}}</div>
             <div class="detail" style="margin-left: 15px;display:inline-block"> บาท </div>
         </div>
 
@@ -44,26 +44,46 @@
         <div class="col" style="border-left: 2px solid black;">
             <div style="padding-left:30px;width: 250px;" >
                 <div *ngIf="order.slipStatus === false">
+                <h3> อัพโหลดหลักฐานการชำระเงิน</h3>
+                <br>
                     <div>
                         <input type="file" #myInputImg class="form-control-file"  (change)="onChangeImg($event)">
                     </div>
                     <br><br>
+                    this
                     <img *ngIf="previewLoaded" class="img-thumbnail dilog" [src]="slipImg" style="height:150px;" (click)="openDialog()">
                     <br><br>
-                    <button type="button" class="btn btn-primary" (click)="submit()">ยืนยันการชำระเงิน</button>
+                    <!-- <button type="button" class="btn btn-primary" (click)="submit()">ยืนยันการชำระเงิน</button> -->
                 </div>
-                <div *ngIf="order.slipStatus !== false">
+                <!-- <div *ngIf="order.slipStatus !== false">
                     <br><br>
                     <img class="img-thumbnail dilog" [src]="order.slipVerification" style="height:150px;" (click)="openDialog2()">
                     <br><br>
                     <div *ngIf="roleas == 'admin'">
                         <button style="margin-right:20px;" type="button" class="btn btn-primary" (click)="approve()">ถูกต้อง</button>
-
                         <button type="button" class="btn btn-danger" (click)="notApproved()">ไม่ถูกต้อง</button>
                     </div>
+                </div> -->
+                <div *ngIf="order.slipStatus !== false">
+                    <h3> หลักฐานการชำระเงิน</h3>
+                    <br>
+                    <img class="img-thumbnail dilog" [src]="order.slipVerification" style="height:150px;" (click)="openDialog2()">
+                    <br><br>
+                    
                 </div>
             </div>
-            
         </div>
-    </div>
+
+        <hr style="height: 3px;background-color:black;margin: 10px  0px;color: black;">
+        <div *ngIf="roleas !== 'admin'" style="text-align: right;">
+            <button type="button" class="btn btn-primary" style="margin-right: 20px;" (click)="submit()">ยืนยัน</button>
+            <button type="button" class="btn btn-danger" (click)="cancleOrder()">ยกเลิก</button>
+        </div>
+        <div *ngIf="roleas == 'admin'" style="text-align: right;">
+            <button style="margin-right:20px;" type="button" class="btn btn-primary" (click)="approve()">ถูกต้อง</button>
+
+            <button type="button" class="btn btn-danger" (click)="notApproved()">ไม่ถูกต้อง</button>
+        </div>
+        
+    </div> 
 </div>

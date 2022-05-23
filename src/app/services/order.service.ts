@@ -52,6 +52,20 @@ export class OrderService {
     }));
   }
 
-  
+  cancleOrder(id:string){
+    return  this.http.delete<any>('http://localhost:3000/order/cancleOrder/'+id)
+    .pipe(map(data =>{
+
+      return data;
+    }));
+  }
+
+  getOrderNotActive(id:string){
+    return  this.http.get<any>('http://localhost:3000/order/getOrderNotActive/'+id)
+    .pipe(map(data =>{
+
+      return data;
+    }));
+  }
 
 }
