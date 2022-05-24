@@ -32,4 +32,20 @@ export class PrepareOrderComponent implements OnInit {
     )
   }
 
+  saveIdTracking(order:any, id: string){
+    console.log(order);
+    console.log(typeof id);
+    if(id != ''){
+
+      this.OrderService.updateIDTracking({idOrder:order._id,idTracking:id }).subscribe(
+        data=>{
+          console.log(data);
+          this.CommonService.adminVerifySlip();
+        }
+        )
+    }else{
+      alert('กรอก id trakcing')
+    }
+  }
+
 }
