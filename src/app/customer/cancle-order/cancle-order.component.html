@@ -4,10 +4,12 @@
 </div>
 
 <div *ngFor="let item of order" >
-    <div class="card" style="margin: 20px 0px;">
+    <div class="card" style="margin: 20px 0px;font-size: 20px;">
         <div class="card-body">
+          <!-- {{item | json}} -->
+          <p>วันที่ยกเลิก: {{ item.updateAt | date:'dd-LL-yyyy HH:mm:ss'}}</p>
           <div *ngFor="let item2 of item.idCart.list">
-              {{item2.idProduct.spec[0].value}} : {{item2.quantity}}
+              {{item2.idProduct.spec[0].value}} : {{item2.quantity}} จำนวน
           </div>
         </div>
       </div>

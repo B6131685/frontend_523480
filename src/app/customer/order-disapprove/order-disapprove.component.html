@@ -2,9 +2,5 @@
 
 
 <div style="margin-top:30px" *ngFor="let item of order">
-    <div class="card">
-        <div class="card-body">
-         {{ item | json}}
-        </div>
-      </div>
+  <app-order-detail [order]="item"></app-order-detail>
 </div>

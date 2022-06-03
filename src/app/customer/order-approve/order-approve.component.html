@@ -1,1 +1,6 @@
 <p>order-approve works!</p>
+
+
+<div style="margin: 15px 0px;" *ngFor="let item of order">
+        <app-order-detail [order]="item"></app-order-detail>
+</div>

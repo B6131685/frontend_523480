@@ -62,6 +62,8 @@ import { PrepareOrderComponent } from './admin/prepare-order/prepare-order.compo
 import { OrderSuccessComponent } from './admin/order-success/order-success.component';
 import { OrderDisapproveComponent } from './customer/order-disapprove/order-disapprove.component';
 import { OrderApproveComponent } from './customer/order-approve/order-approve.component';
+import { FooterPageComponent } from './customer/footer-page/footer-page.component';
+import { OrderDetailComponent } from './customer/order-detail/order-detail.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -97,6 +99,8 @@ import { OrderApproveComponent } from './customer/order-approve/order-approve.co
     OrderSuccessComponent,
     OrderDisapproveComponent,
     OrderApproveComponent,
+    FooterPageComponent,
+    OrderDetailComponent,
   ],
   imports: [
     BrowserModule,
