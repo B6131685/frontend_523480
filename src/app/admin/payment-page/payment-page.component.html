@@ -1,0 +1,32 @@
+<label>ช่องทางการชำระเงินของเว็บ</label>
+{{ payment | json }}
+<br><br>
+<div>
+  <div class="mb-3">
+    <label for="exampleFormControlInput1" class="form-label"
+      >ชื่อธนาคาร</label
+    >
+    <input
+      
+      class="form-control"
+      [(ngModel)]="payment.bankName" 
+    />
+  </div>
+  <div class="mb-3">
+    <label for="exampleFormControlInput1" class="form-label"
+      >เลขบัญชี</label
+    >
+    <input
+      class="form-control"
+      [(ngModel)]="payment.accountBank" 
+    />
+  </div>
+  <div class="mb-3">
+    <label for="exampleFormControlInput1" class="form-label">ชื่อเจ้าของบัญชี</label>
+    <input 
+        class="form-control"
+        [(ngModel)]="payment.owner"     
+    >
+  </div>
+  <button type="button" class="btn btn-primary" (click)="updatePaymentDB()">บันทึก</button>
+</div>
