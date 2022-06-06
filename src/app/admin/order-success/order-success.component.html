@@ -1,5 +1,20 @@
 <p>order-success works!</p>
 
 <div style="margin: 15px 0px;" *ngFor="let item of order">
-    {{item | json}}
+    <!-- {{item | json}} -->
+    <div class="card">
+        <div class="card-body">
+          <div>
+              <label for="">{{item.updateAt | date:'dd-LL-yyyy HH:mm:ss'}}</label>
+          </div>
+          <div>
+            <label for="">ID Tracking:   {{item.idTracking}}</label>
+        </div>
+        <br>
+        <div>รายการสินค้า</div>
+        <div>
+            <div *ngFor="let product of item.idCart.list">{{product.idProduct.spec[0].value}}:   {{product.quantity}} รายการ</div>
+        </div>
+        </div>
+    </div>
 </div>

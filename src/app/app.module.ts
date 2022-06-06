@@ -21,6 +21,7 @@ import {MatSelectModule} from '@angular/material/select';
 import { StockComponent, DialogOverviewExampleDialog,DialogSettingProduct, DialogNewProduct } from './admin/stock/stock.component';
 
 //mat
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import {MatButtonModule} from '@angular/material/button';
 import {MatNativeDateModule} from '@angular/material/core';
@@ -134,6 +135,7 @@ import { PaymentPageComponent } from './admin/payment-page/payment-page.componen
     MatCommonModule,
     MatButtonToggleModule,
     MatBadgeModule,
+    MatSlideToggleModule
   ],
   providers: [
     {
