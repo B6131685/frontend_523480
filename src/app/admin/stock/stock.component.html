@@ -67,11 +67,11 @@
             </ng-container> 
 
             <ng-container matColumnDef="delete">
-              <th mat-header-cell  style="text-align: center;background-color: crimson;width: 5%;" *matHeaderCellDef #setting> delete </th>
+              <th mat-header-cell  style="text-align: center;background-color: crimson;width: 5%;" *matHeaderCellDef #setting> active </th>
               <td mat-cell style="text-align: center;width: 5%;"  *matCellDef="let row" #setting>
                 
-                  <mat-icon aria-hidden="false" class="delete-icon" aria-label="Example home icon" (click)="deleteProduct(row)">delete</mat-icon>
-    
+                  <!-- <mat-icon aria-hidden="false" class="delete-icon" aria-label="Example home icon" (click)="deleteProduct(row)">delete</mat-icon> -->
+                  <app-active-button [parent]="row"></app-active-button>
               </td>
               <!-- <button mat-raised-button (click)="openDialog(row)">Edit</button> -->
             </ng-container> 
@@ -82,6 +82,7 @@
               <th mat-header-cell style="text-align: center;padding-left: 58px;" *matHeaderCellDef mat-sort-header>Date</th>
               <!-- <td mat-cell  *matCellDef="let row"> {{row.date}} </td> -->
               <td mat-cell style="width: 200px;" *matCellDef="let row"> {{row.date | date:'dd-LL-yyyy HH:mm:ss'}} </td>
+              <!-- <td mat-cell style="width: 200px;" *matCellDef="let row"> {{row.activeStatus | json}} </td> -->
             </ng-container>     
 
               <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
@@ -104,4 +105,6 @@
         </div>
         
     </div>
+
+    
 </div>

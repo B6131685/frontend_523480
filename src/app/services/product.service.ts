@@ -66,6 +66,17 @@ export class ProductService {
   }));
   }
 
+  updateActiveStatus(data:any){
+    return  this.http.put<any>('http://localhost:3000/product/updateActiveStatus',data)
+    .pipe(map(data =>{
+      if(data){
+        // console.log("updateProductOne working!!!");
+        // console.log(data);
+      }
+      return data.data;
+  }));
+  }
+
   delete(id:String){
     return  this.http.delete<any>('http://localhost:3000/product/deleteProduct/'+id)
     .pipe(map(data =>{

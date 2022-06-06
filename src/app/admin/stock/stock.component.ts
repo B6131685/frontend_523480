@@ -16,7 +16,8 @@ export interface ProductData {
   type: String,
   price: Number,
   stock: Number,
-  date: Date
+  date: Date,
+  activeStatus: Boolean
 }
 
 
@@ -81,7 +82,8 @@ export class StockComponent implements OnInit ,AfterViewInit {
           type: element?.type.name,
           price: element.price,
           stock: element.number,
-          date: element.date
+          date: element.date,
+          activeStatus: element.activeStatus,
           };
           
           // console.log("arr2 after push   at index = "+index);
@@ -181,6 +183,10 @@ export class StockComponent implements OnInit ,AfterViewInit {
 
     )
 
+  }
+
+  activeProduct(row:any){
+    console.log('active product');
   }
 
 }
