@@ -1,5 +1,5 @@
 
-<div class="container-fluid">
+<div class="container-fluid" style="padding: 0;">
     <div class="row">
       <div class="col-3" style="background-color: #3F51B5;"></div>
       <div class="col-6" style="height: 400px;background-color: #3F51B5;">
@@ -52,7 +52,7 @@
       <!-- menu select type Product -->
       
       <div class="col-2" >
-        <mat-button-toggle-group style="display: block;margin-top: 50px;" name="fontStyle" aria-label="Font Style" >
+        <mat-button-toggle-group style="display: block;margin-top: 50px;margin-left: 15px;" name="fontStyle" aria-label="Font Style" >
   
           <mat-button-toggle style="display: block;" (click)="FilterAll()" >All</mat-button-toggle>
             <mat-button-toggle style="display: block;" (click)="Filter(item)" *ngFor="let item of specModel">{{item.name}}</mat-button-toggle>
@@ -60,7 +60,7 @@
         </mat-button-toggle-group>
       </div>
       <!-- rgb(72, 94, 202) -->
-      <div class="col-10" style="padding-left: 120px;background-color: #FFFFFF;">
+      <div class="col-10" style="padding-left: 120px;background-color: #ffffff;min-height: 1000px;">
       
         <div style="margin: 20px;display: inline-block;" *ngFor="let item of filterdata">
           <div class="card" style="width: 18rem;" *ngIf="item.activeStatus !== false">
@@ -79,5 +79,8 @@
 
     
     </div>
-    <app-footer-page></app-footer-page>
+    <div style="margin: 0;">
+      <i class="pi pi-check"></i>
+      <app-footer-page></app-footer-page>
+    </div>
   </div>
