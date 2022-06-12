@@ -2,7 +2,7 @@
   <mat-tab-group>
     <mat-tab label="ทั่วไป">
       <div class="mb-3 row" style="width: 80%;">
-        <label for="inputPassword" class="fs-4 col-form-label" style="margin-top: 50px;"
+        <label for="inputPassword" class="fs-4 col-form-label" style="margin-top: 50px;display: inline-block"
           >ชื่อร้าน</label
         >
         <div >
@@ -13,11 +13,12 @@
             [(ngModel)]="shopPage.nameShop"
           />
         </div>
+        
         <div style="margin-top: 50px">
           <div class="mb-3 row">
             <div>
               <label for="inputPassword" class="col-sm-3 fs-4 col-form-label"
-                >เกณฑ์การจัดส่งฟรี</label
+                >เกณฑ์การจัดส่ง</label
               >
             </div>
             <label for="inputPassword" class="col-sm-3 fs-4 col-form-label"
@@ -42,6 +43,47 @@
                 [(ngModel)]="shopPage.cost_shipping"
               />
             </div>
+          </div>
+        </div>
+        <div>
+          <div class="row">
+            <div style="margin:30px 0 20px 0px;">
+              <span class="fs-4">ข้อมูลติดต่อ</span>
+            </div>
+
+            <div>
+              <div class="row contract" style="margin-bottom:12px">
+                <div class="col-3 fs-4">Email</div>
+                <div class="col">
+                  <input class="form-control fs-4" type="text" [(ngModel)]="shopPage.mail">
+                </div>
+              </div>
+            </div>
+              
+            <div>
+              <div class="row contract">
+                <div class="col-3 fs-4">เบอร์โทร</div>
+                <div class="col">
+                  <input class="form-control fs-4" type="text" [(ngModel)]="shopPage.tel" >
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <div class="row contract">
+                <div class="col-3 fs-4">ที่ตั้ง</div>
+                <div class="col">
+                  <div class="card">
+                    <div class="card-body">
+                      <input class="form-control fs-4" type="text" [(ngModel)]="shopPage.address" >
+                      <!-- <button (click)="openDialog()">แก้ไข้ที่อยู่</button> -->
+                      <button type="button" class="btn btn-warning" (click)="openDialog()">แก้ไข้ที่อยู่</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
           </div>
         </div>
         <div class="mb-3 row">
@@ -91,5 +133,6 @@
     <mat-tab label="ช่องทางชำระเงิน">
       <app-payment-page></app-payment-page>
     </mat-tab>
+
   </mat-tab-group>
 </div>

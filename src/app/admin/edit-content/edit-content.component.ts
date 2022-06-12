@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { ShopPageService } from 'src/app/services/shop-page.service';
 import Swal from 'sweetalert2';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { addresssDialog } from 'src/app/customer/profile/profile.component';
 @Component({
   selector: 'app-edit-content',
   templateUrl: './edit-content.component.html',
@@ -15,11 +17,17 @@ export class EditContentComponent implements OnInit {
     nameShop:String,
     shipping:Number,
     cost_shipping:Number,
-    img: []
+    img: [],
+    mail:String,
+    tel:String,
+    address:'',
   };
   previewLoaded: boolean = false;
   addImg !: any;
-  constructor(private ShopPageService:ShopPageService) { }
+
+  constructor(
+    public dialog: MatDialog,
+    private ShopPageService:ShopPageService,) { }
 
   ngOnInit(): void {
    this.getShopPage();
@@ -52,7 +60,13 @@ export class EditContentComponent implements OnInit {
   editNameShop(){
     // console.log(typeof(this.shopPage.nameShop));
     
-    this.ShopPageService.editNameShop({newName:this.shopPage.nameShop.toString(),shipping: Number(this.shopPage.shipping),cost_shipping: Number(this.shopPage.cost_shipping)}).subscribe(
+    this.ShopPageService.editNameShop({
+      newName:this.shopPage.nameShop.toString(),
+      shipping: Number(this.shopPage.shipping),
+      cost_shipping: Number(this.shopPage.cost_shipping), 
+      mail:this.shopPage.mail.toString(),
+      tel:this.shopPage.tel.toString(),
+      address:this.shopPage.address.toString()}).subscribe(
       data=>{
        
         this.getShopPage();
@@ -102,6 +116,25 @@ export class EditContentComponent implements OnInit {
 
   editShipping(){
 
+  }
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open(addresssDialog, {
+      width: '500px',
+    }); 
+
+   
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      // this.newAddress = result;
+      console.log(result);
+      if(result != undefined){
+        // this.user.location.push(result);
+        this.shopPage.address = String(result.address.toString()+ ' ' + result.area.toString()+ ' ' + result.postcode.toString());
+      }
+      // console.log(this.newAddress);
+      
+    });
   }
 
 }

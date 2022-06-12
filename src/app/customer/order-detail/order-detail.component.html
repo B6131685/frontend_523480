@@ -2,13 +2,15 @@
     <div class="card-body">
         <!-- {{order | json}} -->
         <br>
-        <p>วันที่: {{ order.updateAt | date:'dd-LL-yyyy HH:mm:ss'}}</p>
+        <p>วันที่จัดส่ง: {{ order.updateAt | date:'dd-LL-yyyy HH:mm:ss'}}</p>
+        <br>
         <p *ngIf="order.paymentStatus === true">idTracking: {{order.idTracking}} </p>
+        <p *ngIf="order.paymentStatus === true">บริษัทขนส่ง: {{order.expressCompany}} </p>
         <p *ngIf="order.paymentStatus === true">ที่อยู่รับสินค้า: {{order.address}}</p>
         <br>
         <h2>สินค้า</h2>
         <span *ngFor="let product of order.idCart.list">
-            <div style="font-size: 20px;">{{product.idProduct.spec[0].value | json}} : {{product.idProduct.number}} จำนวน</div>
+            <div style="font-size: 20px;">{{product.idProduct.spec[0].value | json}} : {{product.quantity}} จำนวน</div>
         </span>
     </div>
 </div>

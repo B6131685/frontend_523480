@@ -9,6 +9,8 @@ import { OrderService } from 'src/app/services/order.service';
 export class PrepareOrderComponent implements OnInit {
   
   order!:any;
+  Tracking='';
+  expressCompany='';
   constructor(
     private CommonService:CommonService,
     private OrderService:OrderService
@@ -32,12 +34,13 @@ export class PrepareOrderComponent implements OnInit {
     )
   }
 
-  saveIdTracking(order:any, id: string){
-    console.log(order);
-    console.log(typeof id);
-    if(id != ''){
+  saveIdTracking(order:any){
+    console.log(this.Tracking);
+    console.log(this.expressCompany);
+    
+    if(this.Tracking != '' && this.expressCompany != ''){
 
-      this.OrderService.updateIDTracking({idOrder:order._id,idTracking:id }).subscribe(
+      this.OrderService.updateIDTracking({idOrder:order._id,idTracking:this.Tracking, expressCompany:this.expressCompany }).subscribe(
         data=>{
           console.log(data);
           this.CommonService.adminVerifySlip();
@@ -47,5 +50,6 @@ export class PrepareOrderComponent implements OnInit {
       alert('กรอก id trakcing')
     }
   }
+
 
 }

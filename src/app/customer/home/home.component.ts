@@ -16,6 +16,7 @@ export class HomeComponent implements OnInit {
   shopPage : { _id:String ,nameShop:String, img:String[] }={ _id:'', nameShop:'', img:[]}
   showImg !: String;
   indexImg = 0;
+  FooterData = {mail:'',tel:'',address:''}
   constructor(private router: Router,
               private ProductService:ProductService,
               public dialog: MatDialog,
@@ -28,6 +29,11 @@ export class HomeComponent implements OnInit {
         this.shopPage = data;
         console.log(this.shopPage);
         this.showImg = data.img[0]
+        this.FooterData.address = data.address;
+        this.FooterData.mail = data.mail;
+        this.FooterData.tel = data.tel;
+        console.log(this.FooterData);
+        
       }
     )
 

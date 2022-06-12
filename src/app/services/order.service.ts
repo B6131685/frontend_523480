@@ -64,7 +64,7 @@ export class OrderService {
   getAllOrderAlreadySend(){
     return  this.http.get<any>('http://localhost:3000/order/getAllOrderHaveAlreadySend')
     .pipe(map(data =>{
-
+      console.log(data);
       return data;
     }));
   }
@@ -85,7 +85,7 @@ export class OrderService {
     }));
   }
 
-  updateIDTracking(obj:{idOrder:string, idTracking:string}){
+  updateIDTracking(obj:{idOrder:string, idTracking:string, expressCompany:string}){
     return  this.http.put<any>('http://localhost:3000/order/trackingOrder',obj)
     .pipe(map(data =>{
 
