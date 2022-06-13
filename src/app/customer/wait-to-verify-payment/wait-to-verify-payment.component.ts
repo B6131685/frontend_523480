@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { OrderService } from 'src/app/services/order.service';
 import { AuthServicesService } from 'src/app/services/auth-services.service';
 import { CartService } from 'src/app/services/cart.service';
@@ -9,7 +9,7 @@ import { CommonService } from 'src/app/services/common.service';
   styleUrls: ['./wait-to-verify-payment.component.css']
 })
 export class WaitToVerifyPaymentComponent implements OnInit {
-
+  @Output() newItemEvent = new EventEmitter<string>();
   order!:any;
   constructor(
     private CommonService:CommonService,
@@ -34,6 +34,12 @@ export class WaitToVerifyPaymentComponent implements OnInit {
         this.order = data.data
       }
     )
+  }
+
+  addItem(){
+    this.getOrder();
+    this.newItemEvent.emit();
+    this.CommonService.waitVerify();
   }
 
 }

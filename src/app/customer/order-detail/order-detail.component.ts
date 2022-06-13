@@ -14,4 +14,9 @@ export class OrderDetailComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  openPDF(){
+    console.log('open PDF');
+    
+  }
+
 }

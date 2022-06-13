@@ -140,7 +140,7 @@ export class DetailForSlipComponent implements OnInit {
             timer: 1500
           });
 
-          this.refreshOrder()
+          this.refreshOrder();
 
         },
         error=>{
@@ -151,10 +151,12 @@ export class DetailForSlipComponent implements OnInit {
   }
 
   cancleOrder(){
-    console.log('cancle Order');
-    console.log(this.order._id);
+    // console.log('cancle Order');
+    // console.log(this.order._id);
     this.OrderService.cancleOrder(this.order._id).subscribe(
       data=>{
+        console.log('cancle order success');
+        console.log(data);
         this.refreshOrder();
       },
       error=>{

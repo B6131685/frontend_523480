@@ -1,4 +1,4 @@
-<div class="card">
+<div class="card" >
     <div class="card-body">
         <!-- {{order | json}} -->
         <br>
@@ -12,5 +12,9 @@
         <span *ngFor="let product of order.idCart.list">
             <div style="font-size: 20px;">{{product.idProduct.spec[0].value | json}} : {{product.quantity}} จำนวน</div>
         </span>
+        <br><br>
+        <div *ngIf="order.paymentStatus === true">
+            <button type="button" class="btn btn-primary" (click)="openPDF()">พิมพ์ใบเสร็จ</button>
+        </div>
     </div>
 </div>
