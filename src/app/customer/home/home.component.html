@@ -1,54 +1,15 @@
 
 <div class="container-fluid" style="padding: 0;">
     <div class="row">
-      <div class="col-3" style="background-color: #3F51B5;"></div>
-      <div class="col-6" style="height: 400px;background-color: #3F51B5;">
-        <div id="carouselExampleFade" class="carousel slide" data-bs-ride="carousel">
-          
-          <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel" >
-            <div class="carousel-inner" style="margin-top: 50px;">
-              
-              <div>
-                <div class="carousel-item active" >
-                  <img src="{{showImg}}" style="width: 100px;height: 300px;" class="d-block w-100" alt="...">
-                </div>
-              </div>
-              
-            </div>
-            <button class="carousel-control-prev" type="button" (click)="PreviousImg()">
-              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" (click)="NextImg()">
-              <span class="carousel-control-next-icon" aria-hidden="true"></span>
-              <span class="visually-hidden">Next</span>
-            </button>
-          </div>
-          <!-- <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-            <div class="carousel-inner">
-              <div class="carousel-item active">
-                <img src="..." class="d-block w-100" alt="...">
-              </div>
-              <div class="carousel-item">
-                <img src="..." class="d-block w-100" alt="...">
-              </div>
-              <div class="carousel-item">
-                <img src="..." class="d-block w-100" alt="...">
-              </div>
-            </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-              <span class="carousel-control-next-icon" aria-hidden="true"></span>
-              <span class="visually-hidden">Next</span>
-            </button>
-          </div> -->
-  
+      <div class="col-1" style="background-color: #3F51B5;"></div>
+      <div class="col-10" style="height: 400px;background-color: #3F51B5;display: flex;justify-content: center;">
+
+        <div *ngFor="let item of shopPage.img" style="display:inline-block;width:550px;margin-top: 20px;margin-left: 20px;">
+          <img src="{{item}}" class="d-block w-100" alt="..." >
+        </div>
+
       </div>
-      </div>
-      <div class="col-3" style="background-color: #3F51B5;" ></div>
+      <div class="col-1" style="background-color: #3F51B5;" ></div>
       <!-- menu select type Product -->
       
       <div class="col-2" >
