@@ -34,7 +34,7 @@ export class ShopPageService {
     }));
   }
 
-  editNameShop(obj:{newName:String,shipping:Number, cost_shipping: Number, mail:String, tel:String, address:String}){
+  editNameShop(obj:{newName:String,shipping:Number, cost_shipping: Number, mail:String, tel:String, address:String, logo:String}){
     return  this.http.put<any>('http://localhost:3000/shopPage/editNameShop',obj)
     .pipe(map(data =>{
       return data;

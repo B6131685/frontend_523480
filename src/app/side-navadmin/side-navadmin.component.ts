@@ -24,11 +24,13 @@ export class SideNavadminComponent implements OnInit {
   user!:any;
   decoded !:any;
   nameShop !: String;
+  logo!:String;
   ngOnInit(): void {
     this.decoded = this.AuthServicesService.result;
     this.ShopPageService.getShopPage().subscribe(
       data=>{
         this.nameShop = data.nameShop;
+        this.logo = data.logo;
       }
     )
     

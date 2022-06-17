@@ -11,7 +11,8 @@ import { ShopPageService } from 'src/app/services/shop-page.service';
   styleUrls: ['./public-navbar.component.css']
 })
 export class PublicNavbarComponent implements OnInit {
-
+  
+  logo!:String;
   product!:any;
   nameShop !: String;
   specModel!:any;
@@ -28,6 +29,7 @@ export class PublicNavbarComponent implements OnInit {
     this.ShopPageService.getShopPage().subscribe(
       data =>{
         this.nameShop = data.nameShop;
+        this.logo = data.logo;
       }
     )
 

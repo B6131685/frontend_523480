@@ -21,6 +21,7 @@ export class EditContentComponent implements OnInit {
     mail:String,
     tel:String,
     address:'',
+    logo:''
   };
   previewLoaded: boolean = false;
   addImg !: any;
@@ -66,7 +67,9 @@ export class EditContentComponent implements OnInit {
       cost_shipping: Number(this.shopPage.cost_shipping), 
       mail:this.shopPage.mail.toString(),
       tel:this.shopPage.tel.toString(),
-      address:this.shopPage.address.toString()}).subscribe(
+      address:this.shopPage.address.toString(),
+      logo:this.shopPage.logo
+      }).subscribe(
       data=>{
        
         this.getShopPage();
@@ -83,6 +86,20 @@ export class EditContentComponent implements OnInit {
       reader.onload = () => {
         this.previewLoaded= true;
         this.addImg = reader.result
+      }
+    }
+  }
+
+  onChangeLogo(e:any){
+    if(e.target.files.length>0){
+      const file = e.target.files[0];
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => {
+        // this.previewLoaded= true;
+        if(reader.result != null){
+          this.shopPage.logo = reader.result.toString()
+        }
       }
     }
   }

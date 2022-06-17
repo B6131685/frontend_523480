@@ -15,8 +15,9 @@ import Swal from 'sweetalert2';
 })
 export class LoginComponentsComponent implements OnInit {
 
-   decoded !: any;
-   nameShop !: String;
+  decoded !: any;
+  nameShop !: String;
+  logo!:String;
   @Output() messageEvent = new EventEmitter<string>();
 
   authForm = new FormGroup({
@@ -34,7 +35,8 @@ export class LoginComponentsComponent implements OnInit {
   ngOnInit(): void {
     this.ShopPageService.getShopPage().subscribe(
       data=>{
-        this.nameShop = data.nameShop
+        this.nameShop = data.nameShop;
+        this.logo = data.logo;
       }
     )
   }

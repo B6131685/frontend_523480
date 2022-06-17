@@ -41,6 +41,8 @@ export class HomeComponent implements OnInit {
       data =>{
         this.product = data.data
         this.filterdata = data.data
+        console.log(this.filterdata);
+        
       })
 
     this.SpecModelService.getSpec().subscribe(
@@ -48,6 +50,10 @@ export class HomeComponent implements OnInit {
         this.specModel = data.data;
       }
     )  
+  }
+
+  search(text:string){
+    console.log(text);
   }
 
   PreviousImg(){

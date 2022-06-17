@@ -22,6 +22,13 @@
       </div>
       <!-- rgb(72, 94, 202) -->
       <div class="col-10" style="padding-left: 120px;background-color: #ffffff;min-height: 1000px;">
+
+        <div *ngIf="false">
+          <mat-form-field appearance="standard" style="width: 300px;">
+            <mat-label>Filter</mat-label>
+            <input matInput (input)="search(input.value)" placeholder="Ex. Mia" #input>
+          </mat-form-field>
+        </div>
       
         <div style="margin: 20px;display: inline-block;" *ngFor="let item of filterdata">
           <div class="card" style="width: 18rem;" *ngIf="item.activeStatus !== false">
@@ -41,7 +48,7 @@
     
     </div>
     <div style="margin: 0;">
-      <i class="pi pi-check"></i>
+      
       <app-footer-page [Footer]="FooterData" [spec]="specModel"></app-footer-page>
     </div>
   </div>

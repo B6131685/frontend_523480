@@ -18,6 +18,7 @@ export class UserNavbarComponent implements OnInit {
   decoded !:any;
   state !: boolean;
   nameShop !: String;
+  logo!:String;
   constructor(public CartService:CartService, private ShopPageService:ShopPageService,public localStorage:LocalStorageService,private router: Router,private AuthServicesService:AuthServicesService) { }
   ngOnInit(): void {
     this.iconcart = true;
@@ -26,6 +27,7 @@ export class UserNavbarComponent implements OnInit {
     this.ShopPageService.getShopPage().subscribe(
       data=>{
         this.nameShop = data.nameShop;
+        this.logo = data.logo;
       }
     )
     this.CartService.getCartByUser({idUser:this.AuthServicesService.idUser}).subscribe()
