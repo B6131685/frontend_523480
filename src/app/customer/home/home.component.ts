@@ -17,6 +17,9 @@ export class HomeComponent implements OnInit {
   showImg !: String;
   indexImg = 0;
   FooterData = {mail:'',tel:'',address:''}
+
+  typeshow!:any;
+
   constructor(private router: Router,
               private ProductService:ProductService,
               public dialog: MatDialog,
@@ -52,9 +55,6 @@ export class HomeComponent implements OnInit {
     )  
   }
 
-  search(text:string){
-    console.log(text);
-  }
 
   PreviousImg(){
     if(this.indexImg != 0){
@@ -75,14 +75,34 @@ export class HomeComponent implements OnInit {
   }
 
   Filter(item:any){
-    console.log('filter');
-    console.log(item._id);
-
+    // console.log('filter');
+    // console.log(item._id); 
+    this.typeshow = item;
     this.filterdata = this.product.filter((element:any )=>{
       return element.type._id === item._id
     })
   }
   
+  
+  search(text:string){
+
+    if(text!=''){
+      this.filterdata = this.product.filter((element:any)=>{
+        if(this.typeshow!=null && this.typeshow!=undefined){
+          return element.spec[0].value.toLocaleLowerCase().includes(text.toLocaleLowerCase()) && element.type._id === this.typeshow._id
+        }else{
+          return element.spec[0].value.toLocaleLowerCase().includes(text.toLocaleLowerCase()) 
+        }
+      })
+    }else if(this.typeshow!=null && this.typeshow!=undefined){
+      this.filterdata = this.product.filter((element:any )=>{
+        return element.type._id === this.typeshow._id
+      })
+    }else{
+      this.FilterAll();
+    }
+  }
+
   openDialog(item:any): void {
     const dialogRef = this.dialog.open(DialogHomeShowProduct, {
       width: '50%',

@@ -20,13 +20,13 @@
   
         </mat-button-toggle-group>
       </div>
-      <!-- rgb(72, 94, 202) -->
+      
       <div class="col-10" style="padding-left: 120px;background-color: #ffffff;min-height: 1000px;">
 
-        <div *ngIf="false">
+        <div *ngIf="true">
           <mat-form-field appearance="standard" style="width: 300px;">
-            <mat-label>Filter</mat-label>
-            <input matInput (input)="search(input.value)" placeholder="Ex. Mia" #input>
+            <mat-label>ค้นหารายการสินค้า</mat-label>
+            <input matInput (input)="search(input.value)" placeholder="ชื่อสินค้า" #input>
           </mat-form-field>
         </div>
       
