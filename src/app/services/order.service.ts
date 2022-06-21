@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { map } from 'rxjs/operators'
 @Injectable({
   providedIn: 'root'
@@ -109,6 +109,18 @@ export class OrderService {
     }));
   }
 
+  getPDFOrder(id:string){
+    // let headers = new HttpHeaders({
+    //   'Content-Type': 'application/pdf',
+    //   'Accept': 'application/pdf',
+    // });
+    let headers = new HttpHeaders();
+    headers = headers.set('Accept', 'application/pdf');
+    return  this.http.get('http://localhost:3000/order/orderPDF/'+id, { headers: headers, observe:'response' , responseType: 'blob'})
+    .pipe(data =>{
+      return data;
+    });
 
+  }
 
 }

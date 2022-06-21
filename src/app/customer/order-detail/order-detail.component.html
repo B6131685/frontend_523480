@@ -17,7 +17,9 @@
         </div>
         <br><br>
         <div *ngIf="order.paymentStatus === true">
-            <button type="button" class="btn btn-primary" (click)="openPDF(order._id)">พิมพ์ใบเสร็จ</button>
+            <a href="http://localhost:3000/pdfs/{{order._id}}.pdf" target="_blank" >
+                <button type="button" class="btn btn-primary" href="">ใบกำกับสินค้า</button>
+            </a>
             <br>
         </div>
     </div>
