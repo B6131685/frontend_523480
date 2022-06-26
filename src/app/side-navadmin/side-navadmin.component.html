@@ -50,6 +50,16 @@
 
               <div class="menu-sidenav"><a routerLink="order">Order</a></div>
             </mat-expansion-panel>
+            <mat-expansion-panel (opened)="panelOrderOpenState = true"
+                                 (closed)="panelOrderOpenState = false">
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  ข้อมูลส่วนตัว
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+
+              <div class="menu-sidenav"><a routerLink="profile">profile</a></div>
+            </mat-expansion-panel>
 
           </mat-accordion>
           

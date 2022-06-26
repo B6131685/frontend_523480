@@ -39,6 +39,7 @@ const routes: Routes = [
     { path: 'tabProduct', component: TabProductComponent},
     { path: 'order', component: OrderComponent},
     { path: 'editContent', component: EditContentComponent},
+    {path: 'profile', component: ProfileComponent},
   ] 
   },
   {path: 'user', component: UserNavbarComponent, canActivate: [AuthGuard],
