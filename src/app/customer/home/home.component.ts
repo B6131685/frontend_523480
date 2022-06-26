@@ -71,6 +71,7 @@ export class HomeComponent implements OnInit {
   }
 
   FilterAll(){
+    this.typeshow = 'All'
     this.filterdata = this.product;
   }
 
@@ -88,13 +89,13 @@ export class HomeComponent implements OnInit {
 
     if(text!=''){
       this.filterdata = this.product.filter((element:any)=>{
-        if(this.typeshow!=null && this.typeshow!=undefined){
+        if(this.typeshow!=null && this.typeshow!=undefined && this.typeshow != 'All'){
           return element.spec[0].value.toLocaleLowerCase().includes(text.toLocaleLowerCase()) && element.type._id === this.typeshow._id
         }else{
           return element.spec[0].value.toLocaleLowerCase().includes(text.toLocaleLowerCase()) 
         }
       })
-    }else if(this.typeshow!=null && this.typeshow!=undefined){
+    }else if(this.typeshow!=null && this.typeshow!=undefined && this.typeshow != 'All'){
       this.filterdata = this.product.filter((element:any )=>{
         return element.type._id === this.typeshow._id
       })

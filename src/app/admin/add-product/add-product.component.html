@@ -1,12 +1,13 @@
 <div class="container-fluid" style="background-color: rgb(255, 255, 255)">
   <div class="row">
-    <div class="col-3" style="background-color: rgb(255, 255, 255)">Column</div>
+    <div class="col-3" style="background-color: rgb(255, 255, 255)"></div>
     <div
       class="col-6"
       style="background-color: rgb(255, 255, 255); margin-top: 5%"
     >
       <div class="mb-3 row">
         <label for="inputPassword" class="col-sm-3 col-form-label"
+        style="font-size: 20px;"
           >ประเภทสินค้า</label
         >
         <div class="col-sm-5" >
@@ -35,7 +36,7 @@
       <form #myForm >
         <div *ngFor="let item of list;let i = index">
           <div class="mb-3 row" >
-            <label class="col-sm-3 col-form-label">{{ item }}</label>
+            <label class="col-sm-3 col-form-label" style="font-size: 20px">{{ item }}</label>
             
               <div class="col-sm-5" #div >
                 <input type="text" #myInput class="form-control"  (change)="onChangeSubSpec(item,myInput.value,i)" />
@@ -47,7 +48,7 @@
       
 
       <div class="mb-3 row" >
-        <label class="col-sm-3 col-form-label">ราคา</label>
+        <label class="col-sm-3 col-form-label" style="font-size: 20px">ราคา</label>
         
           <div class="col-sm-5" >
             <input type="number" min="0" class="form-control" #myFormPrice  [(ngModel)]="product.value.price" oninput="validity.valid||(value='');"/>
