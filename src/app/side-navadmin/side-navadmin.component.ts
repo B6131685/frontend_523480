@@ -12,7 +12,7 @@ import { ShopPageService } from '../services/shop-page.service';
   styleUrls: ['./side-navadmin.component.css']
 })
 export class SideNavadminComponent implements OnInit {
-  mode = new FormControl('over');
+  mode = new FormControl('side');
   panelOpenState = false;
   panelOrderOpenState = false;
   constructor(  

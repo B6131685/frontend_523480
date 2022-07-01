@@ -114,11 +114,27 @@ export class ResetPasswordDialog {
     if(this.email !=''){
 
       this.UserService.forgotPassword({email: this.email}).subscribe(
-        data=>{ console.log(data);
+        data=>{ 
+          // console.log(data);
+          Swal.fire({
+            icon: 'success',
+            text: 'ระบบใช้เวลา 2-3 นาทีในการจัดส่งโปรดตรวจสอบที่อีเมล',
+            // footer: '<a href="">Why do I have this issue?</a>'
+          })
+        },
+        err=>{
+          // alert(err.error.error.message);
+
+          Swal.fire({
+            icon: 'error',
+            title: 'เกิดข้อผิดพลาด',
+            text: err.error.error.message,
+          })
+
         }
         )
     }else{
-      alert('กรอกอีเมล')
+      Swal.fire('ใส่ที่อยู่อีเมล')
     }
   }
   onNoClick(): void {

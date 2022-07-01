@@ -12,56 +12,42 @@
 
 
 <mat-sidenav-container class="example-container" style="background-color: rgb(255, 255, 255);">
+  
       <mat-sidenav #sidenav [mode]="mode.value" opened>
+        <a routerLink="editContent">
+          <button type="button" class="btn btn-light menu-custom" style="width: 100%;">จัดการเว็บ</button>
+        </a>
+        <a routerLink="order">
+          <button type="button" class="btn btn-light menu-custom"  style="width: 100%;">คำสั่งซื้อ</button>
+        </a>
+        <a routerLink="profile">
+          <button type="button" class="btn btn-light menu-custom" style="width: 100%;">ข้อมูลผู้ใช้</button>
+        </a>
           <mat-accordion>
-            <mat-expansion-panel >
-              <mat-expansion-panel-header>
-                
-                <mat-panel-title>
-                  <div >
-                    <mat-icon class="material-icons md-36" >dashboard</mat-icon><span style="margin-left:40px;font-size: 20px;padding-bottom: 30px;">Dashboard</span>
-                  </div>
-                </mat-panel-title>
-              </mat-expansion-panel-header>
-
-              <div class="menu-sidenav"><a routerLink="editContent">จัดการเว็บ</a></div> 
-            </mat-expansion-panel>
+            
 
             <mat-expansion-panel (opened)="panelOpenState = true"
                                  (closed)="panelOpenState = false">
               <mat-expansion-panel-header>
                 <mat-panel-title>
-                  product
+                  จัดการสินค้า
                 </mat-panel-title>
               </mat-expansion-panel-header>
 
-              <div class="menu-sidenav"><a routerLink="addSpec">type of Product</a></div>
-              <div class="menu-sidenav"><a routerLink="addProduct">addProduct</a></div>
-              <div class="menu-sidenav"><a routerLink="stock">Stock</a></div>
+              <div class="menu-sidenav"><a routerLink="addSpec">
+                <button type="button" class="btn btn-light menu-custom" style="width: 100%;">ประเภทสินค้า</button>
+              </a></div>
+              <div class="menu-sidenav"><a routerLink="addProduct">
+                <button type="button" class="btn btn-light menu-custom" style="width: 100%;">เพิ่มสินค้า</button>
+              </a></div>
+              <div class="menu-sidenav"><a routerLink="stock">
+                <button type="button" class="btn btn-light menu-custom" style="width: 100%;">ข้อมูลสินค้า</button>
+              </a></div>
               <!-- <div class="menu-sidenav"><a routerLink="tabProduct">Tab</a></div> -->
             </mat-expansion-panel>
-            <mat-expansion-panel (opened)="panelOrderOpenState = true"
-                                 (closed)="panelOrderOpenState = false">
-              <mat-expansion-panel-header>
-                <mat-panel-title>
-                  Order
-                </mat-panel-title>
-              </mat-expansion-panel-header>
-
-              <div class="menu-sidenav"><a routerLink="order">Order</a></div>
-            </mat-expansion-panel>
-            <mat-expansion-panel (opened)="panelOrderOpenState = true"
-                                 (closed)="panelOrderOpenState = false">
-              <mat-expansion-panel-header>
-                <mat-panel-title>
-                  ข้อมูลส่วนตัว
-                </mat-panel-title>
-              </mat-expansion-panel-header>
-
-              <div class="menu-sidenav"><a routerLink="profile">profile</a></div>
-            </mat-expansion-panel>
-
+            
           </mat-accordion>
+          
           
       </mat-sidenav>
       <router-outlet></router-outlet>

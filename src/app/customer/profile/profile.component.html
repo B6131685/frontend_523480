@@ -3,19 +3,19 @@
       <div class="col">
         
       </div>
-      <div class="col" style="background-color:rgb(255, 255, 255);">
+      <div class="col-6" style="background-color:rgb(255, 255, 255);">
         <div style="margin-top: 50px;width: 100%; border: 2px solid #000000;padding: 20px;">
             <!-- <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label fs-5">Email</label>
                 <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com" [(ngModel)]="user.email">
             </div> -->
             <div class="mb-3">
-                <label for="exampleFormControlInput1" class="form-label fs-5">Name</label>
+                <label for="exampleFormControlInput1" class="form-label fs-5">ชื่อ</label>
                 <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="name surname" [(ngModel)]="user.name">
             </div>
             <hr>
             <div class="mb-3">
-                <label for="exampleFormControlInput1" class="form-label fs-5">Address</label>
+                <label for="exampleFormControlInput1" class="form-label fs-5">ที่อยู่</label>
                 
                 
                 <div class="card" *ngFor="let item of user.location;let i = index" style="padding: 10px;margin-top: 15px;">
@@ -24,35 +24,35 @@
                             <span>{{item?.address}}</span><span> {{item?.area}}</span><span> {{item?.postcode}}</span>
                         </div>
                         <div style="margin-top: 10px;">
-                            <button type="button" class="btn btn-danger fs-6" (click)="deleteSubLocation(i)" >delete</button>
+                            <button type="button" class="btn btn-danger fs-6" (click)="deleteSubLocation(i)" >ลบ</button>
                         </div>
                     </div>
                 </div>    
 
                 <div class="card" style="border-style: dashed;border-width: 5px;margin-top: 20px;">
                     <div class="card-body" style="text-align: center;">
-                        <button type="button" class="btn btn-primary" (click)="openDialog()" >add address</button>
+                        <button type="button" class="btn btn-primary" (click)="openDialog()" >เพิ่มที่อยู่</button>
                     </div>
                 </div>
                 <hr>
                 <div style="text-align: center;">
-                    <button type="button" class="btn btn-primary" (click)="updateProfile()">save</button>
+                    <button type="button" class="btn btn-primary" (click)="updateProfile()">บันทึก</button>
                 </div>
             </div>
         </div>
-        <div style="margin-top: 50px;width: 100%; border: 2px solid #000000;padding: 20px;">
-            <div style="text-align: center;">
-                <button type="button" class="btn btn-primary" (click)="changeEmail()">change Email</button>
-            </div>
-        </div>
-        <div style="margin-top: 50px;width: 100%; border: 2px solid #000000;padding: 20px;">
-            <div style="text-align: center;">
-                <button type="button" class="btn btn-primary" (click)="changePassword()">change password</button>
-            </div>
-        </div>
+        
       </div>
-      <div class="col">
-        <!-- {{user | json}} -->
+      <div class="col-4">
+        <div style="margin-top: 50px;width: 100%; border: 2px solid #000000;padding: 20px;">
+            <div style="text-align: center;">
+                <button type="button" class="btn btn-primary" (click)="changeEmail()">เปลี่ยนอีเมล</button>
+            </div>
+        </div>
+        <div style="margin-top: 50px;width: 100%; border: 2px solid #000000;padding: 20px;">
+            <div style="text-align: center;">
+                <button type="button" class="btn btn-primary" (click)="changePassword()">เปลี่ยนรหัสผ่าน</button>
+            </div>
+        </div>
       </div>
     </div>
   </div>

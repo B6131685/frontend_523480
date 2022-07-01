@@ -1,8 +1,8 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col" style="background-color: rgb(255, 255, 255);">
-          <div style="margin-top: 80px;">
-            <button mat-raised-button color="primary" (click)="openDialogAddNewProduct()">New Product</button>
+          <div style="margin-top: 39px;margin-left: 15px;">
+            <button mat-raised-button color="primary" (click)="openDialogAddNewProduct()">เพิ่มสินค้า</button>
           </div>
         </div>
 
@@ -67,7 +67,7 @@
             </ng-container> 
 
             <ng-container matColumnDef="delete">
-              <th mat-header-cell  style="text-align: center;background-color: crimson;width: 5%;" *matHeaderCellDef #setting> active </th>
+              <th mat-header-cell  style="text-align: center;width: 5%;" *matHeaderCellDef #setting> active </th>
               <td mat-cell style="text-align: center;width: 5%;"  *matCellDef="let row" #setting>
                 
                   <!-- <mat-icon aria-hidden="false" class="delete-icon" aria-label="Example home icon" (click)="deleteProduct(row)">delete</mat-icon> -->

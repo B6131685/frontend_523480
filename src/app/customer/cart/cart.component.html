@@ -7,7 +7,7 @@
       <div class="card" style="width: 90%; margin-left: 60px;"> 
         
         <div class="card-body">
-            <div class="card-title"><h1>Cart</h1></div>
+            <div class="card-title"><h1>ตะกร้า</h1></div>
             <hr style="height: 3px;">
           <div
             class="card"
@@ -16,23 +16,23 @@
           >
             <div class="card-body card-cart">
               <div class="row">
-                <div class="col">
+                <div class="col-3" style="text-align: center;">
                     <img src="{{item.idProduct.img}}" style="width:120px;height: 150px;">
                 </div>
-                <div class="col">
-                    <p>Model: {{item.idProduct.spec[0].value}}</p>
-                    <p>Brand: {{item.idProduct.spec[1].value}}</p>
-                    <p>Stock: {{item.idProduct.number}}</p>
+                <div class="col-6">
+                    <p>Model: <span style="color:#3F51B5;">{{item.idProduct.spec[0].value}}</span></p>
+                    <p>Brand: <span style="color:#3F51B5;">{{item.idProduct.spec[1].value}}</span></p>
+                    <p>พร้อมจำหน่ายในระบบ: <span style="color:#3F51B5;">{{item.idProduct.number}}</span></p>
                     <p><mat-icon (click)="delete(i)" class="icon-delete">delete</mat-icon></p>
 
                 </div>
-                <div class="col">
+                <div class="col-3">
                         <button class="btn btn-primary" style="margin: 0 10px;" (click)="subQuantityCart(i)">-</button>
                         <div style="display: inline-block; width:130px;text-align: center;">
-                            <div>Quantity: {{item.quantity}}  </div>
+                            <div>จำนวน: {{item.quantity}}  </div>
                         </div>
                         <button class="btn btn-primary" style="margin: 0 10px;" (click)="plusQuantityCart(i)">+</button>
-                        <div style="margin-left:70px;margin-top: 20px;"> {{item.idProduct.price * item.quantity}} bth.</div>
+                        <div style="margin-left:70px;margin-top: 20px;"> {{item.idProduct.price * item.quantity}} บาท</div>
                     
                 </div>
               </div>
@@ -44,7 +44,7 @@
     <div class="col-4" >
         <div class="card" style="width: 90%;">
             <div class="card-body">
-              <div class="card-title"><h1>Summary</h1></div>
+              <div class="card-title"><h1>สรุปรายละเอียด</h1></div>
               <hr style="height: 3px;">
 
               <div style="margin-top: 40px;">
@@ -61,40 +61,40 @@
                 </div>   -->
                 <div>
                     <div class="div-contentname">
-                        All Products:
+                        ราคารวมทั้งหมด:
                     </div>
                     <div class="content">
                         {{summary}}
                     </div>
                     <div class="Unit">
-                        bth.
+                        บาท
                     </div>
                   </div>
                   <div>
                       <div class="div-contentname">
-                        Shipping: 
+                        ค่าจัดส่ง: 
                       </div>
                       <div class="content">
                         {{shipping}} 
                       </div>
                       <div class="Unit">
-                        bth.
+                        บาท
                       </div>
                   </div>
               </div>
               <hr style="height: 3px;">
               <div>
                 <div class="div-contentname">
-                    Total amount: 
+                    ทั้งหมด: 
                   </div>
                   <div class="content">
                     {{summary + shipping}} 
                   </div>
                   <div class="Unit">
-                    bth.
+                    บาท
                   </div>
               </div>
-              <button class="btn btn-primary" style="margin-top: 30px;" (click)="checkOutCart()">check out cart</button>
+              <button class="btn btn-primary" style="margin-top: 30px;" (click)="checkOutCart()">สร้างคำสั่งซื้อ</button>
             </div>
           </div>
     </div>

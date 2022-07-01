@@ -86,6 +86,10 @@ export class ProfileComponent implements OnInit {
       });
   
       dialogRef.afterClosed().subscribe(result => {
+        Swal.fire({
+          icon: 'success',
+          text: 'ระบบส่งข้อความยืนยันไปยังที่อยู่อีเมลใหม่',
+        })
       });
     }
 
@@ -147,11 +151,8 @@ export class PasswordDialog {
     this.UserService.changePassword(this.obj).subscribe(
       data =>{
         Swal.fire({
-          position: 'center',
           icon: 'success',
-          title: 'password is changed',
-          showConfirmButton: false,
-          timer: 1500
+          text: 'การเปลี่ยนรหัสผ่านเรียบร้อย',
         })
         this.dialogRef.close();
       },

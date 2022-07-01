@@ -11,7 +11,7 @@
   </div>
   <!-- Include text description of the icon's meaning for screen-readers -->
   <span style="margin-right: 20px;">{{decoded.role}} : <span style="color: yellow;">{{decoded.name}}</span></span> 
-  <button mat-flat-button color="warn" (click)="logout()">log out</button>
+  <button mat-flat-button color="warn" (click)="logout()">ออกจากระบบ</button>
 <!-- </div> -->
 </mat-toolbar>
 
@@ -20,10 +20,10 @@
 <mat-sidenav-container class="example-container" style="background-color: rgb(255, 255, 255);">
   <mat-sidenav #sidenav [mode]="mode.value" opened style="width: 200px;">
       <mat-button-toggle-group style="display: block;" name="fontStyle" aria-label="Font Style" >
-        <mat-button-toggle style="display: block;" (click)="home()" >สินค้า</mat-button-toggle>
-        <mat-button-toggle style="display: block;" (click)="cart()">ตะกร้าสินค้า</mat-button-toggle>
-        <mat-button-toggle style="display: block;" (click)="profile()">ข้อมูลผู้ใช้</mat-button-toggle>
-        <mat-button-toggle style="display: block;" (click)="order()">รายการสั่งซื้อ</mat-button-toggle>
+        <mat-button-toggle style="display: block;" [checked]="modeHome" (click)="home()" >สินค้า</mat-button-toggle>
+        <mat-button-toggle style="display: block;" [checked]="modeCart" (click)="cart()" #menucart >ตะกร้าสินค้า</mat-button-toggle>
+        <mat-button-toggle style="display: block;"  (click)="profile()">ข้อมูลผู้ใช้</mat-button-toggle>
+        <mat-button-toggle style="display: block;"  (click)="order()">รายการสั่งซื้อ</mat-button-toggle>
       </mat-button-toggle-group>
   </mat-sidenav>
   <router-outlet></router-outlet>

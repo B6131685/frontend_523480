@@ -1,6 +1,6 @@
 <form [formGroup]="form">
 <div class="card" style="padding: 10px;">
-    <label for="exampleFormControlInput1" class="form-label" >postcode</label>
+    <label for="exampleFormControlInput1" class="form-label" >รหัสไปรษณีย์</label>
     
     <!-- <input type="number" class="form-control" id="exampleFormControlInput1" #postcode (change)="postcodeOnChange(postcode.value)" oninput="validity.valid||(value='');" min="0" [(ngModel)]="address.postcode"> -->
     <input type="number" class="form-control" id="exampleFormControlInput1" #postcode (change)="postcodeOnChange(postcode.value)" oninput="validity.valid||(value='');" min="0" formControlName='postcode'>
@@ -9,12 +9,12 @@
           ใส่รหัสไปษณีย์
         </div>
     </div>
-    <label for="exampleFormControlInput1" class="form-label">area</label>
+    <label for="exampleFormControlInput1" class="form-label">เขตปกครอง</label>
     <!-- <select class="form-select" aria-label="Default select example" [(ngModel)]="address.area" > -->
     <select class="form-select" aria-label="Default select example"  formControlName='area'>
         <option selected *ngFor="let item of listArea;let i = index">{{item.name}}</option>
     </select>
-    <label for="exampleFormControlTextarea1" class="form-label">address</label>
+    <label for="exampleFormControlTextarea1" class="form-label">รายละเอียด</label>
     <!-- <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" [(ngModel)]="address.address"></textarea> -->
     <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" formControlName='address'></textarea>
     <div *ngIf="validateAddress.invalid && (validateAddress.dirty || validateAddress.touched)" class="alert-danger">
@@ -24,4 +24,4 @@
     </div>
 </div>
 </form>
-<button (click)="closeDialog()">add</button>
+<button (click)="closeDialog()">ตกลง</button>

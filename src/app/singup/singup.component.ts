@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormArray, Validators } from '@angular/forms';
 import { AddressFreeAPIService } from '../services/address-free-api.service';
 import { SingUpService } from '../services/sing-up.service';
+import { ShopPageService } from '../services/shop-page.service';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 @Component({
@@ -15,6 +16,9 @@ export class SingupComponent implements OnInit {
   provinces: any;
   districts: any;
   subDistricts: any;
+
+  nameShop !: String;
+  logo!:String;
 
   fetchSuccess = false;
   checkOnCheang = false;
@@ -36,9 +40,20 @@ export class SingupComponent implements OnInit {
     province : new FormControl(''),
   })
 
-  constructor(private addressFreeAPI:AddressFreeAPIService, private singUpService:SingUpService, private router: Router) { 
+  constructor(
+    private addressFreeAPI:AddressFreeAPIService,
+    private singUpService:SingUpService,
+    private router: Router,
+    private ShopPageService:ShopPageService) { 
     
     this.provinces = [];
+
+    this.ShopPageService.getShopPage().subscribe(
+      data=>{
+        this.nameShop = data.nameShop;
+        this.logo = data.logo;
+      }
+    )
   }
   
   ngOnInit(): void {
@@ -46,7 +61,10 @@ export class SingupComponent implements OnInit {
   }
 
 
-
+  
+  home(){
+    this.router.navigate(['home']);
+  }
   
 
 
@@ -101,14 +119,12 @@ export class SingupComponent implements OnInit {
     console.log(this.profileForm.value);
     this.singUpService.registerData(this.profileForm.value).subscribe(
       data => {
-        console.log(data);
+        // console.log(data);
         Swal.fire({
-          position: 'center',
           icon: 'success',
-          title: 'sing up success',
-          showConfirmButton: false,
-          timer: 1500
-        });
+          text: 'การสมัครเรียบร้อย \n โปรดตรวจสอบอีเมลเพื่อยืนยันที่อยู่อีเมล',
+          // footer: '<a href="">Why do I have this issue?</a>'
+        })
         this.profileForm.value.address.length = 0;
         this.profileForm.reset();
       },
@@ -116,8 +132,12 @@ export class SingupComponent implements OnInit {
         console.log(err); 
         //data.splice(0, data.length)
         this.profileForm.value.address.length = 0;
-        alert('Sign Up failure!!!');
-        
+        // alert('Sign Up failure!!!');
+        Swal.fire({
+          icon: 'error',
+          title: 'เกิดข้อผิดพลาด',
+          text: err.error.error.message,
+        })
       }
     )
   }

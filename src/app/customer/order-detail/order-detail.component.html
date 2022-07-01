@@ -4,7 +4,13 @@
         <div id="{{order._id}}">
             {{order._id}}
         <br>
-        <p>วันที่จัดส่ง: {{ order.updateAt | date:'dd-LL-yyyy HH:mm:ss'}}</p>
+        
+        <div *ngIf="order.paymentStatus === false">
+            <p>วันที่ถูกตรวจสอบ: {{ order.updateAt | date:'dd-LL-yyyy HH:mm:ss'}}</p>
+        </div>
+        <div *ngIf="order.paymentStatus === true">
+            <p>วันที่จัดส่ง: {{ order.updateAt | date:'dd-LL-yyyy HH:mm:ss'}}</p>
+        </div>
         <br>
         <p *ngIf="order.paymentStatus === true">idTracking: {{order.idTracking}} </p>
         <p *ngIf="order.paymentStatus === true">บริษัทขนส่ง: {{order.expressCompany}} </p>

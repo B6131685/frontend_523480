@@ -30,12 +30,10 @@ export class HomeComponent implements OnInit {
     this.ShopPageService.getShopPage().subscribe(
       data =>{
         this.shopPage = data;
-        console.log(this.shopPage);
         this.showImg = data.img[0]
         this.FooterData.address = data.address;
         this.FooterData.mail = data.mail;
         this.FooterData.tel = data.tel;
-        console.log(this.FooterData);
         
       }
     )

@@ -1,7 +1,8 @@
 <div class="container-fluid">
     <div class="row">
-
-      <div class="col-10" >
+      <div class="col-4">
+      </div>
+      <div class="col-5" >
         <div>
             <img src="{{item.img}}"  alt="..." style="width: 200px;height: 200px;">
         </div>
@@ -9,7 +10,7 @@
         <div>
             <div class="card" style="width: 18rem;">
                 <div class="card-header">
-                  Spec
+                  รายละเอียดสินค้า
                 </div>
                 <ul class="list-group list-group-flush">
                   <li class="list-group-item" *ngFor="let item of item.spec">
@@ -23,7 +24,7 @@
         </div>
         <div style="margin-top: 20px;">
           <h3>
-            stock : {{item.number}}
+            จำนวนสินค้าพร้อมจำหน่าย : {{item.number}}
           </h3>
         </div>
         <br><br>
@@ -31,13 +32,13 @@
             <div style="display:flex;">
                 <button class="button-operater" (click)="sub()">-</button>
                 <!-- <input class="form-control" type="number" oninput="validity.valid||(value='');"> -->
-                <span style="width: 60px;border: 1px solid black;text-align: center;font-size: 25px;padding-top: 5px;" >{{quntity}}</span>
+                <span style="width: 60px;border: 1px solid black;text-align: center;font-size: 25px;padding-top: 10px;" >{{quntity}}</span>
                 <button class="button-operater"  [disabled]="checkPlusButton" (click)="plus()">+</button>   
             </div>
             <button [disabled]="checkAddToCart" type="button" class="btn btn-primary" style="margin-left: 20px;" (click)="checkState()">เพิ่มลงตะกร้าสินค้า</button>
         </div>
       </div>
-      <div class="col-2">
+      <div class="col-3">
       </div>
     </div>
   </div>

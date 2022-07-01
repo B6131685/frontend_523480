@@ -8,34 +8,44 @@
             <p>{{item._id}}</p>
             <div class="card">
                <div class="card-body">
-                 <span>user: {{item.idUser.name}}</span>
+                 <span style="font-size: 20px;">user: {{item.idUser.name}}</span>
                  <br>
                  
                </div>
              </div>
              <div class="card" style="margin-top: 15px;">
                <div class="card-body">
-                  <h5 class="card-title">รายการสินค้า</h5>
-                  <div *ngFor="let product of item.idCart.list">
-                      {{product.idProduct.spec[0].value}}:{{product.quantity}}
+                  <h5 class="card-title" style="font-size: 20px;">รายการสินค้า</h5>
+                  <div *ngFor="let product of item.idCart.list" style="font-size: 15px;">
+                    <div style="width: 300px;display: inline-block;">
+                      {{product.idProduct.spec[0].value}} 
+                    </div>
+                    <div style="display:inline-block;">
+                      :
+                    </div>
+                    <div style="display:inline-block;margin-left: 10px;">
+                      {{product.quantity}} จำนวน
+                    </div>
                   </div>
                </div>
              </div>
          </div>
          <br>
          <div class="row" style="width: 40%;">
-            <label  class="col-sm-2 col-form-label" >id Tracking</label>
-            <div class="col-sm-10" >
-              <input type="text" class="form-control" style="width: 50%;display: inline-block;" #idTracking [(ngModel)]="Tracking">
+            <label  class="col-sm-4 col-form-label" style="font-size: 20px;" >id Tracking</label>
+            <div class="col-sm-8" >
+              <input type="text" class="form-control" style="width: 70%;display: inline-block;" #idTracking [(ngModel)]="Tracking">
               <!-- <button type="button" style="display: inline-block; margin-left: 8px;" class="btn btn-primary" (click)="saveIdTracking(item,idTracking.value)">ยืนยัน</button> -->
             </div>
          </div>
          <br>
          <div class="row" style="width: 40%;">
-          <label  class="col-sm-2 col-form-label" >บริษัทขนส่ง</label>
-          <div class="col-sm-10" >
-            <input type="text" class="form-control" style="width: 50%;display: inline-block;" [(ngModel)]="expressCompany">
-            <button type="button" style="display: inline-block; margin-left: 8px;" class="btn btn-primary"  (click)="saveIdTracking(item)">ยืนยัน</button>
+          <label  class="col-sm-4 col-form-label" style="font-size: 20px;" >บริษัทขนส่ง</label>
+          <div class="col-sm-8" >
+            <input type="text" class="form-control" style="width: 70%;display: inline-block;" [(ngModel)]="expressCompany">
+          </div>
+          <div >
+            <button type="button" style="display: inline-block; margin-left: 320px;" class="btn btn-primary"  (click)="saveIdTracking(item)">ยืนยัน</button>
           </div>
        </div>
         </div>
