@@ -1,23 +1,27 @@
 <div class="container-fluid">
     <div class="row">
-      <div class="col-4">
+      <div class="col-1">
       </div>
-      <div class="col-5" >
+      <div class="col-10" >
         <div>
-            <img src="{{item.img}}"  alt="..." style="width: 200px;height: 200px;">
+            <img src="{{item.img}}"  alt="..." style="width: 300px;height: 300px;">
         </div>
         <br><br>
         <div>
-            <div class="card" style="width: 18rem;">
+            <div class="card" style="width: 100%;">
                 <div class="card-header">
                   รายละเอียดสินค้า
                 </div>
                 <ul class="list-group list-group-flush">
                   <li class="list-group-item" *ngFor="let item of item.spec">
-                    <div style="width: 110px;display: inline-block;">
+                    <div style="position: relative;">
+                      <div style="width: 110px;display: inline-block;">
                         {{item.name}} 
+                      </div>
+                      <div style="width:500px;display:inline-block;">
+                        {{item.value}}
+                      </div>
                     </div>
-                      {{item.value}}
                   </li>
                 </ul>
               </div>
@@ -38,7 +42,7 @@
             <button [disabled]="checkAddToCart" type="button" class="btn btn-primary" style="margin-left: 20px;" (click)="checkState()">เพิ่มลงตะกร้าสินค้า</button>
         </div>
       </div>
-      <div class="col-3">
+      <div class="col-1">
       </div>
     </div>
   </div>

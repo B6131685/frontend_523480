@@ -67,6 +67,7 @@ import { FooterPageComponent } from './customer/footer-page/footer-page.componen
 import { OrderDetailComponent } from './customer/order-detail/order-detail.component';
 import { PaymentPageComponent } from './admin/payment-page/payment-page.component';
 import { ActiveButtonComponent } from './admin/active-button/active-button.component';
+import { ExpressFormComponent } from './admin/express-form/express-form.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -106,6 +107,7 @@ import { ActiveButtonComponent } from './admin/active-button/active-button.compo
     OrderDetailComponent,
     PaymentPageComponent,
     ActiveButtonComponent,
+    ExpressFormComponent,
   ],
   imports: [
     BrowserModule,

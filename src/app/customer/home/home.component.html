@@ -29,9 +29,9 @@
             <input matInput (input)="search(input.value)" placeholder="ชื่อสินค้า" #input>
           </mat-form-field>
         </div>
-      
-        <div style="margin: 20px;display: inline-block;" *ngFor="let item of filterdata">
-          <div class="card" style="width: 18rem;" *ngIf="item.activeStatus !== false">
+        
+        <div style="display: inline-block;" *ngFor="let item of filterdata">
+          <div class="card" style="width: 18rem;margin: 20px;" *ngIf="item.activeStatus !== false">
             <img src="{{item.img}}" class="card-img-top" alt="..." style="height: 300px;">
             <div class="card-body">
               <!-- <p>{{item.activeStatus | json}}</p> -->

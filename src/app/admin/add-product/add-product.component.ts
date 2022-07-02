@@ -182,20 +182,25 @@ export class AddProductComponent implements OnInit {
         Swal.fire({
           position: 'center',
           icon: 'success',
-          title: 'Your work has been saved',
+          title: 'สินค้าได้รับการบันทึก',
           showConfirmButton: false,
           timer: 1500
         })
         
       },
       err=>{
-        console.log(err.error.error.message);
-        alert(err.error.error.message) 
+        // console.log(err.error.error.message);
+        // alert(err.error.error.message) 
+        Swal.fire({
+          icon: 'error',
+          text: err.error.error.message,
+        })
         //data.splice(0, data.length)
         // this.model.value.spec.length = 0;
         // this.model.reset();
-        this.product.reset();
-        this.myInputImg.nativeElement.value = ''
+        // this.select = '';
+        // this.product.reset();
+        // this.myInputImg.nativeElement.value = ''
       }
     )
 

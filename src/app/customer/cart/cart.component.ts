@@ -112,7 +112,7 @@ export class CartComponent implements OnInit,OnDestroy {
           Swal.fire({
             position: 'center',
             icon: 'success',
-            title: 'order has been saved',
+            title: 'คำสั่งซื้อถูกสร้างเรียบร้อย',
             showConfirmButton: false,
             timer: 1500
           })

@@ -61,7 +61,7 @@ export class ProfileComponent implements OnInit {
         Swal.fire({
           position: 'center',
           icon: 'success',
-          title: 'edit success',
+          title: 'บันทึกการเปลี่ยนแปลงเรียบร้อย',
           showConfirmButton: false,
           timer: 1500
         });
@@ -86,10 +86,9 @@ export class ProfileComponent implements OnInit {
       });
   
       dialogRef.afterClosed().subscribe(result => {
-        Swal.fire({
-          icon: 'success',
-          text: 'ระบบส่งข้อความยืนยันไปยังที่อยู่อีเมลใหม่',
-        })
+
+
+        
       });
     }
 
@@ -119,12 +118,32 @@ export class EmailDialog {
 
   changeEmail(): void {
     // console.log(this.newEmail);
-    console.log(this.AuthServicesService.idUser);
+    // console.log(this.AuthServicesService.idUser);
     if(this.obj.email != ''){
-      this.UserService.changeEmail(this.obj).subscribe()
-      this.dialogRef.close();
+      this.UserService.changeEmail(this.obj).subscribe(
+        data=>{
+          // console.log(data);
+          this.dialogRef.close();
+          Swal.fire({
+            icon: 'success',
+            text: 'ระบบส่งข้อความยืนยันไปยังที่อยู่อีเมลใหม่',
+          })
+        },
+        err=>{
+          // console.log(err);
+          Swal.fire({
+            icon: 'error',
+            text: err.error.error.message,
+          })
+        }
+      )
     }else(
-      alert('โปรดกรอกอีเมลใหม่')
+      
+      Swal.fire({
+        icon: 'error',
+        text: 'ยังไม่ได้กรอกข้อมูลอีเมลใหม่',
+      })
+
     )
   }
 

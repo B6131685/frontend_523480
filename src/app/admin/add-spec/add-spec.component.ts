@@ -87,8 +87,21 @@ export class AddSpecComponent implements OnInit {
     this.spec.removeAt(i) // ??? why 
     // console.log(this.model.value.spec);
   }
-
+  
   submit(){
+    let found = true;
+    for (let index = 0; index < this.spec.length; index++) {
+      if(this.spec.value[index].trim() === ''){
+        found = false;
+        console.log(found);
+      }
+    }
+    
+   if(found){ 
+    for (let index = 0; index < this.spec.length; index++) {
+      this.spec.value[index] = this.spec.value[index].trim();
+    }
+
     this.SpecModelService.registerSpec(this.model.value).subscribe(
       data => {
         // console.log(data);
@@ -108,20 +121,25 @@ export class AddSpecComponent implements OnInit {
         })
       },
       err=>{
-        console.log(err.error.error.message);
-        alert(err.error.error.message) 
         //data.splice(0, data.length)
         // this.model.value.spec.length = 0;
         // this.model.reset();
         Swal.fire({
           icon: 'error',
           title: 'Oops...',
-          text: ' ไม่สามารถเพิ่มประเภทสินค้า',
+          text: 'ต้องการชื่อประเภทสินค้า',
+        });})
+      }else{
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'กรอกฟอร์มคุณสมบัติไม่ครบ',
         });
-
       }
-    )
+
   } // close submit
+
+  
 
   update(){
 
