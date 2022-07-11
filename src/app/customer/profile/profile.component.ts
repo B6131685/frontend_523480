@@ -5,6 +5,7 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import { UserService } from 'src/app/services/user.service';
 import Swal from 'sweetalert2';
+import { CommonService } from 'src/app/services/common.service';
 export interface DialogData { location:{postcode:Number,area:'', address:String}[] }
 
 @Component({
@@ -19,6 +20,7 @@ export class ProfileComponent implements OnInit {
       private AuthServicesService:AuthServicesService,
       private AddressFreeAPIService:AddressFreeAPIService,
       private UserService:UserService,
+      private CommonService:CommonService,
       public dialog: MatDialog,) { }
 
   ngOnInit(): void {
@@ -65,7 +67,11 @@ export class ProfileComponent implements OnInit {
           showConfirmButton: false,
           timer: 1500
         });
+        // this.CommonService.updateName();
         this.getUser();
+        this.AuthServicesService.updateName();
+        // location.reload()
+        
       },
       error =>{
 

@@ -20,7 +20,7 @@ export class OrderDisapproveComponent implements OnInit {
     this.OrderService.getAllOrderDisapprove(this.AuthServices.idUser).subscribe(
       data=>{
         console.log(data);
-        this.order = data.data;
+        this.order = data.data.reverse();
       },
       error =>{
         console.log(error);

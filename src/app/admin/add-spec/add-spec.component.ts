@@ -121,13 +121,15 @@ export class AddSpecComponent implements OnInit {
         })
       },
       err=>{
+        console.log(err);
+        
         //data.splice(0, data.length)
         // this.model.value.spec.length = 0;
         // this.model.reset();
         Swal.fire({
           icon: 'error',
           title: 'Oops...',
-          text: 'ต้องการชื่อประเภทสินค้า',
+          text: err.error.error.message,
         });})
       }else{
         Swal.fire({

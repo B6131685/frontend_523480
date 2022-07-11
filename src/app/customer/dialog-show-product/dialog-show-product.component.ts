@@ -52,7 +52,13 @@ export class DialogShowProductComponent implements OnInit {
 
   checkState(){
     if(this.loggedIn === null){
-      alert('โปรดสมัคร')
+      // alert('โปรดสมัคร')
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'คุณยังไม่ได้ log in เข้าสู่ระบบ',
+        // footer: '<a href="">Why do I have this issue?</a>'
+      })
     }
 
     if(this.loggedIn === 'true'){

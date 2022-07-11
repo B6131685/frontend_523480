@@ -6,6 +6,7 @@ import { Injectable, EventEmitter, Output } from '@angular/core';
 export class CommonService {
   @Output() newItemEvent = new EventEmitter<string>();
   @Output() newVerifySlip = new EventEmitter<string>();
+  @Output() name = new EventEmitter<string>();
   constructor() { }
 
   waitVerify(){
@@ -14,6 +15,10 @@ export class CommonService {
 
   adminVerifySlip(){
     this.newVerifySlip.emit();
+  }
+
+  updateName(){
+    this.name.emit();
   }
 
 }

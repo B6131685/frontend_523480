@@ -4,6 +4,7 @@ import { map } from 'rxjs/operators';
 import { LocalStorageService } from 'angular-web-storage';
 import jwtDecode, { JwtPayload } from "jwt-decode";
 import { Observable } from 'rxjs';
+import { CommonService } from './common.service';
 @Injectable({
   providedIn: 'root'
 })
@@ -15,7 +16,13 @@ export class AuthServicesService {
   roleAs!: string;
   result !: any;
   nameUser!:String;
-  constructor(private http: HttpClient,public localStorage:LocalStorageService ) { }
+  constructor(private http: HttpClient,public localStorage:LocalStorageService, private CommonService:CommonService, ) { 
+    this.CommonService.newItemEvent.subscribe(
+      ()=>{
+        this.updateName();
+      }
+    )
+  }
 
   loginServices(authData: any){
     return  this.http.post<any>('http://localhost:3000/users/login',authData)
@@ -82,6 +89,29 @@ export class AuthServicesService {
     .pipe(map(data =>{
       return data;
     }));
+  }
+
+  updateName(){
+    console.log('updateName');
+    
+    const idtoken = localStorage.getItem('id_token');
+    let id
+    if(idtoken!=null){
+      const decoded = jwtDecode<JwtPayload>(idtoken);
+        
+      this.result = decoded;
+      // console.log(result);
+      
+      id = this.result.id;
+    }
+    this.http.get<any>('http://localhost:3000/users/me/'+id).subscribe(
+      data=>{
+        console.log(data.data.name);
+        this.result.name = data.data.name;
+        this.CommonService.updateName();
+      }
+    )
+    
   }
 
 

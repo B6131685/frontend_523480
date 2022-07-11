@@ -199,7 +199,7 @@ export class AddProductComponent implements OnInit {
         // this.model.value.spec.length = 0;
         // this.model.reset();
         // this.select = '';
-        // this.product.reset();
+        this.product.value.spec = [];
         // this.myInputImg.nativeElement.value = ''
       }
     )

@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import jwtDecode, { JwtPayload } from "jwt-decode";
 import { AuthServicesService } from '../services/auth-services.service';
 import { ShopPageService } from '../services/shop-page.service';
+import { CommonService } from '../services/common.service';
 @Component({
   selector: 'app-side-navadmin',
   templateUrl: './side-navadmin.component.html',
@@ -16,6 +17,7 @@ export class SideNavadminComponent implements OnInit {
   panelOpenState = false;
   panelOrderOpenState = false;
   constructor(  
+                private CommonService:CommonService,
                 public localStorage:LocalStorageService,
                 private router: Router,
                 private AuthServicesService:AuthServicesService,
@@ -33,7 +35,11 @@ export class SideNavadminComponent implements OnInit {
         this.logo = data.logo;
       }
     )
-    
+    this.CommonService.name.subscribe(
+      ()=>{
+        this.decoded = this.AuthServicesService.result;
+      }
+    )
     // console.log("decode get from AuthServices");
     // console.log(this.decoded);
     // console.log(this.user);

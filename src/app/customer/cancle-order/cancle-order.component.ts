@@ -31,7 +31,7 @@ export class CancleOrderComponent implements OnInit {
   getOrder(){
     this.OrderService.getOrderNotActive(this.AuthServices.idUser).subscribe(
       data=>{
-        this.order = data.data;
+        this.order = data.data.reverse();
         console.log(data);
       }
     )

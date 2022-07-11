@@ -6,6 +6,7 @@ import { AuthServicesService } from 'src/app/services/auth-services.service';
 import { ShopPageService } from 'src/app/services/shop-page.service';
 import { CartService } from 'src/app/services/cart.service';
 import { SpecModelService } from 'src/app/services/spec-model.service';
+import { CommonService } from 'src/app/services/common.service';
 @Component({
   selector: 'app-user-navbar',
   templateUrl: './user-navbar.component.html',
@@ -32,6 +33,7 @@ export class UserNavbarComponent implements OnInit {
      public localStorage:LocalStorageService,
      private router: Router,
      private AuthServicesService:AuthServicesService,
+     private CommonService:CommonService,
      private SpecModelService:SpecModelService) { }
   ngOnInit(): void {
     this.iconcart = true;
@@ -46,6 +48,13 @@ export class UserNavbarComponent implements OnInit {
         this.FooterData.tel = data.tel;
       }
     )
+
+    this.CommonService.name.subscribe(
+      ()=>{
+        this.decoded = this.AuthServicesService.result;
+      }
+    )
+
     this.CartService.getCartByUser({idUser:this.AuthServicesService.idUser}).subscribe()
 
     this.SpecModelService.getSpec().subscribe(
